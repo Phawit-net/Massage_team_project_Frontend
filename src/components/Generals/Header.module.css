@@ -1,0 +1,15 @@
+@import '~antd/dist/antd.css';
+
+#drawermenu {
+    display:none
+}
+@media(max-width: 767px){
+.rightMenu{
+    display: none;
+}
+#drawermenu{
+    display: inline-block;
+  }
+}
+
+
