@@ -15,8 +15,6 @@ class LoginModal extends Component {
                     bodyStyle={{ backgroundImage: `url(${LoginModalBackground})`, backgroundSize: 'cover'}}
                     width={800}
                     visible={this.props.loginvisible}
-                    onOk={this.props.handleOk}
-                    onCancel={this.props.handleCancel}
                     footer={null}
                 >
                     <Row style={{ marginTop: '20px' }}>

@@ -29,20 +29,6 @@ export default class Header extends Component {
           loginvisible: true,
         });
       };
-    
-      handleOk = e => {
-        console.log(e);
-        this.setState({
-          longinvisible: false,
-        });
-      };
-    
-      handleCancel = e => {
-        console.log(e);
-        this.setState({
-          loginvisible: false,
-        });
-      };
       showLoginModalDrawer=()=>{
           this.onClose();
           this.showLoginModal()
@@ -60,7 +46,7 @@ export default class Header extends Component {
                                <Menu.Item className={styles.menuoption}><Link to='/home'>Home</Link></Menu.Item>
                                <Menu.Item className={styles.menuoption}><Link to='/shoppackages'>Shop & Packages</Link></Menu.Item>
                                 <Menu.Item className={styles.menuoption}>Contact Us</Menu.Item>
-                                <LoginModal loginvisible={this.state.loginvisible} showLoginModal={this.showLoginModal} handleOk={this.handleOk} handleCancel={this.handleCancel}/>
+                                <LoginModal loginvisible={this.state.loginvisible} showLoginModal={this.showLoginModal}/>
                             </Menu>
                             <Button id={styles.drawermenu} icon='menu-unfold' size='large' ghost onClick={this.showDrawer}/>
                             <Drawer 
