@@ -37,7 +37,7 @@ export default class Header extends Component {
                                 <Menu.Item className={styles.menuoption}>Login</Menu.Item>
                             </Menu>
                             <Button id={styles.drawermenu} icon='menu-unfold' size='large' ghost onClick={this.showDrawer}/>
-                            <Drawer
+                            <Drawer 
                                 title="Menu"
                                 placement="right"
                                 closable={false}
