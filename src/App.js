@@ -1,12 +1,22 @@
 import React from 'react';
-import './App.css';
-
+import './App.css'
+import {Row} from 'antd'
+import Header from './components/Generals/Header/Header'
+import Footer from './components/Generals/Footer/Footer'
 class App extends React.Component {
   render() {
     return (
-      <div className='App'>
-        massage webapp
-      </div>
+      <>
+        <Row>
+          <Header/>
+        </Row>
+        <Row>
+          content
+        </Row>
+        <Row>
+          <Footer/>
+        </Row>   
+      </>
     )
   }
 }
