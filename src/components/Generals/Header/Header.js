@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Row, Col, Card, Menu, Drawer, Button } from 'antd'
-import Logo from '../../picture/NuadThaiLogo.png'
+import Logo from '../../../picture/NuadThaiLogo.png'
 import styles from './Header.module.css'
 
 export default class Header extends Component {
@@ -31,10 +31,10 @@ export default class Header extends Component {
                     <Col xs={5} md={19} lg={12} xl={10}>
                         <Row>
                             <Menu mode="horizontal" inlineIndent='50' style={{ backgroundColor: '#f1e6b2' }} className={styles.rightMenu}>
-                                <Menu.Item style={{ color: '#926f3b', fontSize: '20px' }}>Home</Menu.Item>
-                                <Menu.Item style={{ color: '#926f3b', fontSize: '20px' }}>Shop & Packages</Menu.Item>
-                                <Menu.Item style={{ color: '#926f3b', fontSize: '20px' }}>Contact Us</Menu.Item>
-                                <Menu.Item style={{ color: '#926f3b', fontSize: '20px' }}>Login</Menu.Item>
+                                <Menu.Item className={styles.menuoption}>Home</Menu.Item>
+                                <Menu.Item className={styles.menuoption}>Shop & Packages</Menu.Item>
+                                <Menu.Item className={styles.menuoption}>Contact Us</Menu.Item>
+                                <Menu.Item className={styles.menuoption}>Login</Menu.Item>
                             </Menu>
                             <Button id={styles.drawermenu} icon='menu-unfold' size='large' ghost onClick={this.showDrawer}/>
                             <Drawer
