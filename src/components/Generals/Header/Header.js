@@ -3,12 +3,14 @@ import { Row, Col, Card, Menu, Drawer, Button } from 'antd'
 import {Link} from 'react-router-dom'
 import Logo from '../../../picture/NuadThaiLogo.png'
 import styles from './Header.module.css'
+import LoginModal from './LoginModal'
 
 export default class Header extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            visible: false
+            visible: false,
+            loginvisible:false
         }
     }
 
@@ -22,6 +24,29 @@ export default class Header extends Component {
             visible: false,
         });
     };
+    showLoginModal = () => {
+        this.setState({
+          loginvisible: true,
+        });
+      };
+    
+      handleOk = e => {
+        console.log(e);
+        this.setState({
+          longinvisible: false,
+        });
+      };
+    
+      handleCancel = e => {
+        console.log(e);
+        this.setState({
+          loginvisible: false,
+        });
+      };
+      showLoginModalDrawer=()=>{
+          this.onClose();
+          this.showLoginModal()
+      }
     render() {
         return (
             <Card style={{ backgroundColor: '#f1e6b2', opacity: '0.8' }} bodyStyle={{ padding: '0' }}>
@@ -35,7 +60,7 @@ export default class Header extends Component {
                                <Menu.Item className={styles.menuoption}><Link to='/home'>Home</Link></Menu.Item>
                                <Menu.Item className={styles.menuoption}><Link to='/shoppackages'>Shop & Packages</Link></Menu.Item>
                                 <Menu.Item className={styles.menuoption}>Contact Us</Menu.Item>
-                                <Menu.Item className={styles.menuoption}>Login</Menu.Item>
+                                <LoginModal loginvisible={this.state.loginvisible} showLoginModal={this.showLoginModal} handleOk={this.handleOk} handleCancel={this.handleCancel}/>
                             </Menu>
                             <Button id={styles.drawermenu} icon='menu-unfold' size='large' ghost onClick={this.showDrawer}/>
                             <Drawer 
@@ -49,7 +74,7 @@ export default class Header extends Component {
                                     <Menu.Item >Home</Menu.Item>
                                     <Menu.Item >Shop & Packages</Menu.Item>
                                     <Menu.Item >Contact Us</Menu.Item>
-                                    <Menu.Item >Login</Menu.Item>
+                                    <Menu.Item onClick={()=>this.showLoginModalDrawer()}>Login</Menu.Item>
                                 </Menu>
                             </Drawer>
                         </Row>
