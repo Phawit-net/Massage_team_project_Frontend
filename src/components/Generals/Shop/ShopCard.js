@@ -6,7 +6,7 @@ const { Text } = Typography;
 
 export default class ShopCard extends Component {
   render() {
-    const { shopList } = this.props
+    const { shopList,shopPics } = this.props
     return (
       <div>
         <List

@@ -22,6 +22,7 @@ export default class ShopList extends Component {
       <div>
         <ShopCard 
           shopList = {this.state.shopList}/>
+          {/* shopPics = {this.state.shopList.shopPic}/> */}
       </div>
     );
   }
