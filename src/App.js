@@ -17,7 +17,7 @@ class App extends React.Component {
     return (
       <>
         <Row>
-          <Header/>
+          <ShopPackage />
         </Row>
         <Row>
           <Switch>
