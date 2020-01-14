@@ -12,6 +12,7 @@ import ShopPackages from './pages/ShopPackages'
 import ShopProfile from './pages/ShopProfile'
 import Signup from './pages/Signup'
 import UserProfile from './pages/UserProfile'
+
 class App extends React.Component {
   render() {
     return (
