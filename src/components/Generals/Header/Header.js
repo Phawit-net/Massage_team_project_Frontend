@@ -31,7 +31,6 @@ export default class Header extends Component {
       };
         
       handleCancel = e => {
-        console.log(e);
         this.setState({
           loginvisible: false,
         });
@@ -50,8 +49,8 @@ export default class Header extends Component {
                     <Col xs={5} md={19} lg={12} xl={10}>
                         <Row>
                             <Menu mode="horizontal" inlineIndent='50' style={{ backgroundColor: '#f1e6b2' }} className={styles.rightMenu}>
-                               <Menu.Item className={styles.menuoption}><Link to='/home'>Home</Link></Menu.Item>
-                               <Menu.Item className={styles.menuoption}><Link to='/shoppackages'>Shop & Packages</Link></Menu.Item>
+                               <Menu.Item className={styles.menuoption}><Link className={styles.linkcolor} to='/home'>Home</Link></Menu.Item>
+                               <Menu.Item className={styles.menuoption}><Link className={styles.linkcolor} to='/shoppackages'>Shop & Packages</Link></Menu.Item>
                                 <Menu.Item className={styles.menuoption}>Contact Us</Menu.Item>
                                 <LoginModal loginvisible={this.state.loginvisible} showLoginModal={this.showLoginModal} handleCancel={this.handleCancel}/>
                             </Menu>
@@ -64,8 +63,8 @@ export default class Header extends Component {
                                 visible={this.state.visible}
                             >
                                 <Menu >
-                                    <Menu.Item >Home</Menu.Item>
-                                    <Menu.Item >Shop & Packages</Menu.Item>
+                                    <Menu.Item ><Link to='/home' onClick={()=>this.onClose()}>Home</Link></Menu.Item>
+                                    <Menu.Item ><Link to='/shoppackages' onClick={()=>this.onClose()}>Shop & Packages</Link></Menu.Item>
                                     <Menu.Item >Contact Us</Menu.Item>
                                     <Menu.Item onClick={()=>this.showLoginModalDrawer()}>Login</Menu.Item>
                                 </Menu>

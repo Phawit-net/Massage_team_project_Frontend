@@ -90,10 +90,10 @@ export default class Payment extends Component {
                         </Col>
                     </Row>
                     <Row type='flex' justify='end' style={{ marginTop: '20px' }}>
-                        <Col xs={24} md={10} lg={4}>
+                        <Col xs={24} md={6} lg={4}>
                             <h4>Payment Method</h4>
                         </Col>
-                        <Col xs={24} md={5} lg={4}>
+                        <Col xs={24} md={4} lg={4}>
                             <Radio.Group value='30%'>
                                 <Radio value='30%'>Advanced(30%)</Radio>
                                 <Radio value='100%'>Full payment(100%)</Radio>
@@ -101,10 +101,10 @@ export default class Payment extends Component {
                         </Col>
                     </Row>
                     <Row type='flex' justify='end' style={{ marginTop: '10px' }} >
-                        <Col xs={24} md={10} xl={4}>
+                        <Col xs={24}  md={6} xl={4}>
                             <h4>Total price</h4>
                         </Col>
-                        <Col xs={24} md={5} xl={4}>
+                        <Col xs={24}  md={2} xl={4}>
                             <h4>Price</h4>
                         </Col>
                     </Row>
