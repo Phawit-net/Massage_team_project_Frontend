@@ -4,8 +4,9 @@ import styles from './Header.module.css'
 import Logo from '../../../picture/NuadThaiLogo.png'
 import LoginModalBackground from '../../../picture/LoginModalBackground.jpg'
 import Axios from '../../../config/axios.setup'
-
-
+import jwtDecode from 'jwt-decode'
+import {login} from '../../../redux/actions/actions'
+import { connect } from 'react-redux'
 class LoginModal extends Component {
     constructor(props) {
         super(props)
@@ -22,8 +23,10 @@ class LoginModal extends Component {
         Axios.post('/loginUser', { username, password })
             .then(response => {
                 console.log(response.data)
-                this.props.handleCancel()
-                this.props.form.resetFields()
+                const user=jwtDecode(response.data.token)
+                this.props.login(user,response.data.token);
+                this.props.handleCancel();
+                this.props.form.resetFields();
                 this.setState({
                     notification:''
                 })
@@ -110,4 +113,8 @@ class LoginModal extends Component {
         )
     }
 }
-export default Form.create()(LoginModal);
+const mapDispatchToProps = {
+    login: login
+  }
+
+export default connect(null, mapDispatchToProps)(Form.create()(LoginModal))
