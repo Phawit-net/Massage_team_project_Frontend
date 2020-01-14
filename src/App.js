@@ -12,6 +12,7 @@ import ShopPakages from './pages/ShopPackages'
 import ShopProfile from './pages/ShopProfile'
 import Signup from './pages/Signup'
 import UserProfile from './pages/UserProfile'
+
 class App extends React.Component {
   render() {
     return (
@@ -20,7 +21,7 @@ class App extends React.Component {
           <Header/>
         </Row>
         <Row>
-          <Switch>
+          {/* <Switch>
             <Route path='/home' component={Home}/>
             <Route path='/payment' component={Payment}/>
             <Route path='/shopdetails' component={ShopDetails}/>
@@ -28,7 +29,11 @@ class App extends React.Component {
             <Route path='/shopprofile' component={ShopProfile}/>
             <Route path='/signup' component={Signup}/>
             <Route path='/userprofile' component={UserProfile}/>
-          </Switch>
+          </Switch> */}
+
+          {/* <UserProfile/> */}
+          <ShopProfile/>
+          
         </Row>
         <Row>
           <Footer/>
