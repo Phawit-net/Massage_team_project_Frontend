@@ -35,6 +35,12 @@ class LoginModal extends Component {
                 })
             })
     };
+    handleClosesignin=()=>{
+        this.props.handleCancel()
+        this.setState({
+            notification:''
+        })
+    }
     render() {
         const { getFieldDecorator } = this.props.form;
         return (
@@ -44,7 +50,7 @@ class LoginModal extends Component {
                     bodyStyle={{ backgroundImage: `url(${LoginModalBackground})`, backgroundSize: 'cover' }}
                     width={800}
                     visible={this.props.loginvisible}
-                    onCancel={this.props.handleCancel}
+                    onCancel={this.handleClosesignin}
                     footer={null}
                 >
                     <Row style={{ marginTop: '20px' }}>

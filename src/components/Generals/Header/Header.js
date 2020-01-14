@@ -10,7 +10,8 @@ export default class Header extends Component {
         super(props)
         this.state = {
             visible: false,
-            loginvisible:false
+            loginvisible:false,
+            isLogin:false
         }
     }
 
@@ -19,7 +20,7 @@ export default class Header extends Component {
             visible: true,
         });
     };
-    onClose = () => {
+    onCloseDrawer = () => {
         this.setState({
             visible: false,
         });
@@ -36,7 +37,7 @@ export default class Header extends Component {
         });
       };
       showLoginModalDrawer=()=>{
-          this.onClose();
+          this.onCloseDrawer();
           this.showLoginModal()
       }
     render() {
@@ -59,12 +60,12 @@ export default class Header extends Component {
                                 title="Menu"
                                 placement="right"
                                 closable={false}
-                                onClose={this.onClose}
+                                onClose={this.onCloseDrawer}
                                 visible={this.state.visible}
                             >
                                 <Menu >
-                                    <Menu.Item ><Link to='/home' onClick={()=>this.onClose()}>Home</Link></Menu.Item>
-                                    <Menu.Item ><Link to='/shoppackages' onClick={()=>this.onClose()}>Shop & Packages</Link></Menu.Item>
+                                    <Menu.Item ><Link to='/home' onClick={()=>this.onCloseDrawer()}>Home</Link></Menu.Item>
+                                    <Menu.Item ><Link to='/shoppackages' onClick={()=>this.onCloseDrawer()}>Shop & Packages</Link></Menu.Item>
                                     <Menu.Item >Contact Us</Menu.Item>
                                     <Menu.Item onClick={()=>this.showLoginModalDrawer()}>Login</Menu.Item>
                                 </Menu>
