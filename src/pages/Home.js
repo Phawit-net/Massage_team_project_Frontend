@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import ShopList from '../components/Generals/Shop/ShopList'
-import { Carousel } from 'antd';
+import { Carousel,Row, Typography, Col} from 'antd';
+
+const { Text } = Typography;
 
 export default class Home extends Component {
     render() {
@@ -17,9 +19,13 @@ export default class Home extends Component {
                     <img style={{ width: '50%', height: '50%' }} src="/thai_massage_twickenham.jpg" alt="img3" />
                   </div>
                 </Carousel>
-                <div style={{backgroundColor:'#f1e6b2', opacity: '0.8' }}>
-                    Heaven For Thai Massage Lover 
-                    A place where Thai massage from all over Thailand meet Thai massge lover 
+                <div style={{backgroundColor:'#f1e6b2', opacity: '0.8' , padding:'60px' ,fontSize:'20px'}}>
+                  <Row style={{display:'flex',justifyContent:'center'}}>
+                    Heaven For Thai Massage Lover
+                  </Row>
+                  <Row style={{display:'flex',justifyContent:'center'}}>
+                    A place where Thai massage from all over Thailand meet Thai massge lover
+                  </Row>
                 </div>
                 <ShopList/>
             </div>
