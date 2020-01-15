@@ -38,9 +38,6 @@
   }
 }
 
-div{
-  display: grid;
-}
 
 .listUserProfile > li {
   border: 2px solid #9E4624;
