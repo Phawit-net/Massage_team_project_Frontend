@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Chart from 'react-apexcharts'
+// import Chart from 'react-apexcharts'
 
 export default class ServiceUsage extends Component {
     constructor(props) {
@@ -14,12 +14,12 @@ export default class ServiceUsage extends Component {
     render() {
         return (
             <div >
-            <Chart
+            {/* <Chart
               options={this.state.options}
               series={this.state.series}
               type="donut"
               width="380"
-            />
+            /> */}
           </div>
         )
     }
