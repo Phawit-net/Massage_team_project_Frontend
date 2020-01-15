@@ -38,7 +38,7 @@ export default class ServiceList extends Component {
 
           <div style={{ display: "inline-block" }}>
           <p>{service.id}</p>
-            {/* <BookingModal id={service.id} /> */}
+            <BookingModal id={service.id} />
           </div>
         </div>
       </>

@@ -20,7 +20,7 @@ class BookingModal extends Component {
   }
 
   componentDidMount() {
-    let targetServiceID = 1;
+    let targetServiceID = this.props.id;
     Axios.get(`http://localhost:8080/servicesDetail?id=${targetServiceID}`).then(
       result => {
         this.setState({
@@ -42,6 +42,10 @@ class BookingModal extends Component {
       bookingvisible: false,
     });
   };
+
+  disabledDate(current) {
+    return current && current < moment().endOf('day');
+  }
 
   handleAdd1hr(start, startString) {
     this.setState({ startValue: startString })
@@ -160,7 +164,7 @@ class BookingModal extends Component {
                       <Form.Item label="Date:">
                         {getFieldDecorator('date', {
                           rules: [{ type: 'object', required: true, message: 'Please select date of booking' }]
-                        })(<DatePicker onChange={(date, dateString) => { this.setState({ dateValue: dateString }) }} />)}
+                        })(<DatePicker disabledDate={this.disabledDate} onChange={(date, dateString) => { this.setState({ dateValue: dateString }) }} />)}
                       </Form.Item>
                     </Row>
 
