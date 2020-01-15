@@ -34,29 +34,17 @@ export default class SearchBar extends Component {
   }
 
   render() {
-    console.log(this.state.shops, this.state.page)
+
     return (
-      <div
-        style=
-        {{
-          width: '1354px',
-          height: '1138px',
-          background: '#FFFEFE',
-          border: '1px solid #926F3B',
-          boxSizing: 'border-box',
-          margin: "100px 30px 100px 30px"
-        }}
-      >
-        <h1>
-          Shop & Packages
-        </h1>
-        <Search placeholder="input search text" onSearch={value => this.handleSearch(value)} enterButton />
+      <>
+        
+        {/* <Search placeholder="input search text" onSearch={value => this.handleSearch(value)} enterButton />
         {this.state.shops.map(shop =>
           <p key={shop.id} >{shop.shopName}</p>
-        )}
+        )} */}
 
 
-      </div>
+      </>
     )
   }
 }
