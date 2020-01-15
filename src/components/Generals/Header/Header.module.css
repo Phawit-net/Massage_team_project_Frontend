@@ -6,6 +6,17 @@
     color: '#926f3b';
     font-size: 20px;
 }
+.menuoption:hover{
+    color: #926f3b !important;
+    border-bottom: 2px solid #926f3b !important ;
+}
+.menuoption:active{
+     border-bottom: 2px solid #926f3b !important ;
+}
+.linkcolor{
+    color: #926f3b !important;
+}
+
 @media(max-width: 767px){
 .rightMenu{
     display: none;

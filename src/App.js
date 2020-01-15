@@ -8,27 +8,30 @@ import{Switch,Route} from 'react-router-dom'
 import Home from './pages/Home'
 import Payment from './pages/Payment'
 import ShopDetails from './pages/ShopDetails'
-import ShopPakages from './pages/ShopPackages'
+import ShopPackages from './pages/ShopPackages'
 import ShopProfile from './pages/ShopProfile'
 import Signup from './pages/Signup'
 import UserProfile from './pages/UserProfile'
+
 class App extends React.Component {
   render() {
     return (
       <>
         <Row>
-          <Header/>
+          <Header />
         </Row>
         <Row>
-          <Switch>
+          {/* <Switch>
             <Route path='/home' component={Home}/>
             <Route path='/payment' component={Payment}/>
             <Route path='/shopdetails' component={ShopDetails}/>
-            <Route path='/shoppackages' component={ShopPakages}/>
+            <Route path='/shoppackages' component={ShopPackages}/>
             <Route path='/shopprofile' component={ShopProfile}/>
             <Route path='/signup' component={Signup}/>
             <Route path='/userprofile' component={UserProfile}/>
-          </Switch>
+          </Switch> */}
+          <ShopProfile/>
+
         </Row>
           <Row>
           <Footer/>
