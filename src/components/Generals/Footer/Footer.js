@@ -5,7 +5,7 @@ import Logo from '../../../picture/NuadThaiLogo.png'
 export default class Footer extends Component {
     render() {
         return (
-            <Card style={{backgroundColor:'#c4c4c4',fontSize:'20px',color:'#926F3B'}}>
+            <Card style={{backgroundColor:'#c4c4c4',fontSize:'20px',color:'#926F3B', position:"relative", bottom:"0"}}>
                <Row type='flex' justify='space-around' >
                    <Col>
                    <Row>

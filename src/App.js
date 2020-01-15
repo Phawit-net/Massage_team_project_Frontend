@@ -30,9 +30,9 @@ class App extends React.Component {
             <Route path='/userprofile' component={UserProfile}/>
           </Switch>
         </Row>
-        <Row>
+          <Row>
           <Footer/>
-        </Row>   
+        </Row>          
       </>
     )
   }
