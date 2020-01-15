@@ -2,17 +2,8 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Row, Col, Form, Input, Upload, Icon, Modal, Button } from "antd";
 import Axios from "../../config/axios.setup";
+import style from './CreateService.module.css'
 const { TextArea } = Input;
-
-
-function getBase64(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = error => reject(error);
-  });
-}
 
 export class CreateService extends Component {
   constructor(props) {
@@ -24,50 +15,56 @@ export class CreateService extends Component {
     };
   }
 
-  handleCancel = () => this.setState({ previewVisible: false });
-
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, value) => {
       if (!err) {
-        let payload = new FormData()
-        payload.append('serviceName', value.serviceName)
-        payload.append('serviceDescription', value.serviceDetail)
-        payload.append('time', value.serviceTime)
-        payload.append('price')
-        Axios.post('/createService',{
-          
+        let payload = new FormData();
+        this.state.fileList.forEach(file=> payload.append('serviceProfilePic', file))
+        payload.append("serviceName", value.serviceName);
+        payload.append("serviceDescription", value.serviceDetail);
+        payload.append("time", value.serviceTime);
+        payload.append("price", value.servicePrice);
+
+        Axios.post("/createService", payload,{
+          headers: {'content-type':'multipart/form-data'}
         })
+          .then(result => {
+            this.props.form.resetFields();
+            this.setState({fileList:[]})
+            console.log(this.state.fileList)
+            console.log(result)})
+          .catch(err => console.error(err));
       }
     });
-    console.log(this.state.fileList);
   };
   handleCancelCreate = () => {
-    console.log("ice");
+    this.props.form.resetFields();
+    this.setState({fileList:[]})
+    console.log(this.state.fileList)
   };
-
-  handlePreview = async file => {
-    if (!file.url && !file.preview) {
-      file.preview = await getBase64(file.originFileObj);
-    }
-
-    this.setState({
-      previewImage: file.url || file.preview,
-      previewVisible: true
-    });
-  };
-
-  handleChange = ({ fileList }) => this.setState({ fileList });
 
   render() {
-    
-    const { previewVisible, previewImage, fileList } = this.state;
-    const uploadButton = (
-      <div>
-        <Icon type="plus" />
-        <div className="ant-upload-text">Upload</div>
-      </div>
-    );
+    const { fileList } = this.state;
+    const props = {
+      onRemove: file => {
+        this.setState(state => {
+          const index = state.fileList.indexOf(file);
+          const newFileList = state.fileList.slice();
+          newFileList.splice(index, 1);
+          return {
+            fileList: newFileList
+          };
+        });
+      },
+      beforeUpload: file => {
+        this.setState(state => ({
+          fileList: [...state.fileList, file]
+        }));
+        return false;
+      },
+      fileList
+    };
 
     const formItemLayout = {
       labelCol: {
@@ -85,7 +82,7 @@ export class CreateService extends Component {
       <Row type="flex" justify="center" align="top">
         <Col span={9}>
           <Row type="flex" justify="start">
-            <Col style={{ fontSize: "25px" }}>Create Services</Col>
+            <Col style={{ fontSize: "20px" }}>Create Services</Col>
           </Row>
           <Row>
             <Form {...formItemLayout} onSubmit={this.handleSubmit}>
@@ -115,7 +112,7 @@ export class CreateService extends Component {
                   ]
                 })(<TextArea />)}
               </Form.Item>
-              <Form.Item label="Service time" >
+              <Form.Item label="Service time" style={{ marginTop: "0", marginBottom: "0" }}>
                 {getFieldDecorator("serviceTime", {
                   rules: [
                     {
@@ -125,7 +122,7 @@ export class CreateService extends Component {
                   ]
                 })(<Input />)}
               </Form.Item>
-              <Form.Item label="Service price">
+              <Form.Item label="Service price" style={{ marginTop: "0", marginBottom: "0" }}>
                 {getFieldDecorator("servicePrice", {
                   rules: [
                     {
@@ -141,41 +138,28 @@ export class CreateService extends Component {
               >
                 <Row type="flex">
                   <Col>
-                    <Upload
-                      action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                      listType="picture-card"
-                      fileList={fileList}
-                      onPreview={this.handlePreview}
-                      onChange={this.handleChange}
-                    >
-                      {fileList.length >= 8 ? null : uploadButton}
+                    <Upload {...props}>
+                      <Button>
+                        <Icon type="upload" /> Select File
+                      </Button>
                     </Upload>
-                    <Modal
-                      visible={previewVisible}
-                      footer={null}
-                      onCancel={this.handleCancel}
-                    >
-                      <img
-                        alt="example"
-                        style={{ width: "100%" }}
-                        src={previewImage}
-                      />
-                    </Modal>
                   </Col>
                 </Row>
               </Form.Item>
-              <Form.Item>
-                <Row
+              <Form.Item label='Action'  style={{ marginTop: "1vh", marginBottom: "0"   }}>
+                <Row 
+
                   type="flex"
-                  justify="end"
+                  
                   gutter={[16, 16]}
-                  style={{ marginBottom: "1vh" }}
+                  style={{ marginBottom: "1vh",width:'100%' }}
                 >
-                  <Col>
+                  <Col >
                     <Button
                       type="primary"
                       htmlType="submit"
-                      style={{ backgroundColor: "#9e4624" }}
+                      className={style.ButtonConfirm}
+                      style={{width:'80px'}}
                     >
                       Confirm
                     </Button>
@@ -184,7 +168,9 @@ export class CreateService extends Component {
                     <Button
                       type="primary"
                       onClick={this.handleCancelCreate}
-                      style={{ backgroundColor: "#c4c4c4" }}
+                      className={style.ButtonCancel}
+                      style={{width:'80px'}}
+
                     >
                       Cancel
                     </Button>
