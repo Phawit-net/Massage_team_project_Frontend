@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Row, Col, Form, Input, Upload, Icon, Modal, Button } from "antd";
+import Axios from "../../config/axios.setup";
 const { TextArea } = Input;
+
 
 function getBase64(file) {
   return new Promise((resolve, reject) => {
@@ -26,6 +28,22 @@ export class CreateService extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    this.props.form.validateFieldsAndScroll((err, value) => {
+      if (!err) {
+        let payload = new FormData()
+        payload.append('serviceName', value.serviceName)
+        payload.append('serviceDescription', value.serviceDetail)
+        payload.append('time', value.serviceTime)
+        payload.append('price')
+        Axios.post('/createService',{
+          
+        })
+      }
+    });
+    console.log(this.state.fileList);
+  };
+  handleCancelCreate = () => {
+    console.log("ice");
   };
 
   handlePreview = async file => {
@@ -42,6 +60,7 @@ export class CreateService extends Component {
   handleChange = ({ fileList }) => this.setState({ fileList });
 
   render() {
+    
     const { previewVisible, previewImage, fileList } = this.state;
     const uploadButton = (
       <div>
@@ -65,10 +84,8 @@ export class CreateService extends Component {
     return (
       <Row type="flex" justify="center" align="top">
         <Col span={9}>
-          <Row type="flex" justify='start'>
-            <Col style={{ fontSize: "25px" }}>
-              Create Services
-            </Col>
+          <Row type="flex" justify="start">
+            <Col style={{ fontSize: "25px" }}>Create Services</Col>
           </Row>
           <Row>
             <Form {...formItemLayout} onSubmit={this.handleSubmit}>
@@ -98,12 +115,22 @@ export class CreateService extends Component {
                   ]
                 })(<TextArea />)}
               </Form.Item>
-              <Form.Item label="Service time">
+              <Form.Item label="Service time" >
                 {getFieldDecorator("serviceTime", {
                   rules: [
                     {
                       required: true,
                       message: "Please input your Service time(hr)"
+                    }
+                  ]
+                })(<Input />)}
+              </Form.Item>
+              <Form.Item label="Service price">
+                {getFieldDecorator("servicePrice", {
+                  rules: [
+                    {
+                      required: true,
+                      message: "Please input your Service Price(Baht)"
                     }
                   ]
                 })(<Input />)}
@@ -137,24 +164,34 @@ export class CreateService extends Component {
                   </Col>
                 </Row>
               </Form.Item>
+              <Form.Item>
+                <Row
+                  type="flex"
+                  justify="end"
+                  gutter={[16, 16]}
+                  style={{ marginBottom: "1vh" }}
+                >
+                  <Col>
+                    <Button
+                      type="primary"
+                      htmlType="submit"
+                      style={{ backgroundColor: "#9e4624" }}
+                    >
+                      Confirm
+                    </Button>
+                  </Col>
+                  <Col>
+                    <Button
+                      type="primary"
+                      onClick={this.handleCancelCreate}
+                      style={{ backgroundColor: "#c4c4c4" }}
+                    >
+                      Cancel
+                    </Button>
+                  </Col>
+                </Row>
+              </Form.Item>
             </Form>
-          </Row>
-          <Row
-            type="flex"
-            justify="end"
-            gutter={[16, 16]}
-            style={{ marginBottom: "1vh" }}
-          >
-            <Col>
-              <Button type="primary" style={{ backgroundColor: "#9e4624" }}>
-                Confirm
-              </Button>
-            </Col>
-            <Col>
-              <Button type="primary" style={{ backgroundColor: "#c4c4c4" }}>
-                Cancel
-              </Button>
-            </Col>
           </Row>
         </Col>
       </Row>
