@@ -2,48 +2,22 @@ import React, { Component } from 'react'
 import { Row, Col, Card, Avatar, Radio, Steps, Button, message, Upload, Icon } from 'antd'
 const { Dragger } = Upload;
 const { Step } = Steps;
-const steps = [
-    {
-        title: 'Upload Transaction slip',
-        content:
-            <Card>
-                <h2>Please upload your transaction slip </h2>
-                <Dragger>
-                    <p className="ant-upload-drag-icon">
-                        <Icon type="inbox" />
-                    </p>
-                    <p className="ant-upload-text">Click or drag your slip to this area to upload</p>
-                    <p className="ant-upload-hint">
-                        Support only JPEG File.
-    </p>
-                </Dragger>
-            </Card>,
-    },
-    {
-        title: 'Confirm payment',
-        content: <Card cover={<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcR6VPq1wKuo5ECC-RscCQKc7ka_HIdQjBhFpixOwjqAuOcVGDY9' alt='slip image'/>}>
-            <Button type='primary' size='large'>Confirm</Button>
-        </Card>,
-    },
-    {
-        title: 'finished',
-        content: 
-        <Card>
-            <Row type='flex' justify='center'>  <h1>Thank you for Booking</h1></Row>
-             <Row type='flex' justify='center'><h2>Please see your payment status on your purchased history</h2></Row>
-           
-           
-        </Card>,
-    },
-];
+
+
 export default class Payment extends Component {
     constructor(props) {
         super(props);
         this.state = {
             current: 0,
+            file:'',
+            previewImage:''
         };
     }
     next() {
+        const current = this.state.current + 1;
+        this.setState({ current });
+    }
+    confirm() {
         const current = this.state.current + 1;
         this.setState({ current });
     }
@@ -52,8 +26,48 @@ export default class Payment extends Component {
         const current = this.state.current - 1;
         this.setState({ current });
     }
+      handleChange=(e)=>{
+          let image=URL.createObjectURL(e.file.originFileObj)
+          this.setState({
+              previewImage:image,
+              file:e.file.originFileObj
+          })
+      }
     render() {
         const { current } = this.state;
+        const steps = [
+            {
+                title: 'Upload Transaction slip',
+                content:
+                    <Card>
+                        <h2>Please upload your transaction slip </h2>
+                        <Dragger onChange={this.handleChange}> 
+                            <p className="ant-upload-drag-icon">
+                                <Icon type="inbox" />
+                            </p>
+                            <p className="ant-upload-text">Click or drag your slip to this area to upload</p>
+                            <p className="ant-upload-hint">
+                                Support only JPEG File.
+            </p>
+                        </Dragger>
+                    </Card>,
+            },
+            {
+                title: 'Confirm payment',
+                content: <Card cover={<img src={this.state.previewImage} alt='slip image' />}>
+                </Card>,
+            },
+            {
+                title: 'finished',
+                content:
+                    <Card>
+                        <Row type='flex' justify='center'>  <h1>Thank you for Booking</h1></Row>
+                        <Row type='flex' justify='center'><h2>Please see your payment status on your purchased history</h2></Row>
+        
+        
+                    </Card>,
+            },
+        ];
         return (
             <>
                 <Row style={{ marginTop: '20px', marginLeft: '10%', marginRight: '10%' }}>
@@ -94,17 +108,17 @@ export default class Payment extends Component {
                             <h4>Payment Method</h4>
                         </Col>
                         <Col xs={24} md={4} lg={4}>
-                            <Radio.Group value='30%'>
+                            <Radio.Group defaultValue='30%'>
                                 <Radio value='30%'>Advanced(30%)</Radio>
                                 <Radio value='100%'>Full payment(100%)</Radio>
                             </Radio.Group>
                         </Col>
                     </Row>
                     <Row type='flex' justify='end' style={{ marginTop: '10px' }} >
-                        <Col xs={24}  md={6} xl={4}>
+                        <Col xs={24} md={6} xl={4}>
                             <h4>Total price</h4>
                         </Col>
-                        <Col xs={24}  md={2} xl={4}>
+                        <Col xs={24} md={2} xl={4}>
                             <h4>Price</h4>
                         </Col>
                     </Row>
@@ -115,19 +129,20 @@ export default class Payment extends Component {
                                     <Step key={item.title} title={item.title} />
                                 ))}
                             </Steps>
-                            <div className="steps-content" style={{marginTop:'20px'}}>{steps[current].content}</div>
-                            <div className="steps-action" style={{marginTop:'20px'}}>
-                                {current < steps.length - 1 && (
+                            <div className="steps-content" style={{ marginTop: '20px' }}>{steps[current].content}</div>
+                            <div className="steps-action" style={{ marginTop: '20px' }}>
+                                {current === 0 && (
                                     <Button type="primary" onClick={() => this.next()}>
                                         Next
             </Button>
                                 )}
-                                {current === steps.length - 1 && (
-                                    <Button type="primary" onClick={() => message.success('Processing complete!')}>
-                                        Done
+                                {current === 1 && (
+                                    <Button type="primary" onClick={() => this.confirm()}>
+                                        Confirm
             </Button>
                                 )}
-                                {current > 0 && (
+
+                                {current === 1 && (
                                     <Button style={{ marginLeft: 8 }} onClick={() => this.prev()}>
                                         Previous
             </Button>
