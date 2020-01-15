@@ -6,7 +6,7 @@ export default class ServiceList extends Component {
     render(){
         return (
             <div style={{border: "2px solid brown", witdh: "100vw", height: "120vh", margin:"100px 50px"}}> 
-                <div style={{boder: "2px solid brown", margin: 'auto', marginTop: "40px", marginBottom:"40px", width:"80vw", height:"60vh"}}>
+                <div style={{border: "2px solid brown", margin: 'auto', marginTop: "40px", marginBottom:"40px", width:"80vw", height:"60vh"}}>
                     <h3> Service </h3>
                     <div style={{display:"grid", gridGap:"40px", gridTemplateColumns:"auto auto", margin:'auto'}}>
                         {/* {this.state.map( ()=> ( */}
