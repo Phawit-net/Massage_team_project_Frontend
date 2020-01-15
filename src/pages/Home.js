@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Axios from '../config/axios.setup'
 export default class Home extends Component {
   constructor(props) {
     super(props);
