@@ -29,6 +29,7 @@ class App extends React.Component {
             <Route path='/shopprofile' component={ShopProfile}/>
             <Route path='/signup' component={Signup}/>
             <Route path='/userprofile' component={UserProfile}/>
+            <Route path='/booking' component={BookingModal}/>
           </Switch>
         </Row>
         <Row>

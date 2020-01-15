@@ -1,21 +1,22 @@
 h1,h3,h4,Label{
     color: #926F3B !important;
 }
-input{
-    width: 200px;
+.ant-input{
+    width: 200px !important;
 }
 .borderBox {
     height: 100%;
-    width: 70%;
+    width: 100%;
     border: 1px solid #000000;
     padding: 5px;
-    margin: 10px;
+    margin: 20px;
 }
 
 
 .borderBoxSmall{
     border: 1px solid #926F3B;
-    margin: 5px;
+    padding: 5px;
+    margin: 10px;
 }
 
 .button {
