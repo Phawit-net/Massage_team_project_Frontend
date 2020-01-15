@@ -9,8 +9,8 @@ export default class Payment extends Component {
         super(props);
         this.state = {
             current: 0,
-            file: '',
-            previewImage: ''
+            file:'',
+            previewImage:''
         };
     }
     next() {
@@ -26,13 +26,13 @@ export default class Payment extends Component {
         const current = this.state.current - 1;
         this.setState({ current });
     }
-    handleChange = (e) => {
-        let image = URL.createObjectURL(e.file.originFileObj)
-        this.setState({
-            previewImage: image,
-            file: e.file.originFileObj
-        })
-    }
+      handleChange=(e)=>{
+          let image=URL.createObjectURL(e.file.originFileObj)
+          this.setState({
+              previewImage:image,
+              file:e.file.originFileObj
+          })
+      }
     render() {
         const { current } = this.state;
         const steps = [
@@ -41,7 +41,7 @@ export default class Payment extends Component {
                 content:
                     <Card>
                         <h2>Please upload your transaction slip </h2>
-                        <Dragger onChange={this.handleChange}>
+                        <Dragger onChange={this.handleChange}> 
                             <p className="ant-upload-drag-icon">
                                 <Icon type="inbox" />
                             </p>
@@ -63,8 +63,6 @@ export default class Payment extends Component {
                     <Card>
                         <Row type='flex' justify='center'>  <h1>Thank you for Booking</h1></Row>
                         <Row type='flex' justify='center'><h2>Please see your payment status on your purchased history</h2></Row>
-
-
                     </Card>,
             },
         ];
