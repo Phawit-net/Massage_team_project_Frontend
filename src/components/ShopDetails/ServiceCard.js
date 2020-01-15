@@ -3,94 +3,85 @@ import React, { Component } from 'react'
 
 export default class ServiceList extends Component {
 
-    render(){
+    render() {
         return (
-            <div style={{border: "2px solid brown", witdh: "100vw", height: "120vh", margin:"100px 50px"}}> 
-                <div style={{border: "2px solid brown", margin: 'auto', marginTop: "40px", marginBottom:"40px", width:"80vw", height:"60vh"}}>
-                    <h3> Service </h3>
-                    <div style={{display:"grid", gridGap:"40px", gridTemplateColumns:"auto auto", margin:'auto'}}>
-                        {/* {this.state.map( ()=> ( */}
-                        <div style={{width:"40vw", height:"50vh", border: "2px solid black"}}> 
-                            <div style={{display: "flex", flexDirection:"row", height: "85%", width:'100%'}}>
-                                <div style={{margin: "10px",width: "35%" , height: "85%" }}> 
-                                    <img src="http://www.thaiticketmajor.com/variety/img_content/imgeditor/sky-mirror-beach.jpg" alt="test" style={{width:"100%", hegiht: "100%"}}/>
-                                </div>
+            <div style={{ border: "2px solid brown", width: "80%", height: "110vh", margin:" 200px auto", display:"flex", flexDirection:"column"}}>
+                  <div stlye={{display:"inline-block", marginLeft:"100px"}}> <h3> Service</h3></div>
 
-                                <div style={{width:"65%", height:"90%", backgroundColor: "silver",margin:"10px 10px 0px", overflow: 'scroll', fontSize:"20px", textAlign:"justify", textIndent:"1ch"}}> 
-                                    <strong> Service name </strong><br/>
-                                    <div style={{display: "content", fontSize:"20px", textIndent:"5ch", wordSpacing:"-0.2em"}}> 
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, cupiditate assumenda expedita facere sed ad nam eum odit et officia laudantium aliquam a, ullam quisquam? Perspiciatis iusto magni aspernatur pariatur, ab fugiat, totam quidem dolorum debitis id fuga at eos suscipit. Quas perspiciatis fugit tempore iure placeat, quaerat facilis enim?
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium eum dolor fugit nulla vel rerum odit. Amet unde laboriosam alias, odio eligendi veritatis omnis voluptatem error adipisci deleniti distinctio natus delectus a nemo enim facere voluptate consequatur qui! Non deleniti sequi harum exercitationem ipsam ab odit vitae id velit, sed, cupiditate dolores voluptates quisquam optio quasi molestias, obcaecati tenetur iure hic labore tempora. Blanditiis accusantium officiis eum iure deserunt odit sit veritatis tempora quia. Autem et esse laboriosam culpa velit consequuntur placeat odio cumque architecto facere. Incidunt, quasi, quaerat explicabo impedit consequatur deserunt iusto tempore accusantium, voluptas vel natus accusamus!
-                                    </div>
+                    {/*  this.map () => to run each card*/}
+                    <div>
+                    <div style={{ height:"100vh", display:"grid", gridTemplateColumns: "auto auto", alignContent:"space-evenly", justifyContent:"space-evenly"}}> 
+
+                        {/*  each card  */}
+                        <div style={{border: "1px solid black", width:"35vw", height:"40vh", padding:"15px"}}>
+
+                            <div style={{ maginTop:"50px", width:"100%", height:"90%", display:"grid", gridTemplateColumns:"35% 60%", justifyContent:"space-between"}}>
+                                <div> <img style={{width:"100%", height:"100%"}} src="http://www.thaiticketmajor.com/variety/img_content/imgeditor/sky-mirror-beach.jpg" alt="test" /> </div>
+                                <div title="text" style={{width:"100%", height:'200px', overflow:"scroll"}}> 
+                                    <strong> heading </strong>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, numquam quas incidunt modi rerum ipsam similique ipsa hic at possimus excepturi et aut dolore. Cumque et animi atque praesentium officia nisi hic earum aut impedit rerum odio asperiores quos quidem, deleniti sit reiciendis dolor nulla nostrum. Recusandae assumenda deserunt magni error voluptate vero, vel magnam quos suscipit ipsa saepe et similique, excepturi, aperiam sed voluptatum aliquid odio perferendis qui quo accusantium totam illum itaque numquam. Nostrum quidem qui, optio sint deleniti reiciendis aspernatur excepturi vel? Perspiciatis deserunt labore ratione ea reprehenderit quasi iusto quisquam obcaecati tempora voluptatem hic, accusantium velit vero recusandae. Aliquid vero odit, minus voluptates fuga doloremque, consectetur enim id numquam, modi voluptas. Magnam earum cumque minima iusto dignissimos incidunt ex, hic fuga voluptates repellat corrupti commodi exercitationem quas dolore illo odit in ullam ab qui, ut dicta atque voluptatem molestias laudantium? Incidunt itaque voluptates omnis debitis assumenda ut accusantium aliquid, alias iure, officiis quo ex? Architecto ea nulla dolore mollitia, maiores, dolorem repellat ex quos quod delectus voluptatibus assumenda enim labore doloribus repudiandae, eveniet suscipit tenetur magnam saepe itaque. Rem voluptas illum debitis possimus unde quo ipsa quam! Facere quia vitae architecto consequuntur obcaecati explicabo nostrum ex?
                                 </div>
                             </div>
-                            <div style={{ float: "right", marginRight:"60px", height: "10%"}}><button> button</button></div>
+
+                            <div style={{display: "inline-block"}}> <button style={{float:"right", margin:"10px 40px"}}>button</button> </div>
+
                         </div>
+                        {/* end of card */}
 
-                        <div style={{width:"40vw", height:"50vh", border: "2px solid black"}}> 
-                            <div style={{display: "flex", flexDirection:"row", height: "85%", width:'100%'}}>
-                                <div style={{margin: "10px",width: "35%" , height: "85%" }}> 
-                                    <img src="http://www.thaiticketmajor.com/variety/img_content/imgeditor/sky-mirror-beach.jpg" alt="test" style={{width:"100%", hegiht: "100%"}}/>
-                                </div>
 
-                                <div style={{width:"65%", height:"90%", backgroundColor: "silver",margin:"10px 10px 0px", overflow: 'scroll', fontSize:"20px", textAlign:"justify", textIndent:"1ch"}}> 
-                                    <strong> Service name </strong><br/>
-                                    <div style={{display: "content", fontSize:"20px", textIndent:"5ch", wordSpacing:"-0.2em"}}> 
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, cupiditate assumenda expedita facere sed ad nam eum odit et officia laudantium aliquam a, ullam quisquam? Perspiciatis iusto magni aspernatur pariatur, ab fugiat, totam quidem dolorum debitis id fuga at eos suscipit. Quas perspiciatis fugit tempore iure placeat, quaerat facilis enim?
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium eum dolor fugit nulla vel rerum odit. Amet unde laboriosam alias, odio eligendi veritatis omnis voluptatem error adipisci deleniti distinctio natus delectus a nemo enim facere voluptate consequatur qui! Non deleniti sequi harum exercitationem ipsam ab odit vitae id velit, sed, cupiditate dolores voluptates quisquam optio quasi molestias, obcaecati tenetur iure hic labore tempora. Blanditiis accusantium officiis eum iure deserunt odit sit veritatis tempora quia. Autem et esse laboriosam culpa velit consequuntur placeat odio cumque architecto facere. Incidunt, quasi, quaerat explicabo impedit consequatur deserunt iusto tempore accusantium, voluptas vel natus accusamus!
-                                    </div>
+                        {/*  each card  */}
+                        <div style={{border: "1px solid black", width:"35vw", height:"40vh", padding:"15px"}}>
+
+                            <div style={{ maginTop:"50px", width:"100%", height:"90%", display:"grid", gridTemplateColumns:"35% 60%", justifyContent:"space-between"}}>
+                                <div> <img style={{width:"100%", height:"100%"}} src="http://www.thaiticketmajor.com/variety/img_content/imgeditor/sky-mirror-beach.jpg" alt="test" /> </div>
+                                <div title="text" style={{width:"100%", height:'200px', overflow:"scroll"}}> 
+                                    <strong> heading </strong>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, numquam quas incidunt modi rerum ipsam similique ipsa hic at possimus excepturi et aut dolore. Cumque et animi atque praesentium officia nisi hic earum aut impedit rerum odio asperiores quos quidem, deleniti sit reiciendis dolor nulla nostrum. Recusandae assumenda deserunt magni error voluptate vero, vel magnam quos suscipit ipsa saepe et similique, excepturi, aperiam sed voluptatum aliquid odio perferendis qui quo accusantium totam illum itaque numquam. Nostrum quidem qui, optio sint deleniti reiciendis aspernatur excepturi vel? Perspiciatis deserunt labore ratione ea reprehenderit quasi iusto quisquam obcaecati tempora voluptatem hic, accusantium velit vero recusandae. Aliquid vero odit, minus voluptates fuga doloremque, consectetur enim id numquam, modi voluptas. Magnam earum cumque minima iusto dignissimos incidunt ex, hic fuga voluptates repellat corrupti commodi exercitationem quas dolore illo odit in ullam ab qui, ut dicta atque voluptatem molestias laudantium? Incidunt itaque voluptates omnis debitis assumenda ut accusantium aliquid, alias iure, officiis quo ex? Architecto ea nulla dolore mollitia, maiores, dolorem repellat ex quos quod delectus voluptatibus assumenda enim labore doloribus repudiandae, eveniet suscipit tenetur magnam saepe itaque. Rem voluptas illum debitis possimus unde quo ipsa quam! Facere quia vitae architecto consequuntur obcaecati explicabo nostrum ex?
                                 </div>
                             </div>
-                            <div style={{ float: "right", marginRight:"60px", height: "10%"}}><button> button</button></div>
+
+                            <div style={{display: "inline-block"}}> <button style={{float:"right", margin:"10px 40px"}}>button</button> </div>
+
                         </div>
+                        {/* end of card */}
 
-                        <div style={{width:"40vw", height:"50vh", border: "2px solid black"}}> 
-                            <div style={{display: "flex", flexDirection:"row", height: "85%", width:'100%'}}>
-                                <div style={{margin: "10px",width: "35%" , height: "85%" }}> 
-                                    <img src="http://www.thaiticketmajor.com/variety/img_content/imgeditor/sky-mirror-beach.jpg" alt="test" style={{width:"100%", hegiht: "100%"}}/>
-                                </div>
+                        {/*  each card  */}
+                        <div style={{border: "1px solid black", width:"35vw", height:"40vh", padding:"15px"}}>
 
-                                <div style={{width:"65%", height:"90%", backgroundColor: "silver",margin:"10px 10px 0px", overflow: 'scroll', fontSize:"20px", textAlign:"justify", textIndent:"1ch"}}> 
-                                    <strong> Service name </strong><br/>
-                                    <div style={{display: "content", fontSize:"20px", textIndent:"5ch", wordSpacing:"-0.2em"}}> 
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, cupiditate assumenda expedita facere sed ad nam eum odit et officia laudantium aliquam a, ullam quisquam? Perspiciatis iusto magni aspernatur pariatur, ab fugiat, totam quidem dolorum debitis id fuga at eos suscipit. Quas perspiciatis fugit tempore iure placeat, quaerat facilis enim?
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium eum dolor fugit nulla vel rerum odit. Amet unde laboriosam alias, odio eligendi veritatis omnis voluptatem error adipisci deleniti distinctio natus delectus a nemo enim facere voluptate consequatur qui! Non deleniti sequi harum exercitationem ipsam ab odit vitae id velit, sed, cupiditate dolores voluptates quisquam optio quasi molestias, obcaecati tenetur iure hic labore tempora. Blanditiis accusantium officiis eum iure deserunt odit sit veritatis tempora quia. Autem et esse laboriosam culpa velit consequuntur placeat odio cumque architecto facere. Incidunt, quasi, quaerat explicabo impedit consequatur deserunt iusto tempore accusantium, voluptas vel natus accusamus!
-                                    </div>
+                            <div style={{ maginTop:"50px", width:"100%", height:"90%", display:"grid", gridTemplateColumns:"35% 60%", justifyContent:"space-between"}}>
+                                <div> <img style={{width:"100%", height:"100%"}} src="http://www.thaiticketmajor.com/variety/img_content/imgeditor/sky-mirror-beach.jpg" alt="test" /> </div>
+                                <div title="text" style={{width:"100%", height:'200px', overflow:"scroll"}}> 
+                                    <strong> heading </strong>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, numquam quas incidunt modi rerum ipsam similique ipsa hic at possimus excepturi et aut dolore. Cumque et animi atque praesentium officia nisi hic earum aut impedit rerum odio asperiores quos quidem, deleniti sit reiciendis dolor nulla nostrum. Recusandae assumenda deserunt magni error voluptate vero, vel magnam quos suscipit ipsa saepe et similique, excepturi, aperiam sed voluptatum aliquid odio perferendis qui quo accusantium totam illum itaque numquam. Nostrum quidem qui, optio sint deleniti reiciendis aspernatur excepturi vel? Perspiciatis deserunt labore ratione ea reprehenderit quasi iusto quisquam obcaecati tempora voluptatem hic, accusantium velit vero recusandae. Aliquid vero odit, minus voluptates fuga doloremque, consectetur enim id numquam, modi voluptas. Magnam earum cumque minima iusto dignissimos incidunt ex, hic fuga voluptates repellat corrupti commodi exercitationem quas dolore illo odit in ullam ab qui, ut dicta atque voluptatem molestias laudantium? Incidunt itaque voluptates omnis debitis assumenda ut accusantium aliquid, alias iure, officiis quo ex? Architecto ea nulla dolore mollitia, maiores, dolorem repellat ex quos quod delectus voluptatibus assumenda enim labore doloribus repudiandae, eveniet suscipit tenetur magnam saepe itaque. Rem voluptas illum debitis possimus unde quo ipsa quam! Facere quia vitae architecto consequuntur obcaecati explicabo nostrum ex?
                                 </div>
                             </div>
-                            <div style={{ float: "right", marginRight:"60px", height: "10%"}}><button> button</button></div>
+
+                            <div style={{display: "inline-block"}}> <button style={{float:"right", margin:"10px 40px"}}>button</button> </div>
+
                         </div>
+                        {/* end of card */}
 
-                        <div style={{width:"40vw", height:"50vh", border: "2px solid black"}}> 
-                            <div style={{display: "flex", flexDirection:"row", height: "85%", width:'100%'}}>
-                                <div style={{margin: "10px",width: "35%" , height: "85%" }}> 
-                                    <img src="http://www.thaiticketmajor.com/variety/img_content/imgeditor/sky-mirror-beach.jpg" alt="test" style={{width:"100%", hegiht: "100%"}}/>
-                                </div>
+                        {/*  each card  */}
+                        <div style={{border: "1px solid black", width:"35vw", height:"40vh", padding:"15px"}}>
 
-                                <div style={{width:"65%", height:"90%", backgroundColor: "silver",margin:"10px 10px 0px", overflow: 'scroll', fontSize:"20px", textAlign:"justify", textIndent:"1ch"}}> 
-                                    <strong> Service name </strong><br/>
-                                    <div style={{display: "content", fontSize:"20px", textIndent:"5ch", wordSpacing:"-0.2em"}}> 
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur, cupiditate assumenda expedita facere sed ad nam eum odit et officia laudantium aliquam a, ullam quisquam? Perspiciatis iusto magni aspernatur pariatur, ab fugiat, totam quidem dolorum debitis id fuga at eos suscipit. Quas perspiciatis fugit tempore iure placeat, quaerat facilis enim?
-                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium eum dolor fugit nulla vel rerum odit. Amet unde laboriosam alias, odio eligendi veritatis omnis voluptatem error adipisci deleniti distinctio natus delectus a nemo enim facere voluptate consequatur qui! Non deleniti sequi harum exercitationem ipsam ab odit vitae id velit, sed, cupiditate dolores voluptates quisquam optio quasi molestias, obcaecati tenetur iure hic labore tempora. Blanditiis accusantium officiis eum iure deserunt odit sit veritatis tempora quia. Autem et esse laboriosam culpa velit consequuntur placeat odio cumque architecto facere. Incidunt, quasi, quaerat explicabo impedit consequatur deserunt iusto tempore accusantium, voluptas vel natus accusamus!
-                                    </div>
+                            <div style={{ maginTop:"50px", width:"100%", height:"90%", display:"grid", gridTemplateColumns:"35% 60%", gridGap:"20px",  justifyContent:"space-evenly"}}>
+                                <div> <img style={{width:"100%", height:"100%"}} src="http://www.thaiticketmajor.com/variety/img_content/imgeditor/sky-mirror-beach.jpg" alt="test" /> </div>
+                                <div title="text" style={{width:"100%", height:'200px', overflow:"scroll"}}> 
+                                    <strong> heading </strong>
+                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, numquam quas incidunt modi rerum ipsam similique ipsa hic at possimus excepturi et aut dolore. Cumque et animi atque praesentium officia nisi hic earum aut impedit rerum odio asperiores quos quidem, deleniti sit reiciendis dolor nulla nostrum. Recusandae assumenda deserunt magni error voluptate vero, vel magnam quos suscipit ipsa saepe et similique, excepturi, aperiam sed voluptatum aliquid odio perferendis qui quo accusantium totam illum itaque numquam. Nostrum quidem qui, optio sint deleniti reiciendis aspernatur excepturi vel? Perspiciatis deserunt labore ratione ea reprehenderit quasi iusto quisquam obcaecati tempora voluptatem hic, accusantium velit vero recusandae. Aliquid vero odit, minus voluptates fuga doloremque, consectetur enim id numquam, modi voluptas. Magnam earum cumque minima iusto dignissimos incidunt ex, hic fuga voluptates repellat corrupti commodi exercitationem quas dolore illo odit in ullam ab qui, ut dicta atque voluptatem molestias laudantium? Incidunt itaque voluptates omnis debitis assumenda ut accusantium aliquid, alias iure, officiis quo ex? Architecto ea nulla dolore mollitia, maiores, dolorem repellat ex quos quod delectus voluptatibus assumenda enim labore doloribus repudiandae, eveniet suscipit tenetur magnam saepe itaque. Rem voluptas illum debitis possimus unde quo ipsa quam! Facere quia vitae architecto consequuntur obcaecati explicabo nostrum ex?
                                 </div>
                             </div>
-                            <div style={{ float: "right", marginRight:"60px", height: "10%"}}><button> button</button></div>
-                        </div>
 
-                            
-                    
-                    
-                    {/* ) 
-                    )}*/}
+                            <div style={{display: "inline-block"}}> <button style={{float:"right", margin:"10px 40px"}}>button</button> </div>
+
+                        </div>
+                        {/* end of card */}
+                        
+
                     </div>
-                </div>
-            </div>
+                    </div>
 
-       
-        
+            </div>
         )
     }
-
 }
-

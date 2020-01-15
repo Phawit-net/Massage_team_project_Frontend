@@ -7,7 +7,7 @@ export default class ShopDetails extends Component {
     render() {
         return (
             <div>
-             <img src="http://www.thaiticketmajor.com/variety/img_content/imgeditor/sky-mirror-beach.jpg" alt="" style = {{ width: "100vw", height: "40vh" , position: "absolute", top:"-200px", zIndex:"-1"}}/>
+             <img src="http://www.thaiticketmajor.com/variety/img_content/imgeditor/sky-mirror-beach.jpg" alt="" style = {{ width: "100%", height: "30%" , position: "absolute", top:"-200px", zIndex:"-1"}}/>
             <ServiceCard />
             </div>
                 
