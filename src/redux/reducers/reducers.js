@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 import userReducer from './userReducer'
+import bookingReducer from './bookingReducer';
 
 
 const reducers = combineReducers({
-  user: userReducer
+  user: userReducer,
+  booking: bookingReducer
 });
 
 
