@@ -1,0 +1,17 @@
+.ButtonConfirm {
+    background-color:#9E4624 !important;
+    border-color: #9E4624 !important;
+  }
+  
+  .ButtonConfirm:hover {
+    background-color:#a15a3f !important;
+    border-color: #a15a3f !important;
+  } 
+  .ButtonCancel{
+    background-color: #c4c4c4 !important;
+    border-color: #c4c4c4 !important;
+  }
+  .ButtonCancel:hover{
+    background-color: #cccccc !important;
+    border-color: #cccccc !important;
+  }

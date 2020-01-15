@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Row, Col, Form, Input, Upload, Icon, Modal, Button } from "antd";
 import Axios from "../../config/axios.setup";
+import style from './CreateService.module.css'
 const { TextArea } = Input;
 
 export class CreateService extends Component {
@@ -81,7 +82,7 @@ export class CreateService extends Component {
       <Row type="flex" justify="center" align="top">
         <Col span={9}>
           <Row type="flex" justify="start">
-            <Col style={{ fontSize: "25px" }}>Create Services</Col>
+            <Col style={{ fontSize: "20px" }}>Create Services</Col>
           </Row>
           <Row>
             <Form {...formItemLayout} onSubmit={this.handleSubmit}>
@@ -111,7 +112,7 @@ export class CreateService extends Component {
                   ]
                 })(<TextArea />)}
               </Form.Item>
-              <Form.Item label="Service time">
+              <Form.Item label="Service time" style={{ marginTop: "0", marginBottom: "0" }}>
                 {getFieldDecorator("serviceTime", {
                   rules: [
                     {
@@ -121,7 +122,7 @@ export class CreateService extends Component {
                   ]
                 })(<Input />)}
               </Form.Item>
-              <Form.Item label="Service price">
+              <Form.Item label="Service price" style={{ marginTop: "0", marginBottom: "0" }}>
                 {getFieldDecorator("servicePrice", {
                   rules: [
                     {
@@ -145,18 +146,20 @@ export class CreateService extends Component {
                   </Col>
                 </Row>
               </Form.Item>
-              <Form.Item>
-                <Row
+              <Form.Item label='Action'  style={{ marginTop: "1vh", marginBottom: "0"   }}>
+                <Row 
+
                   type="flex"
-                  justify="end"
+                  
                   gutter={[16, 16]}
-                  style={{ marginBottom: "1vh" }}
+                  style={{ marginBottom: "1vh",width:'100%' }}
                 >
-                  <Col>
+                  <Col >
                     <Button
                       type="primary"
                       htmlType="submit"
-                      style={{ backgroundColor: "#9e4624" }}
+                      className={style.ButtonConfirm}
+                      style={{width:'80px'}}
                     >
                       Confirm
                     </Button>
@@ -165,7 +168,9 @@ export class CreateService extends Component {
                     <Button
                       type="primary"
                       onClick={this.handleCancelCreate}
-                      style={{ backgroundColor: "#c4c4c4" }}
+                      className={style.ButtonCancel}
+                      style={{width:'80px'}}
+
                     >
                       Cancel
                     </Button>
