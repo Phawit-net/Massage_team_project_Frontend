@@ -44,7 +44,7 @@ export default class UserProfile extends Component {
                 <div style={{border:"1px solid black", width:"100%", height:"100%"}}>
 
                     {/* Add component in this div */}
-                    {this.state(display => {
+                    {/* {this.state(display => {
                         switch(display){
                             // case 1: return <UserInformation/>;
 
@@ -54,7 +54,7 @@ export default class UserProfile extends Component {
                                                         
                             // case 4: return <ShopLink/>;
                         }
-                     })}
+                     })} */}
                 </div>
 
             </div>
