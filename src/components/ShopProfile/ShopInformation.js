@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Row, Col, Form, Input, Upload, Icon, Modal, Button } from "antd";
+import { Row, Col, Form, Input, Upload, Icon, Modal, Button} from "antd";
 import Axios from "../../config/axios.setup";
+import { compose } from "redux";
 const { TextArea } = Input;
 
 
@@ -24,7 +25,10 @@ export class ShopInformation extends Component {
       shopDescription: '',
       previewVisible: false,
       previewImage: "",
-      fileList: []
+      fileList: [],
+      productcategories:[],
+      productcategoriesID:0
+    
     };
   }
 
@@ -32,14 +36,30 @@ export class ShopInformation extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    //alert("OK")
     this.props.form.validateFieldsAndScroll((err, value) => {
-        value.accountno = 123456
-            alert(value.accountno)
+        console.log(value.shopdescription)
+        console.log(value.accountno)
+        console.log(value.accountname)
+        let payload = new FormData();
+        payload.append("shopDescription", value.shopdescription);
+        payload.append("photoPost", this.state.fileList[0]);
+        payload.append("shopAccountNo", value.accountno);
+        payload.append("shopAccountName", value.accountname);
+        console.log(payload);
+        if (!err) {
+            Axios.put("/updateShop/1", payload)
+              .then(result => {
+                console.log(result);
+              })
+              .catch(err => {
+                console.error(err);
+              });
+            //this.props.form.resetFields();
+          }
+
           
         
-      })
-
+      });
 
   };
 
@@ -54,13 +74,22 @@ export class ShopInformation extends Component {
     });
   };
 
-  handleChange = ({ fileList }) => this.setState({ fileList });
+  handleSelectChange = value => {
+    this.setState({productcategoriesID:value})
+  };
+
+  normFile = e => {
+    console.log("Upload event:", e);
+    if (Array.isArray(e)) {
+      return e;
+    }
+    return e && e.fileList;
+  };
 
   componentDidMount(){
-    Axios.get('getShop/1')
-   .then(result => {
-     console.log(result.data)
-    
+     Axios.get('getShop')
+    .then(result => {
+     //console.log(result.data)
     this.setState({
         shopName: result.data.shopName,
         shopAccountNo: result.data.shopAccountNo,
@@ -75,8 +104,25 @@ export class ShopInformation extends Component {
 
 }
 
+handleChangeAccountNo = e => {
+console.log(e.target.value)
+// this.setState({
+//     shopAccountNo: e.target.value
+// })
+}
+
+handleChangeshopAccountName = e => {
+console.log(e.target.value)
+}
+
+handleChangeshopShopDescription = e => {
+console.log(e.target.value)
+}
+
+
   render() {
-    const { previewVisible, previewImage, fileList } = this.state;
+   
+    const { previewVisible, previewImage} = this.state;
     const uploadButton = (
       <div>
         <Icon type="plus" />
@@ -96,6 +142,28 @@ export class ShopInformation extends Component {
     };
     const { getFieldDecorator } = this.props.form;
    
+    const { fileList } = this.state;
+    const props = {
+      onRemove: file => {
+        this.setState(state => {
+          const index = state.fileList.indexOf(file);
+          const newFileList = state.fileList.slice();
+          newFileList.splice(index, 1);
+          return {
+            fileList: newFileList
+          };
+        });
+      },
+      beforeUpload: file => {
+        this.setState(state => ({
+          fileList: [...state.fileList, file]
+        })
+        );
+        return false;
+      },
+      fileList
+    };
+
     return (
       <Row type="flex" justify="center" align="top">
         <Col span={9}>
@@ -106,105 +174,69 @@ export class ShopInformation extends Component {
           </Row>
           <Row>
             <Form {...formItemLayout} onSubmit={this.handleSubmit}>
-              <Form.Item
-                label="Shop name"
-                style={{ marginTop: "0", marginBottom: "0" }}
-              >
-                {getFieldDecorator("shopname", {
-                  rules: [
-                    {
-                      required: false,
-                      message: "Show Shop name"
-                    }
-                  ]
-                })(<label ><h3>{this.state.shopName}</h3></label>)}
+              <Form.Item label="Shop name" style={{ marginTop: "0", marginBottom: "0" }}>
+              <h3>{this.state.shopName}</h3>
               </Form.Item>
 
-              <Form.Item label="Account No">
+              <Form.Item label="Account No" style={{ marginTop: "0", marginBottom: "0" }}>
                 {getFieldDecorator("accountno", {
                   rules: [
                     {
-                      required: true,
-                      message: "Please input your Account No"
+                      required: false,
+                      message: "Show Shop Account No"
                     }
-                  ]
-                })(<Input />)}
+                  ],
+                  initialValue:this.state.shopAccountNo
+                })(<Input/>)}
               </Form.Item>
 
-              <Form.Item label="Account Name">
+              <Form.Item label="Account Name" style={{ marginTop: "0", marginBottom: "0" }}>
                 {getFieldDecorator("accountname", {
                   rules: [
                     {
-                      required: true,
-                      message: "Please input your Account Name"
+                      required: false,
+                      message: "Show Shop Account Name"
                     }
-                  ]
-                })(<Input />)}
+                  ],
+                  initialValue:this.state.shopAccountName
+                })(<Input/>)}
               </Form.Item>
 
-              <Form.Item
-                label="Shop Description"
-                style={{ marginTop: "0", marginBottom: "0" }}
-              >
+              <Form.Item label="Shop Description" style={{ marginTop: "0", marginBottom: "0" }}>
                 {getFieldDecorator("shopdescription", {
                   rules: [
                     {
                       required: false,
-                      message: "Please input shop description"
+                      message: "Show Shop Description"
                     }
-                  ]
-                })(<TextArea />)}
+                  ],
+                  initialValue:this.state.shopDescription
+                })(<TextArea/>)}
               </Form.Item>
               
-              <Form.Item
-                label="Image"
-                style={{ marginTop: "0", marginBottom: "0" }}
-              >
-                <Row type="flex">
-                  <Col>
-                    <Upload
-                      action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                      listType="picture-card"
-                      fileList={fileList}
-                      onPreview={this.handlePreview}
-                      onChange={this.handleChange}
-                    >
-                      {fileList.length >= 8 ? null : uploadButton}
-                    </Upload>
-                    <Modal
-                      visible={previewVisible}
-                      footer={null}
-                      onCancel={this.handleCancel}
-                    >
-                      <img
-                        alt="example"
-                        style={{ width: "100%" }}
-                        src={previewImage}
-                      />
-                    </Modal>
-                  </Col>
-                </Row>
-              </Form.Item>
-
-
-              <Form.Item>
-            <Button type="primary" htmlType="submit">
-              <b>Register</b>
-            </Button>
+              <Form.Item label="Upload" extra="Select file image">
+            {getFieldDecorator("upload", {
+              valuePropName: "fileList",
+              getValueFromEvent: this.normFile
+            })(
+              <Upload {...props}>
+                <Button>
+                  <Icon type="upload" /> Select File
+                </Button>
+              </Upload>
+            )}
           </Form.Item>
 
 
-            </Form>
-          </Row>
-          <Row
+         <Row
             type="flex"
             justify="end"
             gutter={[16, 16]}
             style={{ marginBottom: "1vh" }}
           >
             <Col>
-              <Button type="primary" style={{ backgroundColor: "#9e4624" }}>
-                Confirm
+              <Button type="primary" htmlType="submit" style={{ backgroundColor: "#9e4624" }}>
+                Save
               </Button>
             </Col>
             <Col>
@@ -213,6 +245,11 @@ export class ShopInformation extends Component {
               </Button>
             </Col>
           </Row>
+
+          
+            </Form>
+          </Row>
+         
         </Col>
       </Row>
     );

@@ -9,7 +9,7 @@ export default class ShopProfile extends Component {
             <div>
                 {/* <CreateService/> */}
                 {/* <ServiceHistory/> */}
-                {/* <ShopInformation/> */}
+                <ShopInformation/>
             </div>
         )
     }
