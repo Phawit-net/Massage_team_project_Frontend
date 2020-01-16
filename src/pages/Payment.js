@@ -1,39 +1,83 @@
 import React, { Component } from 'react'
 import { Row, Col, Card, Avatar, Radio, Steps, Button, Upload, Icon } from 'antd'
+import Axios from '../config/axios.setup'
+import { connect } from 'react-redux'
 const { Dragger } = Upload;
 const { Step } = Steps;
 
 
-export default class Payment extends Component {
+class Payment extends Component {
     constructor(props) {
         super(props);
         this.state = {
             current: 0,
-            file:'',
-            previewImage:''
+            file: '',
+            previewImage: '',
+            totalprice: '',
+            paymentMethod: 'pay30%'
         };
+    }
+    componentDidMount() {
+        this.calculateTotalprice()
     }
     next() {
         const current = this.state.current + 1;
         this.setState({ current });
     }
     confirm() {
-        const current = this.state.current + 1;
-        this.setState({ current });
+        const booking = this.props.booking[0]
+        let payload = new FormData()
+        payload.append('paymentphoto',this.state.file)
+        payload.append('numberofuser', booking.person)
+        payload.append('price',this.state.totalprice)
+        payload.append('starttime', booking.startTime)
+        payload.append('endtime', booking.endTime)
+        payload.append('date', booking.date)
+        payload.append('paymentmethod', this.state.paymentMethod)
+        payload.append('servicename', booking.service.serviceName)
+        payload.append('shopname', booking.service.shop.shopName)
+        payload.append('serviceid', booking.service.id)
+        payload.append('shopid', booking.service.shop_id)
+        Axios.post('/historystatement', payload)
+            .then(() => {
+                const current = this.state.current + 1;
+                this.setState({ current });
+            })
+            .catch(err=>{
+                console.log(err)
+            })
     }
 
     prev() {
         const current = this.state.current - 1;
         this.setState({ current });
     }
-      handleChange=(e)=>{
-          let image=URL.createObjectURL(e.file.originFileObj)
-          this.setState({
-              previewImage:image,
-              file:e.file.originFileObj
-          })
-      }
+    handleChange = (e) => {
+        let image = URL.createObjectURL(e.file.originFileObj)
+        this.setState({
+            previewImage: image,
+            file: e.file.originFileObj
+        })
+    }
+    calculateTotalprice = () => {
+        if (this.state.paymentMethod === 'pay30%') {
+            this.setState({
+                totalprice: Math.round(this.props.booking[0].price * 0.3)
+            })
+        } else {
+            this.setState({
+                totalprice: this.props.booking[0].price
+            })
+        }
+    }
+    handleSelectPaymentMethod = (e) => {
+        this.setState(
+            {
+                paymentMethod: e.target.value
+            }, () => this.calculateTotalprice())
+    }
     render() {
+        const booking = this.props.booking[0]
         const { current } = this.state;
         const steps = [
             {
@@ -41,7 +85,7 @@ export default class Payment extends Component {
                 content:
                     <Card>
                         <h2>Please upload your transaction slip </h2>
-                        <Dragger onChange={this.handleChange}> 
+                        <Dragger onChange={this.handleChange}>
                             <p className="ant-upload-drag-icon">
                                 <Icon type="inbox" />
                             </p>
@@ -63,8 +107,8 @@ export default class Payment extends Component {
                     <Card>
                         <Row type='flex' justify='center'>  <h1>Thank you for Booking</h1></Row>
                         <Row type='flex' justify='center'><h2>Please see your payment status on your purchased history</h2></Row>
-        
-        
+
+
                     </Card>,
             },
         ];
@@ -85,18 +129,21 @@ export default class Payment extends Component {
                                     </Col>
                                     <Col xs={24} lg={14} xl={19}>
                                         <Row type='flex' justify='space-between'>
-                                            <Col> <h2 style={{ color: '#926F3B' }}>Services name (....person)</h2></Col>
+                                            <Col> <h2 style={{ color: '#926F3B' }}>{`${booking.service.serviceName} (${booking.person} person)`}</h2></Col>
                                             <Col>
                                                 <Row>
-                                                    <h2 style={{ color: '#926F3B' }}>Shopname</h2>
+                                                    <h2 style={{ color: '#926F3B' }}>{booking.service.shop.shopName}</h2>
                                                 </Row>
                                                 <Row>
-                                                    <h3 style={{ color: '#926F3B' }}>Time</h3>
+                                                    <h3 style={{ color: '#926F3B' }}>{`${booking.date}`}</h3>
+                                                </Row>
+                                                <Row>
+                                                    <h3 style={{ color: '#926F3B' }}>{`${booking.startTime} - ${booking.endTime}`}</h3>
                                                 </Row>
                                             </Col>
                                         </Row>
                                         <Row>
-                                            <h5>Shop description</h5>
+                                            <h5>{booking.service.serviceDescription}</h5>
                                         </Row>
                                     </Col>
                                 </Row>
@@ -108,18 +155,18 @@ export default class Payment extends Component {
                             <h4>Payment Method</h4>
                         </Col>
                         <Col xs={24} md={4} lg={4}>
-                            <Radio.Group defaultValue='30%'>
-                                <Radio value='30%'>Advanced(30%)</Radio>
-                                <Radio value='100%'>Full payment(100%)</Radio>
+                            <Radio.Group defaultValue='pay30%' onChange={e => this.handleSelectPaymentMethod(e)}>
+                                <Radio value='pay30%'>Advanced(30%)</Radio>
+                                <Radio value='payFullPrice'>Full payment(100%)</Radio>
                             </Radio.Group>
                         </Col>
                     </Row>
                     <Row type='flex' justify='end' style={{ marginTop: '10px' }} >
                         <Col xs={24} md={6} xl={4}>
-                            <h4>Total price</h4>
+                            <h3>Total price</h3>
                         </Col>
                         <Col xs={24} md={2} xl={4}>
-                            <h4>Price</h4>
+                            <h3>{`${this.state.totalprice} Baht`}</h3>
                         </Col>
                     </Row>
                     <Row style={{ marginTop: '20px', marginBottom: '40px' }}>
@@ -155,3 +202,9 @@ export default class Payment extends Component {
         )
     }
 }
+const mapStateToProps = (state) => {
+    return {
+        booking: state.booking
+    }
+}
+export default connect(mapStateToProps, null)(Payment)
