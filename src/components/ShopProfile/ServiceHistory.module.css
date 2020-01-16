@@ -1,0 +1,9 @@
+.ButtonDelete {
+    background-color:#9E4624 !important;
+    border-color: #9E4624 !important;
+  }
+  
+  .ButtonDelete:hover {
+    background-color:#a15a3f !important;
+    border-color: #a15a3f !important;
+  } 
