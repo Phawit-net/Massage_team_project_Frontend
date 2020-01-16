@@ -10,7 +10,8 @@ export default class Home extends Component {
     super(props);
     this.state = {
       shopList: [],
-      page: 1
+      page: 1,
+      keyword:''
     };
   }
 
@@ -48,7 +49,10 @@ export default class Home extends Component {
                     A place where Thai massage from all over Thailand meet Thai massge lover
                   </Row>
                 </div>
-                <ShopList shopList={this.state.shopList} callbackFromParent={this.myCallback}/>
+                <ShopList 
+                  shopList={this.state.shopList} 
+                  callbackFromParent={this.myCallback}            
+                  keyword = {this.state.keyword}/>
             </div>
         )
     }

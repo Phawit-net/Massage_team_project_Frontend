@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Row, Typography, Col, Button, List } from "antd";
 import styles from "./ShopCard.module.css";
+import { Link } from 'react-router-dom'
 
 const { Text } = Typography;
 
@@ -29,7 +30,7 @@ export default class ShopCard extends Component {
                 </Text>
               </Row>
               <Row style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                <Button type='primary' className={styles.Button}>View Shop</Button>
+                <Button type='primary' className={styles.Button}><Link to='/shopdetails'>View Shop</Link></Button>
               </Row>
             </Col>
           </Row>
