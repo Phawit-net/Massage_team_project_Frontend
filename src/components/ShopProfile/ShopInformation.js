@@ -47,7 +47,7 @@ export class ShopInformation extends Component {
         payload.append("shopAccountName", value.accountname);
         console.log(payload);
         if (!err) {
-            Axios.put("/updateShop/1", payload)
+            Axios.put("/updateShop", payload)
               .then(result => {
                 console.log(result);
               })
@@ -87,7 +87,7 @@ export class ShopInformation extends Component {
   };
 
   componentDidMount(){
-     Axios.get('getShop')
+     Axios.get('/getShop')
     .then(result => {
      //console.log(result.data)
     this.setState({
