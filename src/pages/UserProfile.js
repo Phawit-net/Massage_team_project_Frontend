@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import '../App.css'
-import PurChaseHis from '../component/UserProfile/PurchaseHistory'
-import ServiceUsage from '../component/UserProfile/ServiceUsage'
-import UserInformation from '../component/UserProfile/UserImformation'
+import '../UserProfile.css'
+// import PurChaseHis from '../component/UserProfile/PurchaseHistory'
+// import ServiceUsage from '../component/UserProfile/ServiceUsage'
+// import UserInformation from '../component/UserProfile/UserImformation'
 
 export default class UserProfile extends Component {
 
@@ -44,7 +44,7 @@ export default class UserProfile extends Component {
                 <div style={{border:"1px solid black", width:"100%", height:"100%"}}>
 
                     {/* Add component in this div */}
-                    {this.state(display => {
+                    {/* {this.state(display => {
                         switch(display){
                             case 1: return <UserInformation/>;
 
@@ -52,9 +52,9 @@ export default class UserProfile extends Component {
 
                             case 3: return <ServiceUsage/>;
                             
-                            // case 4: return <ShopLink/>;
+                            case 4: return <ShopLink/>;
                         }
-                     })}
+                     })} */}
                 </div>
 
             </div>
