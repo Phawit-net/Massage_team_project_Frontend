@@ -30,7 +30,7 @@ export default class ShopCard extends Component {
                 </Text>
               </Row>
               <Row style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                <Button type='primary' className={styles.Button}><Link to='/shopdetails'>View Shop</Link></Button>
+                <Button type='primary' className={styles.Button}><Link to={`/shopdetails?id=${item.id}`}>View Shop</Link></Button>
               </Row>
             </Col>
           </Row>

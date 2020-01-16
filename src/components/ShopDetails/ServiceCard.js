@@ -4,7 +4,7 @@ import BookingModal from './BookingModal'
 export default class ServiceList extends Component {
   render() {
     let service = this.props.service.service
-    console.log(service.service)
+    console.log(service.serviceProfilePic)
     return (
       <>
         <div
