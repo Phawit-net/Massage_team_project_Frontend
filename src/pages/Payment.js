@@ -43,9 +43,9 @@ class Payment extends Component {
             .then(() => {
                 const current = this.state.current + 1;
                 this.setState({ current });
-                window.location.replace('/home')
-                this.props.clearBooking()
-                
+                setTimeout(
+                 ()=>{window.location.replace('/home')
+                this.props.clearBooking()},4000)
             })
             .catch(err=>{
                 console.log(err)
