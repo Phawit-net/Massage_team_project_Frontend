@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Row, Col, Card, Avatar, Radio, Steps, Button, Upload, Icon } from 'antd'
 import Axios from '../config/axios.setup'
 import { connect } from 'react-redux'
+import {clearBooking} from '../redux/actions/actions'
 const { Dragger } = Upload;
 const { Step } = Steps;
 
@@ -42,6 +43,9 @@ class Payment extends Component {
             .then(() => {
                 const current = this.state.current + 1;
                 this.setState({ current });
+                window.location.replace('/home')
+                this.props.clearBooking()
+                
             })
             .catch(err=>{
                 console.log(err)
@@ -125,7 +129,7 @@ class Payment extends Component {
                             <Card style={{ borderBlockColor: '#926F3B' }}>
                                 <Row >
                                     <Col xs={24} lg={9} xl={5}>
-                                        <Avatar src='https://www.honestdocs.co/system/image_attachments/images/000/034/114/medium/02._Oil_Massage_120_mins_1_%E0%B8%84%E0%B8%A3%E0%B8%B1%E0%B9%89%E0%B8%87_-_Montra_health_and_spa____1_800.jpg' shape='square' size={200} />
+                                        <Avatar src={booking.service.serviceProfilePic} shape='square' size={200} />
                                     </Col>
                                     <Col xs={24} lg={14} xl={19}>
                                         <Row type='flex' justify='space-between'>
@@ -179,7 +183,7 @@ class Payment extends Component {
                             <div className="steps-content" style={{ marginTop: '20px' }}>{steps[current].content}</div>
                             <div className="steps-action" style={{ marginTop: '20px' }}>
                                 {current === 0 && (
-                                    <Button type="primary" onClick={() => this.next()}>
+                                    <Button type="primary" disabled={this.state.file===''?true:false} onClick={() => this.next()}>
                                         Next
             </Button>
                                 )}
@@ -207,4 +211,7 @@ const mapStateToProps = (state) => {
         booking: state.booking
     }
 }
-export default connect(mapStateToProps, null)(Payment)
+const mapDispatchToProps = {
+    clearBooking: clearBooking,
+  }
+export default connect(mapStateToProps, mapDispatchToProps)(Payment)

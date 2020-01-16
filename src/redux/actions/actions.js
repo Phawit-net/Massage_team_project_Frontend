@@ -2,7 +2,7 @@ import { TOKEN } from '../../config/constants'
 export const LOGIN_USER = 'LOGIN_USER'
 export const LOGOUT_USER = 'LOGOUT_USER'
 export const ADD_BOOKING = "ADD_BOOKING";
-
+export const CLEAR_BOOKING ="CLEAR_BOOKING"
 
 function fetchLogin(token) {
   localStorage.setItem(TOKEN, token)
@@ -37,4 +37,9 @@ export function addBooking(service, person, date, startTime, endTime, price) {
     endTime: endTime,
     price: price,
   };
+}
+export function clearBooking(){
+  return{
+     type: CLEAR_BOOKING
+  }
 }
