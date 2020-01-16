@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Row, Input, Col } from 'antd'
 import Axios from 'axios'
+import {withRouter} from 'react-router-dom'
 import ServiceList from '../components/ShopDetails/ServiceList'
 
-export default class ShopDetails extends Component {
+class ShopDetails extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -15,7 +16,8 @@ export default class ShopDetails extends Component {
   }
 
   async componentDidMount() {
-    const result = await Axios.get(`http://localhost:8080/shop?id=${this.state.page}`)
+    let targetShopId = this.props.history.location.search.slice(4)
+    const result = await Axios.get(`http://localhost:8080/shop?id=${targetShopId}`)
     this.setState({
       shopName: result.data.shopName,
       shopProfilePic: result.data.shopProfilePic,
@@ -64,3 +66,5 @@ export default class ShopDetails extends Component {
     )
   }
 }
+
+export default withRouter(ShopDetails);

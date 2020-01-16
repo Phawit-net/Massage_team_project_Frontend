@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col } from "antd";
+import { Row, Col, Form,Input } from "antd";
 import Axios from "../../config/axios.setup";
 
 export default class UserInformation extends Component {
@@ -12,7 +12,7 @@ export default class UserInformation extends Component {
       };
 
       componentDidMount(){
-         Axios.get('/get-user')
+         Axios.get('/getUser')
         .then(result => {
           console.log(result.data)
          
@@ -22,7 +22,6 @@ export default class UserInformation extends Component {
             Lastname: result.data.lastname,
             Email: result.data.email,
             Tel: result.data.tel
-        
         })
           
         })
@@ -33,17 +32,56 @@ export default class UserInformation extends Component {
    }
 
   render() {
+    const formItemLayout = {
+      labelCol: {
+        xs: { span: 24 },
+        sm: { span: 8 }
+      },
+      wrapperCol: {
+        xs: { span: 24 },
+        sm: { span: 16 }
+      }
+    };
+    
+    
     return (
-      <div>
 
-<Row><h2>Personal information</h2></Row>
-<Row type='flex'><Col span={4}><h3>Username</h3></Col><Col> <h3>{this.state.Username}</h3></Col></Row>
-<Row type='flex'><Col span={4}><h3>Firstname</h3></Col><Col> <h3>{this.state.Firstname}</h3></Col></Row>
-<Row type='flex'><Col span={4}><h3>Lastname</h3></Col><Col> <h3>{this.state.Lastname}</h3></Col></Row>
-<Row type='flex'><Col span={4}><h3>Email</h3></Col><Col> <h3>{this.state.Email}</h3></Col></Row>
-<Row type='flex'><Col span={4}><h3>Tel.</h3></Col><Col> <h3>{this.state.Tel}</h3></Col></Row>
-       
-      </div>
+<Row type="flex" justify="center" align="top">
+<Col span={9}>
+  <Row type="flex" justify='start'>
+    <Col style={{ fontSize: "25px" }}>
+    Personal information
+    </Col>
+  </Row>
+  <Row>
+    <Form {...formItemLayout}>
+      <Form.Item label="Username " style={{ marginTop: "0", marginBottom: "0" }}>
+      <h3>{this.state.Username}</h3>
+      </Form.Item>
+
+      <Form.Item label="Firstname " style={{ marginTop: "0", marginBottom: "0" }}>
+      <h3>{this.state.Firstname}</h3>
+      </Form.Item>
+
+      <Form.Item label="Lastname " style={{ marginTop: "0", marginBottom: "0" }}>
+      <h3>{this.state.Lastname}</h3>
+      </Form.Item>
+
+      <Form.Item label="Email " style={{ marginTop: "0", marginBottom: "0" }}>
+      <h3>{this.state.Email}</h3>
+      </Form.Item>
+
+      <Form.Item label="Tel " style={{ marginTop: "0", marginBottom: "0" }}>
+      <h3>{this.state.Tel}</h3>
+      </Form.Item>
+
+    </Form>
+  </Row>
+ 
+</Col>
+</Row>
+
+
     );
   }
 }

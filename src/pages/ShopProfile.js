@@ -7,9 +7,9 @@ export default class ShopProfile extends Component {
     render() {
         return (
             <div>
-                <CreateService/>
+                {/* <CreateService/> */}
                 {/* <ServiceHistory/> */}
-                {/* <ShopInformation/> */}
+                <ShopInformation/>
             </div>
         )
     }

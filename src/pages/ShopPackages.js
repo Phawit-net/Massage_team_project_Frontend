@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Row, Input } from "antd";
-// import Search from '../components/ShopPackages/Search'
 import ShopList from "../components/Generals/Shop/ShopList";
 import Axios from "axios";
 
@@ -56,6 +55,7 @@ export default class ShopPackages extends Component {
           />
           <ShopList
             shopList={this.state.shopList}
+            keyword = {this.state.keyword}
             callbackFromParent={this.myCallback}
           />
         </Row>

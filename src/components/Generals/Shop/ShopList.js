@@ -15,13 +15,9 @@ export default class ShopList extends Component {
     };
   }
 
-  async componentDidMount() {
-    const result = await Axios.get(`http://localhost:8080/shops/${this.state.page}`)
-    this.setState({ shopList: result.data })
-  }
-
   render() {
     const shopListItem = this.props.shopList
+    const keyword = this.props.keyword
     return (
       <div>
         <List
@@ -29,16 +25,24 @@ export default class ShopList extends Component {
           size="large"
           pagination={{
             onChange: page =>{
+              
               this.setState({
                 page: page, 
               }, async () => {
+                if (keyword == ''){
                 const result = await Axios.get(`http://localhost:8080/shops/${page}`)
                 this.setState({ shopList: result.data })
                 this.props.callbackFromParent(this.state);
+                } else {
+                const result = await Axios.get(`http://localhost:8080/searchShop?keyword=${keyword}&page=${page}`)
+                this.setState({ shopList: result.data })
+                this.props.callbackFromParent(this.state);
+                }
               })
             },
             pageSize: 3,
-            total:12,
+            total:12
+
           }}
           dataSource={shopListItem}
           renderItem={item => (
