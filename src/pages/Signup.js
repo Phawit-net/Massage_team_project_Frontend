@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Row, Col, Form, Input, Icon, Button, Radio } from 'antd'
-import Text from 'antd/lib/typography/Text'
+import { withRouter } from 'react-router-dom'
 import Axios from '../config/axios.setup'
 import styles from './Signup.module.css'
 
@@ -14,22 +14,24 @@ class Signup extends Component {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
-        // Axios.post('http://localhost:8080/registerUser', {
-        //     name: values.name,
-        //     lastname: values.lastname,
-        //     email: values.email,
-        //     password: values.password,
-        //     mobile: values.mobile,
-        //     address: values.address,
-        // })
-        //     .then(result => {
-        //         console.log(result)
-        //     })
-        //     .catch(err => {
-        //         console.error(err)
-        //     })
-        // this.props.form.resetFields()
+        Axios.post('/registerUser', {
+          username: values.username,
+          password: values.password,
+          firstname: values.firstname,
+          lastname: values.lastname,
+          email: values.email,
+          tel: values.tel,
+          roles: values.roles,
+          shopName: values.shopName
+        })
+          .then(result => {
+            console.log(result)
+            this.props.history.push('/home')
+          })
+          .catch(err => {
+            console.error(err)
+          })
+        this.props.form.resetFields()
       }
     });
   };
@@ -114,9 +116,10 @@ class Signup extends Component {
                 <Row>
                   <Form.Item label="User type" className={styles.form}>
                     {getFieldDecorator('roles', {
-                          rules: [{ required: true, message: 'Please select user type' }]
-                        })(
-                      <Radio.Group onChange={(e) => this.setState({ rolesValue: e.target.value })} value={this.state.rolesValue}>
+                      initialValue: 'buyer',
+                      rules: [{ required: true, message: 'Please select user type' }]
+                    })(
+                      <Radio.Group onChange={(e) => this.setState({ rolesValue: e.target.value })}>
                         <Radio value="buyer">Buyer</Radio>
                         <Radio value="seller">Seller</Radio>
                       </Radio.Group>,
@@ -125,7 +128,7 @@ class Signup extends Component {
                 </Row>
 
                 <Row>
-                  {(this.state.rolesValue == 'seller') ?
+                  {(this.state.rolesValue === 'seller') ?
                     <Form.Item label="Shop name" className={styles.form}>
                       {getFieldDecorator('shopName', {
                         rules: [{ required: true, message: 'Please input your firstname', whitespace: true }],
@@ -187,10 +190,10 @@ class Signup extends Component {
                 <Row>
                   <Form.Item style={{ padding: '5% 10%', margin: 0 }}>
                     <Col span={12}>
-                      <Button htmlType="submit" className={styles.button} style={{ float: 'right', margin: '3px' }}>sign up</Button>
+                      <Button href='/home' style={{ float: 'right', margin: '3px' }}>cancle</Button>
                     </Col>
                     <Col span={12}>
-                      <Button href='/login' style={{ float: 'left', margin: '3px' }}>cancle</Button>
+                      <Button htmlType="submit" className={styles.button} style={{ float: 'left', margin: '3px' }}>sign up</Button>
                     </Col>
                   </Form.Item>
                 </Row>
@@ -204,6 +207,5 @@ class Signup extends Component {
   }
 }
 
-
 const FormSignup = Form.create({ name: 'Signup' })(Signup);
-export default FormSignup
+export default withRouter(FormSignup)
