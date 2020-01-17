@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import Axios from '../config/axios.setup'
+import {Carousel , Row} from 'antd'
+import ShopList from '../components/Generals/Shop/ShopList'
 export default class Home extends Component {
   constructor(props) {
     super(props);
