@@ -122,7 +122,7 @@ export class ApprovePurchase extends Component {
 
     return (
       <Row type="flex" justify="center">
-        <Col span={12}>
+        <Col span={20}>
           <Row type="flex">
             <Col style={{ fontSize: "20px" }}>Services History</Col>
           </Row>
