@@ -8,13 +8,8 @@ export default class ShopProfile extends Component {
         return (
             <div>
                 {/* <CreateService/> */}
-<<<<<<< HEAD
                 {/* <ServiceHistory/> */}
                 <ShopInformation/>
-=======
-                <ServiceHistory/>
-                {/* <ShopInformation/> */}
->>>>>>> feature_ice
             </div>
         )
     }
