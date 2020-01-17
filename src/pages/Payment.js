@@ -118,7 +118,7 @@ class Payment extends Component {
         ];
         return (
             <>
-                <Row style={{ marginTop: '20px', marginLeft: '10%', marginRight: '10%' }}>
+                <Row style={{ marginTop: '200px', marginLeft: '10%', marginRight: '10%' }}>
                     <Row>
                         <Col>
                             <h2 style={{ color: '#926F3B' }}>Booking Detail</h2>

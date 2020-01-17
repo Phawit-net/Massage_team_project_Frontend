@@ -71,7 +71,7 @@ class Header extends Component {
     }
     render() {
         return (
-            <Card style={{ backgroundColor: '#f1e6b2', opacity: '0.8' }} bodyStyle={{ padding: '0' }}>
+            <Card style={{ backgroundColor: '#f1e6b2', opacity: '0.8',height:'140px' }} bodyStyle={{ padding: '0' }}>
                 <Row type='flex' justify='center' align='middle'>
                     <Col xs={19} md={5} lg={10} xl={10}>
                    <Link to ='/home'><img src={Logo} alt='Logo' style={{ width: '150px', height: '150px' }} /></Link>     
