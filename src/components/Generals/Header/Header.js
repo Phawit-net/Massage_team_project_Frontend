@@ -81,7 +81,7 @@ class Header extends Component {
                             <Menu mode="horizontal" inlineIndent='50' style={{ backgroundColor: '#f1e6b2' }} className={styles.rightMenu}>
                                 <Menu.Item className={styles.menuoption}><Link className={styles.linkcolor} to='/home'>Home</Link></Menu.Item>
                                 <Menu.Item className={styles.menuoption}><Link className={styles.linkcolor} to='/shoppackages'>Shop & Packages</Link></Menu.Item>
-                                <Menu.Item className={styles.menuoption}>Contact Us</Menu.Item>
+                                <Menu.Item className={styles.menuoption}><Link className={styles.linkcolor} to='contactus'>Contact Us</Link></Menu.Item>
                                 {this.renderUserOptioninTopnavbar()}
                             </Menu>
                             <Button id={styles.drawermenu} icon='menu-unfold' size='large' ghost onClick={this.showDrawer} />
@@ -95,7 +95,7 @@ class Header extends Component {
                                 <Menu >
                                     <Menu.Item ><Link to='/home' onClick={() => this.onCloseDrawer()}>Home</Link></Menu.Item>
                                     <Menu.Item ><Link to='/shoppackages' onClick={() => this.onCloseDrawer()}>Shop & Packages</Link></Menu.Item>
-                                    <Menu.Item >Contact Us</Menu.Item>
+                                    <Menu.Item ><Link to='contactus'>Contact Us</Link></Menu.Item>
                                     {this.renderUserOptioninDrawer()}
                                 </Menu>
                             </Drawer>

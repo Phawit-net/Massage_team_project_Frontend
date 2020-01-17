@@ -12,6 +12,7 @@ import ShopPackages from './pages/ShopPackages'
 import ShopProfile from './pages/ShopProfile'
 import Signup from './pages/Signup'
 import UserProfile from './pages/UserProfile'
+import ContactUs from './pages/ContactUs'
 class App extends React.Component {
   render() {
     return (
@@ -25,6 +26,7 @@ class App extends React.Component {
             <Route path='/payment' component={Payment}/>
             <Route path='/shopdetails' component={ShopDetails}/>
             <Route path='/shoppackages' component={ShopPackages}/>
+            <Route path='/contactus' component={ContactUs}/>
             <Route path='/shopprofile' component={ShopProfile}/>
             <Route path='/signup' component={Signup}/>
             <Route path='/userprofile' component={UserProfile}/>
