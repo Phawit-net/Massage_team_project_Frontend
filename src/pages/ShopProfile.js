@@ -13,33 +13,29 @@ export default class ShopProfile extends Component {
 
     HandleShopInformation = () => {
         this.setState({case:1})
-        this.Show()
     };
 
     HandleCreateService  = () => {
         this.setState({case:2})
-        this.Show()
     };
 
 
     HandleServiceHistory  = () => {
         this.setState({case:3})
-        this.Show()
     };
 
 
     HandleApprovePurchase  = () => {
         this.setState({case:4})
-        this.Show()
     };
 
 
     HandleCustomerUsage  = () => {
         this.setState({case:5})
-        this.Show()
     };
 
     Show = ()=>{  switch (this.state.case){
+
         case 1: return <ShopInformation/>;
 
         case 2: return <CreateService/>;
@@ -60,7 +56,7 @@ export default class ShopProfile extends Component {
                     <div style={{marginLeft:"-5%", marginTop:"8%", fontSize:"20px"}}> shop name</div>
                 </div>
                 <ul className="listUserProfile" style={{listStyle: "none", margin:"auto", width:"100%"}}>
-                    <li Onclick={this.HandleShopInformation}> Shop information </li>
+                    <li onClick={this.HandleShopInformation}> Shop information </li>
                     <li onClick={this.HandleCreateService}> Create Service </li>
                     <li onClick={this.HandleServiceHistory}> Services history</li>
                     <li onClick={this.HandleApprovePurchase}> Approve purchase </li>
