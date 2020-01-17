@@ -39,6 +39,7 @@ export default class ShopProfile extends Component {
 
     render() {
         return (
+<<<<<<< HEAD
             <div style={{display:"grid", gridTemplateColumns:"25% 70%", gridGap:"5%",justifyContent:"space-around", margin:"20px", height:"100vh"}}>
             <div style={{ width:"100%", height:"50%", position:"sticky",top:"120px"}}>
                 <div style={{display:"flex", flexFlow:"row wrap", justifyContent:"center", marginBottom:"10px"}} >
@@ -72,6 +73,13 @@ export default class ShopProfile extends Component {
                  })} */}
             </div>
         </div>
+=======
+            <div>
+                <ShopInformation/>
+                <ServiceHistory/>
+                <CreateService />
+            </div>  
+>>>>>>> feature_ohm
         )
 }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import { Row, Input, Col } from 'antd'
-import Axios from 'axios'
-import {withRouter} from 'react-router-dom'
+import { Row, Col } from 'antd'
+import Axios from '../config/axios.setup'
+import { withRouter } from 'react-router-dom'
 import ServiceList from '../components/ShopDetails/ServiceList'
 
 class ShopDetails extends Component {
@@ -28,35 +28,39 @@ class ShopDetails extends Component {
   render() {
     return (
       <div>
-        <Row>
+        <Row style={{ marginTop: "200px" }}>
           <Col>
             <Row
               style=
               {{
-                backgroundImage: `url(${'http://www.thaiticketmajor.com/variety/img_content/imgeditor/sky-mirror-beach.jpg'})`,
+                backgroundImage: `url(${Axios.defaults.baseURL}/${this.state.shopProfilePic})`,
                 backgroundRepeat: "no-repeat",
                 backgroundAttachment: "fixed",
                 backgroundSize: "cover",
               }}
             >
-              <Col span={8} >
+              <Col span={12} >
                 <img
                   style=
                   {{
                     borderRadius: "50%",
-                    width: "200px",
-                    height: "200px"
+                    // borderRadius: "8px",
+                    border: "1px solid #000",
+                    width: "150px",
+                    height: "auto",
+                    float: "right"
                   }}
-                  src={this.state.shopProfilePic} />
+
+                  src={`${Axios.defaults.baseURL}/${this.state.shopProfilePic}`} />
               </Col>
-              <Col span={16}>
-                {this.state.shopName}
+              <Col span={12}>
+                <h1>{this.state.shopName}</h1>
               </Col>
             </Row>
           </Col>
         </Row>
 
-        <Row>
+        <Row  >
           <Col sm={{ span: 24, offset: 0 }} md={{ span: 22, offset: 1 }} >
             <ServiceList servicesList={this.state.servicesList} />
           </Col>
