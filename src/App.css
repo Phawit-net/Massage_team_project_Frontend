@@ -38,5 +38,16 @@
   }
 }
 
+.listUserProfile > li {
+  border: 2px solid #9E4624;
+  width: 200px;
+  font-size: 21px;
+  margin-bottom: 1px;
+}
 
+.listUserProfile li:hover{
+  background-color: #F5EDC9;
+  cursor: pointer;
+  border-style: inset;
+}
 

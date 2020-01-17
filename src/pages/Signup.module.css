@@ -1,0 +1,22 @@
+.button {
+  background-color: #9E462C !important;
+  border-color: #9E462C !important;
+  color: #FFFFFF !important;
+}
+
+.button:hover {
+  background-color: #a15a3f !important;
+  color: #FFFFFF !important;
+}
+
+.form{
+  padding: 0 10% !important; 
+  margin: 0 !important;
+}
+
+.box{
+  border: 2px solid #926F3B;
+  border-radius: 10px;
+  margin: 20px;
+  padding: 10px;
+}

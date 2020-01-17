@@ -1,0 +1,31 @@
+h1,h3,h4,Label{
+    color: #926F3B !important;
+}
+.ant-input{
+    width: 200px !important;
+}
+.borderBox {
+    height: 100%;
+    width: 100%;
+    border: 1px solid #000000;
+    padding: 5px;
+    margin: 20px;
+}
+
+
+.borderBoxSmall{
+    border: 1px solid #926F3B;
+    padding: 5px;
+    margin: 10px;
+}
+
+.button {
+    background-color: #9E462C !important;
+    border-color: #9E462C !important;
+    color: #FFFFFF !important;
+}
+
+.button:hover {
+    background-color: #a15a3f !important;
+    color: #FFFFFF !important;
+}

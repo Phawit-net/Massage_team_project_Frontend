@@ -7,6 +7,7 @@ import React, { Component } from 'react'
 
 
 
+import ShopInformation from "../components/ShopProfile/ShopInformation";
 export default class ShopProfile extends Component {
     state = {
         case : 1
@@ -70,8 +71,7 @@ export default class ShopProfile extends Component {
                     }
                  })} */}
             </div>
-
         </div>
         )
-    }
+}
 }
