@@ -8,6 +8,7 @@ import React, { Component } from 'react'
 
 
 import ShopInformation from "../components/ShopProfile/ShopInformation";
+import ApprovePurchase from '../components/ShopProfile/ApprovePurchase';
 export default class ShopProfile extends Component {
     state = {
         case : 1
