@@ -34,7 +34,7 @@ export default class ShopList extends Component {
                 this.setState({ shopList: result.data })
                 this.props.callbackFromParent(this.state);
                 } else {
-                const result = await Axios.get(`http://localhost:8080/searchShop?keyword=${keyword}&page=${page}`)
+                const result = await Axios.get(`http://localhost:8080/searchShops?keyword=${keyword}&page=${page}`)
                 this.setState({ shopList: result.data })
                 this.props.callbackFromParent(this.state);
                 }

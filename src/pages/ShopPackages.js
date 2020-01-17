@@ -26,7 +26,7 @@ export default class ShopPackages extends Component {
     let keyword = value;
     let page = this.state.page;
     Axios.get(
-      `http://localhost:8080/searchShop?keyword=${keyword}&page=${page}`
+      `http://localhost:8080/searchShops?keyword=${keyword}&page=${page}`
     ).then(result => {
       this.setState({
         shopList: result.data,
