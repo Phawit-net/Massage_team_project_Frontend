@@ -29,7 +29,7 @@ export default class ShopList extends Component {
               this.setState({
                 page: page, 
               }, async () => {
-                if (keyword == ''){
+                if (keyword === ''){
                 const result = await Axios.get(`http://localhost:8080/shops/${page}`)
                 this.setState({ shopList: result.data })
                 this.props.callbackFromParent(this.state);

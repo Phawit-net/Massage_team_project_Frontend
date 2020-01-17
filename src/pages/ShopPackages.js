@@ -46,8 +46,6 @@ export default class ShopPackages extends Component {
     return (
       <div>
         <Row>
-          
-          
             <h1 style={{marginBottom:"20px", textIndent: "4ch"}}>Shop & Packages</h1>
           <div style={{width : "90vw", margin : "auto" , border: "1px solid #9E4624"}}>  
           <Search
