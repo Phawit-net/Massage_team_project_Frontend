@@ -1,23 +1,23 @@
 import React, { Component } from 'react'
-import { Row, Col } from 'antd'
 import BookingModal from './BookingModal'
+import Axios from '../../config/axios.setup'
 export default class ServiceList extends Component {
   render() {
     let service = this.props.service.service
-    console.log(service.serviceProfilePic)
     return (
       <>
         <div
           style=
           {{
             marginTop: "50px", width: "100%", height: "90%",
+            padding: "10px",
             display: "grid", gridTemplateColumns: "35% 60%",
-            justifyContent: "space-between", border: "1px solid #926F3B",
+            justifyContent: "space-between", border: "2px solid #D8AE47",
           }}>
           <div style={{ margin: "10px" }} >
             <img
               style={{ width: "100%", height: "100%", }}
-              src={service.serviceProfilePic}
+              src={`${Axios.defaults.baseURL}/${service.serviceProfilePic}`}
               alt="test"
             />
           </div>
@@ -27,17 +27,16 @@ export default class ServiceList extends Component {
 
           </div>
           <div style={{ float: "right", margin: "10px 40px" }}>
-            <p>
-              price: {service.price}
-            </p>
-            <br />
-            <p>
-              time: {service.time}
-            </p>
+
           </div>
 
           <div style={{ display: "inline-block" }}>
-          <p>{service.id}</p>
+            <p >
+              <strong>Price:</strong>  {service.price}
+            </p>
+            <p>
+              <strong>Time:</strong>    {service.time}
+            </p>
             <BookingModal id={service.id} />
           </div>
         </div>
