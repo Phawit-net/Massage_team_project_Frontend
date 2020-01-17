@@ -71,8 +71,7 @@ export default class ShopProfile extends Component {
                     }
                  })} */}
             </div>
-
         </div>
         )
-    }
+}
 }

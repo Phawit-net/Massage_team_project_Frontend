@@ -1,10 +1,5 @@
 import React, { Component } from 'react'
-import ShopList from '../components/Generals/Shop/ShopList'
-import { Carousel,Row, Typography, Col} from 'antd';
-import Axios from 'axios';
-
-const { Text } = Typography;
-
+import Axios from '../config/axios.setup'
 export default class Home extends Component {
   constructor(props) {
     super(props);
