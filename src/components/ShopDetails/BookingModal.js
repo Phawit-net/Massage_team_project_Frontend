@@ -21,6 +21,7 @@ class BookingModal extends Component {
 
   componentDidMount() {
     let targetServiceID = this.props.id;
+    console.log(targetServiceID)
     Axios.get(`http://localhost:8080/servicesDetail?id=${targetServiceID}`).then(
       result => {
         this.setState({
@@ -68,11 +69,11 @@ class BookingModal extends Component {
       let startTime = this.state.startValue
       let endTime = this.state.endValue
       let price = person * this.state.serviceList.price
-      
+
       if (service && person && date && startTime && endTime && price) {
         this.props.addBooking(service, person, date, startTime, endTime, price);
         this.props.history.push('/payment')
-      }else{
+      } else {
         message.error('Please input your booking information');
       }
     })
@@ -105,7 +106,7 @@ class BookingModal extends Component {
 
     const { getFieldDecorator } = this.props.form;
     let service = this.state.serviceList
-
+    // console.log(service)
     return (
       <>
         <Button type='link' className={styles.button} onClick={() => this.showBookingModal()}>Booking</Button>
@@ -119,7 +120,7 @@ class BookingModal extends Component {
             <Col span={24} style={{ width: '100%', height: '100%' }}>
 
               <Row className={styles.borderBoxSmall} type='flex' justify='space-around'>
-                <Col xs={24} lg={9} xl={8} style={{textAlign: 'center'}}>
+                <Col xs={24} lg={9} xl={8} style={{ textAlign: 'center' }}>
                   <Avatar src={service.serviceProfilePic} alt="" shape='square' size={200} style={{ margin: '5px' }} />
                 </Col>
 

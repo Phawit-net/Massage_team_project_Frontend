@@ -7,15 +7,10 @@ export default class ShopProfile extends Component {
     render() {
         return (
             <div>
-                {/* <CreateService/> */}
-<<<<<<< HEAD
-                {/* <ServiceHistory/> */}
                 <ShopInformation/>
-=======
                 <ServiceHistory/>
-                {/* <ShopInformation/> */}
->>>>>>> feature_ice
-            </div>
+                <CreateService />
+            </div>  
         )
     }
 }
