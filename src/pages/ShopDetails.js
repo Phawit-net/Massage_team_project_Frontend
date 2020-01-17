@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import ServiceCard from '../components/ShopDetails/ServiceCard'
-// import Header from '../components/Generals/Header/Header'
-// import Footer from '../components/Generals/Footer/Footer'
+
 
 export default class ShopDetails extends Component {
     render() {
