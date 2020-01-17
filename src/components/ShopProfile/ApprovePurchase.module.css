@@ -1,0 +1,17 @@
+.ButtonApprove {
+    background-color:#9E4624 !important;
+    border-color: #9E4624 !important;
+  }
+  
+  .ButtonApprove:hover {
+    background-color:#a15a3f !important;
+    border-color: #a15a3f !important;
+  } 
+  .ButtonReject{
+    background-color: #c4c4c4 !important;
+    border-color: #c4c4c4 !important;
+  }
+  .ButtonReject:hover{
+    background-color: #cccccc !important;
+    border-color: #cccccc !important;
+  }
