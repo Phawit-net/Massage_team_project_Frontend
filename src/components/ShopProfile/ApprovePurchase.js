@@ -125,7 +125,7 @@ export class ApprovePurchase extends Component {
       <Row type="flex" justify="center" style={{marginTop:'1vh'}}>
         <Col span={20}>
           <Row type="flex">
-            <Col style={{ fontSize: "20px" }}>Services History</Col>
+            <Col style={{ fontSize: "20px" }}>Approve purchase</Col>
           </Row>
           <Row style={{marginTop:'1vh'}}>
             <Table

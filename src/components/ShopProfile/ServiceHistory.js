@@ -84,7 +84,7 @@ export class ServiceHistory extends Component {
       <Row type="flex" justify="center" style={{marginTop:'1vh'}}>
         <Col span={20}>
           <Row type="flex">
-            <Col style={{ fontSize: "20px" }}>Approve purchase</Col>
+            <Col style={{ fontSize: "20px" }}>Service History</Col>
           </Row>
           <Row style={{marginTop:'1vh'}}>
             <Table
