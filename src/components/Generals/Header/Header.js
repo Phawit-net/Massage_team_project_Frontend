@@ -55,7 +55,8 @@ class Header extends Component {
     renderUserOptioninDrawer = () => {
         const userOption = (
             <Menu>
-                <Menu.Item >Profile</Menu.Item>
+                <Menu.Item ><Link to='/userprofile'onClick={()=>this.onCloseDrawer()}>Profile</Link></Menu.Item>
+                {this.props.user.role==='seller'?<Menu.Item><Link to='/shopprofile' onClick={()=>this.onCloseDrawer()}>Shop profile</Link></Menu.Item>:''}
                 <Menu.Item onClick={()=>{this.props.logout();this.onCloseDrawer()}} >Logout</Menu.Item>
             </Menu>
         )

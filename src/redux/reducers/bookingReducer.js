@@ -1,5 +1,5 @@
 import { ADD_BOOKING } from "../actions/actions";
-
+import {CLEAR_BOOKING} from '../actions/actions'
 function bookingReducer(state = [], action) {
   switch (action.type) {
 
@@ -13,7 +13,8 @@ function bookingReducer(state = [], action) {
         endTime: action.endTime,
         price: action.price
       }]
-
+      case CLEAR_BOOKING:
+        return []
     default:
       return state;
   }

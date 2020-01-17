@@ -3,6 +3,7 @@ import ShopList from '../components/Generals/Shop/ShopList'
 import { Carousel,Row, Typography, Col} from 'antd';
 import Axios from 'axios';
 
+
 const { Text } = Typography;
 
 export default class Home extends Component {
