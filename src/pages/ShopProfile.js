@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import ShopInformation from '../components/ShopProfile/ShopInformation'
-// import CreateService from '../components/ShopProfile/CreateService'
+import CreateService from '../components/ShopProfile/CreateService'
 // import ServiceHistory from '../components/ShopProfile/ServiceHistory'
 // import ApprovePurchase from '../components/ShopProfile/ApprovePurchase'
 // import CustomerUsage from '../components/ShopProfile/CustomerUsage'
@@ -56,7 +56,8 @@ export default class ShopProfile extends Component {
             </div>
 
             <div style={{border:"1px solid black", width:"100%", height:"100%"}}>
-
+            {/* <CreateService/> */}
+            <ApprovePurchase/>
                 {/* Add component in this div */}
                 {/* {this.state(display => {
                     switch(display){
