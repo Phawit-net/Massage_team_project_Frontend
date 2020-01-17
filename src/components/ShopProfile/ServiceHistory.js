@@ -41,17 +41,17 @@ export class ServiceHistory extends Component {
       {
         title: "Image",
         dataIndex: "image",
-        width: 100
+        width: "20%"
       },
       {
         title: "ServiceName",
         dataIndex: "serviceName",
-        width: 300
+        width: "40%"
       },
       {
         title: "Time(hr)",
         dataIndex: "time",
-        width: 100
+        width: "20%"
       },
       {
         title: "Action",
@@ -73,7 +73,7 @@ export class ServiceHistory extends Component {
     this.state.servicesList.map(result =>
       data.push({
         key: result.id,
-        image: result.serviceProfilePic,
+        image: (<img src={`${Axios.defaults.baseURL}/${result.serviceProfilePic}`} style={{ width: "100px", height: "100px",borderRadius:"50%" }}/>),
         serviceName: result.serviceName,
         time: result.time
       })
@@ -81,17 +81,17 @@ export class ServiceHistory extends Component {
 
   
     return (
-      <Row type="flex" justify="center">
-        <Col span={10}>
+      <Row type="flex" justify="center" style={{marginTop:'1vh'}}>
+        <Col span={20}>
           <Row type="flex">
-            <Col style={{ fontSize: "20px" }}>Services History</Col>
+            <Col style={{ fontSize: "20px" }}>Approve purchase</Col>
           </Row>
-          <Row>
+          <Row style={{marginTop:'1vh'}}>
             <Table
               columns={columns}
               dataSource={data}
-              pagination={{ pageSize: 50 }}
-              scroll={{ y: 240 }}
+              pagination={{ pageSize: 3 }}
+              // scroll={{ y: 400 }}
             />
           </Row>
         </Col>
