@@ -173,7 +173,7 @@ class Payment extends Component {
                             <h3>{`${this.state.totalprice} Baht`}</h3>
                         </Col>
                     </Row>
-                    <Row style={{ marginTop: '20px', marginBottom: '40px' }}>
+                    <Row style={{ marginTop: '20px'}}>
                         <div>
                             <Steps current={current}>
                                 {steps.map(item => (

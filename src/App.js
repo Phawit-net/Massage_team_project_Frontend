@@ -32,9 +32,9 @@ class App extends React.Component {
             <Route path='/userprofile' component={UserProfile}/>
           </Switch>
         </Row>
-        <Row>
-          <Footer />
-        </Row>
+          <Row style={{marginTop:'50px'}}>
+          <Footer/>
+        </Row>          
       </>
     )
   }
