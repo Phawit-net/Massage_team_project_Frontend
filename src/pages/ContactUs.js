@@ -19,6 +19,7 @@ handleSubmit(e){
             })
             .then(()=>{
                 message.success(`your mail has been sent to ${values.receiver}`)
+                this.props.form.resetFields()
             })
             .catch(err=>{
                 message.error('something wrong')
@@ -85,6 +86,9 @@ handleSubmit(e){
                                         )(
                                         <Select style={{ width: '300px' }} placeholder='please select an email'>
                                             <Option value='panuwat33586@gmail.com'>A (panuwat33586@gmail.com)</Option>
+                                            <Option value='nanoic_ohm@hotmail.com'>Ohm (nanoic_ohm@hotmail.com)</Option>
+                                            <Option value='natthalada.p@gmail.com'>Bebie (natthalada.p@gmail.com)</Option>
+                                            <Option value='neztle.net@gmail.com'>Net (neztle.net@gmail.com)</Option>
                                         </Select>
                                         )}
                                     </Form.Item>
