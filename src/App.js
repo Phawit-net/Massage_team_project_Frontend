@@ -3,7 +3,7 @@ import './App.css'
 import {Row} from 'antd'
 import Header from './components/Generals/Header/Header'
 import Footer from './components/Generals/Footer/Footer'
-import{Switch,Route} from 'react-router-dom'
+import{Switch,Route,Redirect} from 'react-router-dom'
 
 import Home from './pages/Home'
 import Payment from './pages/Payment'
@@ -30,6 +30,7 @@ class App extends React.Component {
             <Route path='/shopprofile' component={ShopProfile}/>
             <Route path='/signup' component={Signup}/>
             <Route path='/userprofile' component={UserProfile}/>
+            <Redirect to='/home'/>
           </Switch>
         </Row>
           <Row style={{marginTop:'50px'}}>
