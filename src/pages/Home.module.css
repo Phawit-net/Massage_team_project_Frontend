@@ -1,0 +1,54 @@
+@import "https://fonts.googleapis.com/css?family=Tangerine&display=swap";
+
+.font {
+  font-family: 'Tangerine', cursive;
+  font-weight: bold;
+  font-size: 40px;
+  color:#855f3e;
+}
+.explorefont{
+  font-family: 'Tangerine', cursive;
+  font-weight: bold;
+  font-size: 40px;
+  color:#855f3e;
+}
+
+.explorefont:hover{
+    color:#9e7a5b ;
+  } 
+
+@media only screen and (max-width: 1200px) {
+    .slide{
+        margin-top: 150px;
+    }
+    .shoplist{
+        margin: 0px 100px !important;
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .font{
+        font-size: 30px;
+    }
+    .pattern {
+        width:161px;
+    }
+    .slide{
+        margin-top: 150px;
+    }
+    .shoplist{
+        margin: 0px 50px !important;
+    }
+  }
+
+@media only screen and (max-width: 600px) {
+    .font{
+        font-size: 20px;
+    }
+    .slide{
+        margin-top: 150px;
+    }
+    .shoplist{
+        margin: 0px !important;
+    }
+}
