@@ -21,7 +21,7 @@ export default class PurchaseHistory extends Component {
     const columns = [
       {
         title: 'Shop',
-        width: 120,
+        width: 100,
         dataIndex: 'shopName',
         key: 'name',
         fixed: 'left',
@@ -29,30 +29,23 @@ export default class PurchaseHistory extends Component {
       {
         title: 'Services',
         dataIndex: 'serviceName',
-        key: 'age',
+        key: 'serviceName',
       },
       {
         title: 'Date',
-        key: '1',
+        key: 'Date',
         render: (text, history) => `${moment(history.date).format('DD MMM YYYY')}`
       },
       {
         title: 'Time',
-        key: '2',
+        key: 'Time',
         render: (text, history) =>
           `${moment(history.startTime, 'HH:mm:ss').format('HH:mm')}-${moment(history.endTime, 'HH:mm:ss').format('HH:mm')}`
       },
-      { title: 'Person', dataIndex: 'numberOfUser', key: '3' },
-      { title: 'Amount (Bath)', dataIndex: 'price', key: '4' },
-      { title: 'Payment Method', dataIndex: 'paymentMethod', key: '5' },
-      { title: 'Status', dataIndex: 'status', key: '6' },
-      // {
-      //   title: 'Action',
-      //   key: 'operation',
-      //   // fixed: 'right',
-      //   width: 100,
-      //   render: () => <a>action</a>,
-      // },
+      { title: 'Person', dataIndex: 'numberOfUser', key: 'numberOfUser' },
+      { title: 'Amount (Bath)', dataIndex: 'price', key: 'price' },
+      { title: 'Payment Method', dataIndex: 'paymentMethod', key: 'paymentMethod' },
+      { title: 'Status', dataIndex: 'status', key: 'status' },
     ];
 
     return (
@@ -60,7 +53,7 @@ export default class PurchaseHistory extends Component {
         <Col span={22}>
           <Row><h1>Purchase History</h1></Row>
           <Row>
-            <Table columns={columns} dataSource={history} scroll={{ x: 800 }} size="small" />
+            <Table columns={columns} dataSource={history} scroll={{ x: 800 }} size="small" rowKey={history => history.id} />
           </Row>
         </Col>
 
