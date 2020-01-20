@@ -41,7 +41,7 @@ export default class ShopList extends Component {
               })
             },
             pageSize: 3,
-            total:12
+            total:shopListItem.length
 
           }}
           dataSource={shopListItem}

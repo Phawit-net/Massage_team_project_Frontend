@@ -3,7 +3,7 @@ import styles from "./Home.module.css";
 import Axios from '../config/axios.setup'
 import ShopList from '../components/Generals/Shop/ShopList'
 import { Link } from 'react-router-dom'
-import { Carousel, Row, Typography, Col } from 'antd';
+import { Carousel, Row, Typography, Col,Pagination } from 'antd';
 
 
 export default class Home extends Component {
@@ -38,7 +38,7 @@ export default class Home extends Component {
 
           <img style={{ width: '100%', height: '100%' }} src="/cover3.png" alt="img3" />
         </Carousel>
-        <Row style={{ backgroundColor: '#f1e6b2', opacity: '0.8', fontSize: '20px' }} >
+        <Row style={{ backgroundColor: '#f1e6b2', fontSize: '20px' }} >
           <Col>
             <div style={{ borderTop: '5px solid #855f3e' }}></div>
           </Col>
@@ -54,19 +54,29 @@ export default class Home extends Component {
           <Col style={{ display: 'flex', justifyContent: 'center', padding: '10px' }} className={styles.font} span={24}>
             A place where Thai massage from all over Thailand meet Thai massge lover
           </Col>
+          <Col style={{ display: 'flex', justifyContent: 'center' }} span={24}>
+            <img src='Separator.png' style={{ width: '10%', height: '10%' }} />
+          </Col>
+          <Col style={{ display: 'flex', justifyContent: 'center', margin: '40px 0px' }} span={24}>
+            <img src='slogan1.png' style={{ width: '150px', height: '150px',margin:'0px 30px' }} />
+            <img src='slogan2.png' style={{ width: '150px', height: '150px' ,margin:'0px 30px'}} />
+          </Col>
         </Row>
-        <Row type='flex' justify='center' align='middle' style={{paddingTop:'20px'}}>
-          <img src='/explore.png' style={{width:'30px',height:'30px',marginRight:'10px'}}/>
+        {/* <Row style={{ backgroundColor: '#f1e6b2'}} type='flex' justify='center'>
+          
+        </Row> */}
+        <Row type='flex' justify='center' align='middle' style={{ paddingTop: '20px' }}>
+          <img src='/explore.png' style={{ width: '30px', height: '30px', marginRight: '10px' }} />
           <Link to='/shoppackages' className={styles.explorefont}>Explore All Shop</Link>
-          <img src='/explore.png' style={{width:'30px',height:'30px',marginLeft:'10px'}}/>
+          <img src='/explore.png' style={{ width: '30px', height: '30px', marginLeft: '10px' }} />
         </Row>
-        <Row style={{margin:'0px 150px'}} className={styles.shoplist}>
+        <Row style={{ margin: '0px 150px' }} className={styles.shoplist}>
           <ShopList
             shopList={this.state.shopList}
             callbackFromParent={this.myCallback}
             keyword={this.state.keyword} />
         </Row>
-      </div>
+      </div >
     )
   }
 }

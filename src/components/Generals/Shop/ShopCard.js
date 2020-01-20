@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Row, Typography, Col, Button, List } from "antd";
 import styles from "./ShopCard.module.css";
 import { Link } from 'react-router-dom'
+import Axios from '../../../config/axios.setup'
 
 const { Paragraph,Text } = Typography;
 
@@ -22,7 +23,7 @@ export default class ShopCard extends Component {
             <Col md={4} sm={16} xs={24} style={{padding:'30px 10px 30px 30px'}} className={styles.imgContent}>
               <img
                 style={{ width: "100%" }}
-                src= {`http://localhost:8080/${item.shopProfilePic}`}
+                src= {`${Axios.defaults.baseURL}/${item.shopProfilePic}`}
               />
             </Col>
             <Col md={20} sm={24} xs={24} style={{padding:'30px 30px 30px 10px'}}className={styles.content} >
