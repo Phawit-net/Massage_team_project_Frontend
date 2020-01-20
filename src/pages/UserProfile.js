@@ -3,6 +3,7 @@ import '../App.css'
 // import PurChaseHist from '../component/UserProfile/PurchaseHistory'
 import ServiceUsage from '../components/UserProfile/ServiceUsage'
 import UserInformation from '../components/UserProfile/UserInformation'
+import PurchaseHistory from '../components/UserProfile/PurchaseHistory';
 
 export default class UserProfile extends Component {
     state = {
@@ -29,7 +30,7 @@ export default class UserProfile extends Component {
         switch(this.state.case){
             case 1: return <UserInformation/>;
 
-            // case 2: return <PurChaseHist/>;
+            case 2: return <PurchaseHistory/>;
 
             case 3: return <ServiceUsage/>;
                                         
