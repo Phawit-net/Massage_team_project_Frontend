@@ -4,7 +4,7 @@ import { Row } from 'antd'
 import Header from './components/Generals/Header/Header'
 import Footer from './components/Generals/Footer/Footer'
 import { Switch, Route } from 'react-router-dom'
-
+import FindLocation from "../src/components/ShopDetails/FindLocation";
 import Home from './pages/Home'
 import Payment from './pages/Payment'
 import ShopDetails from './pages/ShopDetails'
@@ -16,7 +16,7 @@ class App extends React.Component {
   render() {
     return (
       <>
-        <Row style={{ position: 'fixed', width: '100%', zIndex: '200' }}>
+        {/* <Row style={{ position: 'fixed', width: '100%', zIndex: '200' }}>
           <Header />
         </Row>
         <Row>
@@ -32,7 +32,8 @@ class App extends React.Component {
         </Row>
         <Row>
           <Footer />
-        </Row>
+        </Row> */}
+        <FindLocation />
       </>
     )
   }
