@@ -92,7 +92,7 @@ class LoginModal extends Component {
                                         </Form.Item>
                                         <Form.Item>
                                             <Row><a href='#'>Forget your password?</a></Row>
-                                            <Row> <a href='#'>Signup for new account</a></Row>
+                                            <Row> <a href='/signup'>Signup for new account</a></Row>
                                         </Form.Item>
                                         <Form.Item>
                                             <Row type='flex' justify='center'>

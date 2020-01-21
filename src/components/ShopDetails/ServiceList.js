@@ -36,7 +36,7 @@ export default class ServiceList extends Component {
         < Row type="flex" gutter={[8, 32]} >
           {servicesList.slice(this.state.minValue, this.state.maxValue).map(service =>
             <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }}>
-              <ServiceCard key={service.id} service={{ service }} id={service.id} />
+              <ServiceCard key={service.id} service={{ service }}  />
             </Col>
             // <p>{service.id }</p>
           )}

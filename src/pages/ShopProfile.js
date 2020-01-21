@@ -6,6 +6,8 @@ import ApprovePurchase from '../components/ShopProfile/ApprovePurchase'
 import CustomerUsage from '../components/ShopProfile/CustomerUsage'
 
 
+
+
 export default class ShopProfile extends Component {
     state = {
         case : 1

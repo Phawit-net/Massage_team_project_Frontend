@@ -71,17 +71,17 @@ class Header extends Component {
     }
     render() {
         return (
-            <Card style={{ backgroundColor: '#f1e6b2', opacity: '0.8' }} bodyStyle={{ padding: '0' }}>
+            <Card style={{ backgroundColor: '#f1e6b2', opacity: '0.8',height:'140px' }} bodyStyle={{ padding: '0' }}>
                 <Row type='flex' justify='center' align='middle'>
                     <Col xs={19} md={5} lg={10} xl={10}>
-                        <img src={Logo} alt='Logo' style={{ width: '150px', height: '150px' }} />
+                   <Link to ='/home'><img src={Logo} alt='Logo' style={{ width: '150px', height: '150px' }} /></Link>     
                     </Col>
                     <Col xs={5} md={19} lg={12} xl={10}>
                         <Row>
                             <Menu mode="horizontal" inlineIndent='50' style={{ backgroundColor: '#f1e6b2' }} className={styles.rightMenu}>
                                 <Menu.Item className={styles.menuoption}><Link className={styles.linkcolor} to='/home'>Home</Link></Menu.Item>
                                 <Menu.Item className={styles.menuoption}><Link className={styles.linkcolor} to='/shoppackages'>Shop & Packages</Link></Menu.Item>
-                                <Menu.Item className={styles.menuoption}>Contact Us</Menu.Item>
+                                <Menu.Item className={styles.menuoption}><Link className={styles.linkcolor} to='contactus'>About Us</Link></Menu.Item>
                                 {this.renderUserOptioninTopnavbar()}
                             </Menu>
                             <Button id={styles.drawermenu} icon='menu-unfold' size='large' ghost onClick={this.showDrawer} />
@@ -95,7 +95,7 @@ class Header extends Component {
                                 <Menu >
                                     <Menu.Item ><Link to='/home' onClick={() => this.onCloseDrawer()}>Home</Link></Menu.Item>
                                     <Menu.Item ><Link to='/shoppackages' onClick={() => this.onCloseDrawer()}>Shop & Packages</Link></Menu.Item>
-                                    <Menu.Item >Contact Us</Menu.Item>
+                                    <Menu.Item ><Link to='contactus'>About Us</Link></Menu.Item>
                                     {this.renderUserOptioninDrawer()}
                                 </Menu>
                             </Drawer>

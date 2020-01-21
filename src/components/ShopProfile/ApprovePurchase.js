@@ -48,42 +48,42 @@ export class ApprovePurchase extends Component {
       {
         title: "Customer Name",
         dataIndex: "customerName",
-        width: 100,
-        fixed: "left"
+        width: "12%",
+        
       },
       {
-        title: "Service Name",
+        title: "Service",
         dataIndex: "serviceName",
-        width: 100,
-        fixed: "left"
+        width: "12%",
+        
       },
       {
-        title: "Number of User",
+        title: "Number",
         dataIndex: "numberOfUser",
-        width: 100
+        width: "15%"
       },
 
       {
-        title: "Price (Baht)",
+        title: "Price(Baht)",
         dataIndex: "price",
-        width: 100
+        width: "15%"
       },
       {
-        title: "Payment Slip",
+        title: "Slip",
         dataIndex: "paymentSlip",
-        width: 100
+        width: "15%"
       },
       {
-        title: "Payment Method",
+        title: "Payment",
         dataIndex: "paymentMethod",
-        width: 100
+        width: "15%"
       },
 
       {
         title: "Approve",
         dataIndex: "",
         key: "x",
-        fixed: "right",
+       
         render: (text, record) => (
           <div>
             <Button
@@ -104,34 +104,35 @@ export class ApprovePurchase extends Component {
         )
       }
     ];
-
+    
     const data = [];
-    this.state.statementList.map(result =>
+    this.state.statementList.map(result =>{
+      let name = result.user.firstname+" "+result.user.lastname
       data.push({
         key: result.id,
-        // customerName: result.users[0].firstname,
+        customerName: name,
         serviceName: result.serviceName,
         numberOfUser: result.numberOfUser,
         price: result.price,
-        paymentSlip: result.paymentImage,
+        paymentSlip: (<img src={`${Axios.defaults.baseURL}/${result.paymentImage}`} style={{ width: "100px", height: "100px",borderRadius:"50%" }}/>),
         paymentMethod: result.paymentMethod,
 
         
-      })
+      })}
     );
 
     return (
-      <Row type="flex" justify="center">
-        <Col span={12}>
+      <Row type="flex" justify="center" style={{marginTop:'1vh'}}>
+        <Col span={20}>
           <Row type="flex">
-            <Col style={{ fontSize: "20px" }}>Services History</Col>
+            <Col style={{ fontSize: "20px" }}>Approve purchase</Col>
           </Row>
-          <Row>
+          <Row style={{marginTop:'1vh'}}>
             <Table
               columns={columns}
               dataSource={data}
-              pagination={{ pageSize: 50 }}
-              scroll={{ y: 240 }}
+              pagination={{ pageSize: 3 }}
+              
             />
           </Row>
         </Col>

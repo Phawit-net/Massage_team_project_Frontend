@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Row, Col, Card, Avatar, Radio, Steps, Button, Upload, Icon } from 'antd'
+import { Row, Col, Card, Avatar, Radio, Steps, Button, Upload, Icon,message } from 'antd'
+import { withRouter } from 'react-router-dom'
 import Axios from '../config/axios.setup'
 import { connect } from 'react-redux'
 import {clearBooking} from '../redux/actions/actions'
@@ -44,11 +45,11 @@ class Payment extends Component {
                 const current = this.state.current + 1;
                 this.setState({ current });
                 setTimeout(
-                 ()=>{window.location.replace('/home')
+                 ()=>{this.props.history.replace('/home')
                 this.props.clearBooking()},4000)
             })
             .catch(err=>{
-                console.log(err)
+               message.error('Something wrong!!!')
             })
     }
 
@@ -80,6 +81,17 @@ class Payment extends Component {
                 paymentMethod: e.target.value
             }, () => this.calculateTotalprice())
     }
+    handlecustomRequest=({file,onSuccess})=>{
+         setTimeout(()=>{
+               onSuccess('ok')
+         },0)
+    }
+    handleRemove=()=>{
+        this.setState({
+            previewImage:'',
+            file:''
+        },()=>console.log(this.state.previewImage,this.state.file))
+    }
     render() {
         const booking = this.props.booking[0]
         const { current } = this.state;
@@ -89,7 +101,9 @@ class Payment extends Component {
                 content:
                     <Card>
                         <h2>Please upload your transaction slip </h2>
-                        <Dragger onChange={this.handleChange}>
+                        <Dragger accept='.jpg' onChange={this.handleChange} customRequest={({file,onSuccess})=>this.handlecustomRequest({file,onSuccess})}
+                        onRemove={()=>this.handleRemove} showUploadList={false}
+                        >
                             <p className="ant-upload-drag-icon">
                                 <Icon type="inbox" />
                             </p>
@@ -118,7 +132,7 @@ class Payment extends Component {
         ];
         return (
             <>
-                <Row style={{ marginTop: '20px', marginLeft: '10%', marginRight: '10%' }}>
+                <Row style={{ marginTop: '200px', marginLeft: '10%', marginRight: '10%' }}>
                     <Row>
                         <Col>
                             <h2 style={{ color: '#926F3B' }}>Booking Detail</h2>
@@ -173,7 +187,7 @@ class Payment extends Component {
                             <h3>{`${this.state.totalprice} Baht`}</h3>
                         </Col>
                     </Row>
-                    <Row style={{ marginTop: '20px', marginBottom: '40px' }}>
+                    <Row style={{ marginTop: '20px'}}>
                         <div>
                             <Steps current={current}>
                                 {steps.map(item => (
@@ -214,4 +228,4 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
     clearBooking: clearBooking,
   }
-export default connect(mapStateToProps, mapDispatchToProps)(Payment)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Payment))
