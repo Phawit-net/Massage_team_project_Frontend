@@ -46,6 +46,7 @@ class LoginModal extends Component {
     };
     handleClosesignin=()=>{
         this.props.handleCancel()
+        this.props.form.resetFields();
         this.setState({
             notification:''
         })
