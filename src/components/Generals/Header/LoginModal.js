@@ -12,16 +12,17 @@ class LoginModal extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            username: '',
-            password: '',
             notification: ''
         }
     }
     handleSignin = (e) => {
-        e.preventDefault()
-        const username = this.state.username
-        const password = this.state.password
-        Axios.post('/loginUser', { username, password })
+        e.preventDefault()   
+        this.props.form.validateFields((err,values)=>{ 
+            console.log(values)
+            if(!err){  
+            const username = values.username
+            const password = values.password 
+            Axios.post('/loginUser', { username, password })
             .then(response => {
                 console.log(response.data)
                 const user=jwtDecode(response.data.token)
@@ -38,6 +39,10 @@ class LoginModal extends Component {
                     notification:err.response.data
                 })
             })
+        }else{
+            this.props.form.resetFields()
+        }
+        })
     };
     handleClosesignin=()=>{
         this.props.handleCancel()
@@ -75,7 +80,6 @@ class LoginModal extends Component {
                                                 <Input
                                                     prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                                     placeholder="Username"
-                                                    onChange={e => this.setState({ username: e.target.value })}
                                                 />,
                                             )}
                                         </Form.Item>
@@ -87,7 +91,6 @@ class LoginModal extends Component {
                                                     prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                                     type="password"
                                                     placeholder="Password"
-                                                    onChange={e => this.setState({ password: e.target.value })}
                                                 />,
                                             )}
                                         </Form.Item>
