@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Row, Col, Form, Input, Upload, Icon, Modal, Button} from "antd";
 import Axios from "../../config/axios.setup";
 import { compose } from "redux";
+import { failLoginNotification, successLoginNotification } from '../Notification/notification'
 const { TextArea } = Input;
 
 
@@ -46,9 +47,13 @@ export class ShopInformation extends Component {
         payload.append("shopAccountNo", value.accountno);
         payload.append("shopAccountName", value.accountname);
         console.log(payload);
+        if(this.state.fileList[0]==undefined){
+          failLoginNotification("Please select file image")
+        }
         if (!err) {
             Axios.put("/updateShop", payload)
               .then(result => {
+                successLoginNotification()
                 console.log(result);
               })
               .catch(err => {
@@ -240,9 +245,9 @@ console.log(e.target.value)
               </Button>
             </Col>
             <Col>
-              <Button type="primary" style={{ backgroundColor: "#c4c4c4" }}>
+              {/* <Button type="primary" style={{ backgroundColor: "#c4c4c4" }}>
                 Cancel
-              </Button>
+              </Button> */}
             </Col>
           </Row>
 
