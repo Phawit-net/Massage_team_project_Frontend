@@ -1,0 +1,14 @@
+.list:Hover {
+    cursor: pointer;
+}
+
+.list {
+    border : 1px solid burlywood;
+    text-align: center;
+}
+
+.containerList{
+    border: 1px solid burlywood;
+    width:60%;
+    margin: auto;
+}
