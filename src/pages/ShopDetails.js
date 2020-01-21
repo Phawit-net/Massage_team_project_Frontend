@@ -1,11 +1,9 @@
-import React, { Component } from 'react'
-import { Row, Col,Typography } from 'antd'
-import Axios from '../config/axios.setup'
-import { withRouter } from 'react-router-dom'
-import ServiceList from '../components/ShopDetails/ServiceList'
-import ShowLocation from '../components/ShopDetails/ShowLocation'
+import React, { Component } from "react";
+import { Row, Col,Typography } from "antd";
+import Axios from "../config/axios.setup";
+import { withRouter } from "react-router-dom";
+import ServiceList from "../components/ShopDetails/ServiceList";
 import styles from "./ShopDetails.module.css";
-import '../App.css'
 const { Text } = Typography;
 
 class ShopDetails extends Component {
@@ -31,7 +29,7 @@ class ShopDetails extends Component {
     const address = await Axios.get(`http://localhost:8080/address?id=${targetShopId}`)
     if (address.data !== null) {
       this.setState({
-        shopName: result.data.shopName,
+        shopNsame: result.data.shopName,
       shopProfilePic: result.data.shopProfilePic,
       servicesList: result.data.services,
         location: {
@@ -61,13 +59,14 @@ class ShopDetails extends Component {
             <div style={{ borderTop: '5px solid #855f3e' }}></div>
           </Col>
         </Row>
-        <Row style={{display:'flex',justifyContent:'center',alignItems:'center', backgroundColor: '#f1e6b2'}}>
-          <Col style={{margin:'20px'}}>
+        <Row style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
+          <Col>
           <img style={{width: "150px",height: "auto"}} src={`${Axios.defaults.baseURL}/${this.state.shopProfilePic}`}/>
           </Col>
-          <Col style={{margin:'20px'}}>
-            <div className={styles.font} style={{fontSize:'50px'}}>{this.state.shopName}</div>
+          <Col>
+            <h1>{this.state.shopName}</h1>
           </Col>
+
         </Row>
 
         <Row>
