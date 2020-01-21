@@ -1,0 +1,16 @@
+@import "https://fonts.googleapis.com/css?family=Tangerine&display=swap";
+
+.font {
+  font-family: 'Tangerine', cursive;
+  font-weight: bold;
+  color:#855f3e;
+}
+
+@media only screen and (max-width: 900px) {
+    .shopName{
+        display: none;
+    }
+    .font{
+        display:none;
+    }
+}
