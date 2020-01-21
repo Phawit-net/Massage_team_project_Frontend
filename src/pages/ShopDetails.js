@@ -52,6 +52,10 @@ class ShopDetails extends Component {
           <Col style={{margin:'20px'}}>
             <div className={styles.font} style={{fontSize:'50px'}}>{this.state.shopName}</div>
           </Col>
+          <Col>
+            <h1>{this.state.shopName}</h1>
+          </Col>
+
         </Row>
 
         <Row>
