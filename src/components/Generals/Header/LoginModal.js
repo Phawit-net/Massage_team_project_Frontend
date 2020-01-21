@@ -6,6 +6,7 @@ import LoginModalBackground from '../../../picture/LoginModalBackground.jpg'
 import Axios from '../../../config/axios.setup'
 import jwtDecode from 'jwt-decode'
 import {login} from '../../../redux/actions/actions'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 class LoginModal extends Component {
     constructor(props) {
@@ -92,7 +93,7 @@ class LoginModal extends Component {
                                         </Form.Item>
                                         <Form.Item>
                                             <Row><a href='#'>Forget your password?</a></Row>
-                                            <Row> <a href='/signup'>Signup for new account</a></Row>
+                                            <Row> <Link to='/signup' onClick={()=>this.handleClosesignin()}>Signup for new account</Link></Row>
                                         </Form.Item>
                                         <Form.Item>
                                             <Row type='flex' justify='center'>
