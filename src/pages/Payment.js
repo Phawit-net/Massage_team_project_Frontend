@@ -144,7 +144,7 @@ class Payment extends Component {
                             <Card style={{ borderBlockColor: '#926F3B' }}>
                                 <Row >
                                     <Col xs={24} lg={9} xl={5}>
-                                        <Avatar src={booking.service.serviceProfilePic} shape='square' size={200} />
+                                        <Avatar src={`${Axios.defaults.baseURL}/${booking.service.serviceProfilePic}`} shape='square' size={200} />
                                     </Col>
                                     <Col xs={24} lg={14} xl={19}>
                                         <Row type='flex' justify='space-between'>

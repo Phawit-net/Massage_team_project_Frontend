@@ -119,7 +119,7 @@ class BookingModal extends Component {
 
               <Row className={styles.borderBoxSmall} type='flex' justify='space-around'>
                 <Col xs={24} lg={9} xl={8} style={{ textAlign: 'center' }}>
-                  <Avatar src={service.serviceProfilePic} alt="" shape='square' size={200} style={{ margin: '5px' }} />
+                  <Avatar src={`${Axios.defaults.baseURL}/${service.serviceProfilePic}`} alt="" shape='square' size={200} style={{ margin: '5px' }} />
                 </Col>
 
                 <Col xs={24} lg={14} xl={16}>
