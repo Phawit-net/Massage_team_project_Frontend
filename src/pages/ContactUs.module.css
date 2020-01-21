@@ -1,0 +1,35 @@
+
+.cover:hover .person{
+filter: blur(3px);
+opacity: 0.5;
+transform: scale(0.98);
+box-shadow: none;
+}
+
+.person{
+    transition: 0.2s all;
+}
+.person >h1{
+    text-align: center;
+    visibility: hidden;
+}
+.person:hover>h1{
+    visibility: visible;
+}
+.cover:hover .person:hover{
+      transform: scale(1);
+      filter:blur(0px);
+      opacity: 1;
+      box-shadow: 0px 3px 0p rgba(0, 0,0,0.125);
+}
+.button {
+    background-color: #9E462C !important;
+    border-color: #9E462C !important;
+    color: #FFFFFF !important;
+}
+
+
+
+
+
+

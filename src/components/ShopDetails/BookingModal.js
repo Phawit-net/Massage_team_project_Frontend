@@ -21,7 +21,6 @@ class BookingModal extends Component {
 
   componentDidMount() {
     let targetServiceID = this.props.id;
-    console.log(targetServiceID)
     Axios.get(`http://localhost:8080/servicesDetail?id=${targetServiceID}`).then(
       result => {
         this.setState({
@@ -106,7 +105,6 @@ class BookingModal extends Component {
 
     const { getFieldDecorator } = this.props.form;
     let service = this.state.serviceList
-    // console.log(service)
     return (
       <>
         <Button type='link' className={styles.button} onClick={() => this.showBookingModal()}>Booking</Button>
@@ -133,7 +131,7 @@ class BookingModal extends Component {
                     <Col span={8}>
                       <Row><h4>{this.state.shopList.shopName}</h4></Row>
                       <Row><h5>Time: </h5><h6>{this.state.startValue ? `${this.state.startValue}-${this.state.endValue}` : undefined}</h6></Row>
-                      <Row><h5>Date: </h5><h6>{this.state.dateValue}</h6></Row>
+                      <Row><h5>Date: </h5><h6>{(this.state.dateValue) ? moment(this.state.dateValue).format('DD MMM YYYY') : undefined}</h6></Row>
                     </Col>
                   </Row>
                   <Row style={{ padding: '10px' }}><h5>{service.serviceDescription}</h5></Row>
