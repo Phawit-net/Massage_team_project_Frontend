@@ -245,9 +245,9 @@ console.log(e.target.value)
               </Button>
             </Col>
             <Col>
-              {/* <Button type="primary" style={{ backgroundColor: "#c4c4c4" }}>
+              <Button type="primary" style={{ backgroundColor: "#c4c4c4" }}>
                 Cancel
-              </Button> */}
+              </Button>
             </Col>
           </Row>
 
