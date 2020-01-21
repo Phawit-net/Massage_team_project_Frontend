@@ -91,6 +91,7 @@ handleSubmit(e){
                                             <Option value='neztle.net@gmail.com'>Net (neztle.net@gmail.com)</Option>
                                             <Option value='boonsinatiwat2536@gmail.com'>Ice (boonsinatiwat2536@gmail.com)</Option>
                                             <Option value='Tak_25908@hotmail.com'>Ice (Tak_25908@hotmail.com)</Option>
+                                            <Option value='Rusefer@gmail.com'>Beer (Rusefer@gmail.com)</Option>
                                         </Select>
                                         )}
                                     </Form.Item>
