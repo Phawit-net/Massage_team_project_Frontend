@@ -63,7 +63,7 @@ class Signup extends Component {
     const { getFieldDecorator } = this.props.form;
 
     return (
-      <Row type='flex' justify='center' align='middle' style={{ height: '100%' }}>
+      <Row type='flex' justify='center' align='middle' style={{ height: '100%', marginTop: '200px' }}>
         <Col xs={24} lg={12}>
           <Row className={styles.box}>
             <Col span={24}><h1>Register</h1></Col>
