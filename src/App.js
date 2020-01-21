@@ -17,7 +17,7 @@ class App extends React.Component {
   render() {
     return (
       <>
-        {/* <Row style={{ position: 'fixed', width: '100%', zIndex: '200' }}>
+        <Row style={{ position: 'fixed', width: '100%', zIndex: '200' }}>
           <Header />
         </Row>
         <Row>

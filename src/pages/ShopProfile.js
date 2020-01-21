@@ -7,7 +7,7 @@ import CustomerUsage from '../components/ShopProfile/CustomerUsage'
 
 
 
-import ShopInformation from "../components/ShopProfile/ShopInformation";
+
 export default class ShopProfile extends Component {
     state = {
         case : 1
