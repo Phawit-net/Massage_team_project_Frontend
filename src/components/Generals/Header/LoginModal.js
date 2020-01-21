@@ -40,7 +40,7 @@ class LoginModal extends Component {
                 })
             })
         }else{
-            this.props.form.resetFields()
+            return
         }
         })
     };
