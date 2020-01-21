@@ -95,7 +95,7 @@ class Header extends Component {
                                 <Menu >
                                     <Menu.Item ><Link to='/home' onClick={() => this.onCloseDrawer()}>Home</Link></Menu.Item>
                                     <Menu.Item ><Link to='/shoppackages' onClick={() => this.onCloseDrawer()}>Shop & Packages</Link></Menu.Item>
-                                    <Menu.Item ><Link to='contactus'>About Us</Link></Menu.Item>
+                                    <Menu.Item ><Link to='/contactus' onClick={()=>this.onCloseDrawer()}>About Us</Link></Menu.Item>
                                     {this.renderUserOptioninDrawer()}
                                 </Menu>
                             </Drawer>
