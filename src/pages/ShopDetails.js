@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
-import { Row, Col } from 'antd'
+import { Row, Col,Typography } from 'antd'
 import Axios from '../config/axios.setup'
 import { withRouter } from 'react-router-dom'
 import ServiceList from '../components/ShopDetails/ServiceList'
 import ShowLocation from '../components/ShopDetails/ShowLocation'
+import styles from "./ShopDetails.module.css";
+const { Text } = Typography;
+
 class ShopDetails extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       page: 1,
       shopName: "",
@@ -27,6 +30,9 @@ class ShopDetails extends Component {
     const address = await Axios.get(`http://localhost:8080/address?id=${targetShopId}`)
     if (address.data !== null) {
       this.setState({
+        shopName: result.data.shopName,
+      shopProfilePic: result.data.shopProfilePic,
+      servicesList: result.data.services,
         location: {
           address: address.data.address,
           latitude: address.data.latitude,
@@ -35,17 +41,26 @@ class ShopDetails extends Component {
         haveLocation: true,
       })
     }
-    this.setState({
-      shopName: result.data.shopName,
-      shopProfilePic: result.data.shopProfilePic,
-      servicesList: result.data.services,
-    })
   }
+     
 
   render() {
     return (
       <div>
-        <Row style={{ marginTop: "200px" }}>
+        <Row style={{ marginTop: "50px" }}>
+          <Col span={24}>
+            <div className ={styles.shopName} style={{position:'absolute' ,right:'16.7%',top:'25.9%',backgroundColor:'#f1e0b9',opacity:'0.4',width:'275px',height:'90px'}}></div>
+            <div className ={styles.shopName} style={{position:'absolute' ,right:'17.5%',top:'27%',backgroundColor:'#FFF',opacity:'0.2',width:'275px',height:'90px'}}></div>
+            <div className ={styles.shopName} style={{position:'absolute' ,right:'17%',top:'26.3%',width:'275px',height:'90px' , display:'flex' , justifyContent:'center',alignItems:'center'}}>
+              <Text className={styles.font} style={{fontSize:'50px'}}>{this.state.shopName.charAt(0).toUpperCase() + this.state.shopName.slice(1)}</Text>
+            </div>
+            <img src="nuadthaiRoom.jpg" style={{width:'100%'}}/>
+          </Col>
+          <Col span={24}>
+            <div style={{ borderTop: '5px solid #855f3e' }}></div>
+          </Col>
+        </Row>
+        <Row style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
           <Col>
             <Row
               style=
@@ -73,6 +88,10 @@ class ShopDetails extends Component {
               </Col>
             </Row>
           </Col>
+          <Col>
+            <h1>{this.state.shopName}</h1>
+          </Col>
+
         </Row>
 
         <Row>
@@ -89,8 +108,7 @@ class ShopDetails extends Component {
           </Col>
         </Row>
       </div>
-
-    )
+    );
   }
 }
 
