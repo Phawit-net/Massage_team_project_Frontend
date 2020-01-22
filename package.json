@@ -9,6 +9,7 @@
     "antd": "^3.26.7",
     "apexcharts": "^3.14.0",
     "axios": "^0.19.1",
+    "chart.js": "^2.9.3",
     "jwt-decode": "^2.2.0",
     "leaflet": "^1.6.0",
     "leaflet-routing-machine": "^3.2.12",
