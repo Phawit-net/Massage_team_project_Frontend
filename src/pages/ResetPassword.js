@@ -12,29 +12,30 @@ class ResetPassword extends Component {
             status: 'success'
         }
     }
-//  componentWillMount(){
-//        Axios.get('/checkresetpasswordtimeout',{
-//             params:{
-//                resetPasswordToken:this.props.match.params.token
-//             }
-//         }).then(response=>{
-//             if(response.data.message==='success'){
-//                 this.setState({
-//                     username:response.data.username
-//                     status:'success'
-//                 })
-//             }else{
-//                 this.setState({
-//                     status:'timeout'
-//                 })
-//             }
-//         })
-//         .catch(err=>{
-//             this.setState({
-//                 status:'timeout'
-//             })
-//         })
-//     }
+ componentWillMount(){
+       Axios.get('/checkresetpasswordtimeout',{
+            params:{
+               resetPasswordToken:this.props.match.params.token
+            }
+        }).then(response=>{
+            console.log(response.data)
+            if(response.data.message==='success'){
+                this.setState({
+                    username:response.data.username,
+                    status:'success'
+                })
+            }else{
+                this.setState({
+                    status:'timeout'
+                })
+            }
+        })
+        .catch(err=>{
+            this.setState({
+                status:'timeout'
+            })
+        })
+    }
     handlesubmitresetpassword=(e)=>{
         e.preventDefault()
         this.props.form.validateFields((err,values)=>{
