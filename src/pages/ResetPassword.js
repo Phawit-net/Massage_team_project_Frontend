@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { Row, Col, Form, Input, Button } from 'antd'
+import { Row, Col, Form, Input, Button,message } from 'antd'
 import Axios from '../config/axios.setup'
 
 class ResetPassword extends Component {
@@ -43,6 +43,8 @@ class ResetPassword extends Component {
                 Axios.post('/resetpassword',{
                     username:this.state.username,
                     newpassword:values.password
+                }).then(response=>{
+                    message.success(`${response.data.message}`)
                 })
             }
             else{
