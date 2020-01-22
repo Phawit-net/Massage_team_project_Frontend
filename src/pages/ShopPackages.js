@@ -51,7 +51,7 @@ export default class ShopPackages extends Component {
           <Col style={{ padding: "20px 0px 20px 40px" }}className={styles.font}>
             Shop & Packages 
           </Col>
-          <div style={{ width: "90vw", margin: "auto", border: "1px solid #9E4624" }}>
+          <div style={{ width: "90vw", margin: "auto", border: "2px solid #9E4624" }}>
             <Search
               placeholder="input search text"
               onSearch={value => this.handleSearch(value)}

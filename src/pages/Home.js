@@ -3,8 +3,8 @@ import styles from "./Home.module.css";
 import Axios from '../config/axios.setup'
 import ShopList from '../components/Generals/Shop/ShopList'
 import { Link } from 'react-router-dom'
-import { Carousel, Row, Typography, Col,Pagination } from 'antd';
-
+import { Carousel, Row, Typography, Col } from 'antd';
+import Pagination from '../components/Generals/Shop/Pagination'
 
 export default class Home extends Component {
   constructor(props) {
@@ -76,6 +76,8 @@ export default class Home extends Component {
             callbackFromParent={this.myCallback}
             keyword={this.state.keyword} />
         </Row>
+
+        <Pagination/>
       </div >
     )
   }
