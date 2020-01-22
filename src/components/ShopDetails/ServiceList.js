@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ServiceCard from './ServiceCard'
-import { Row, Col, Pagination } from 'antd'
+import styles from "./ServiceList.module.css";
+import { Row, Col, Pagination, List } from 'antd'
 
 const numEachPage = 4
 export default class ServiceList extends Component {
@@ -26,17 +27,17 @@ export default class ServiceList extends Component {
       <div
         style=
         {{
-          backgroundColor: "#FFFFFF", border: "1px solid #000000",
+          backgroundColor: "#FFFFFF", border: "2px solid #9E4624",
           boxSizing: "border-box", marginTop: "30px", display: "flex",
           flexDirection: "column", alignItems: "center"
         }}>
-        <h1 style={{ color: "#926F3B" }}>
+        <div style={{fontSize:'50px'}} className={styles.font}>
           Services
-        </h1>
-        < Row type="flex" gutter={[8, 32]} >
+        </div>
+        < Row type="flex" >
           {servicesList.slice(this.state.minValue, this.state.maxValue).map(service =>
-            <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }}>
-              <ServiceCard key={service.id} service={{ service }} />
+            <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }} style={{padding:'10px'}}>
+              <ServiceCard key={service.id} service={{ service }}  />
             </Col>
           )}
         </Row >

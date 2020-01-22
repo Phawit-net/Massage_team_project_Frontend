@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom'
 import ServiceList from '../components/ShopDetails/ServiceList'
 import ShowLocation from '../components/ShopDetails/ShowLocation'
 import styles from "./ShopDetails.module.css";
+import '../App.css'
 const { Text } = Typography;
 
 class ShopDetails extends Component {

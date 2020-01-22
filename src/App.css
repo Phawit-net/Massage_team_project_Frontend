@@ -1,3 +1,7 @@
+.ant-typography a {
+  color:#9e452c !important;
+}
+
 .App {
   text-align: center;
 }
@@ -51,3 +55,12 @@
   border-style: inset;
 }
 
+.ant-btn-primary {
+  background-color :#9E4624 !important;
+  border-color: #9E4624 !important;
+}
+
+.ant-btn-primary:hover {
+  background-color:#a15a3f !important;
+    border-color: #a15a3f !important;
+}
