@@ -91,7 +91,7 @@ export class ServiceHistory extends Component {
               columns={columns}
               dataSource={data}
               pagination={{ pageSize: 3 }}
-              // scroll={{ y: 400 }}
+              scroll={{ x: 800 }}
             />
           </Row>
         </Col>

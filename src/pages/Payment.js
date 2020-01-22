@@ -16,7 +16,7 @@ class Payment extends Component {
             file: '',
             previewImage: '',
             totalprice: '',
-            paymentMethod: 'pay30%'
+            paymentMethod:'pay30'
         };
     }
     componentDidMount() {
@@ -49,6 +49,7 @@ class Payment extends Component {
                 this.props.clearBooking()},4000)
             })
             .catch(err=>{
+                console.log(err.response.data)
                message.error('Something wrong!!!')
             })
     }
@@ -65,7 +66,7 @@ class Payment extends Component {
         })
     }
     calculateTotalprice = () => {
-        if (this.state.paymentMethod === 'pay30%') {
+        if (this.state.paymentMethod === 'pay30') {
             this.setState({
                 totalprice: Math.round(this.props.booking[0].price * 0.3)
             })
@@ -143,7 +144,7 @@ class Payment extends Component {
                             <Card style={{ borderBlockColor: '#926F3B' }}>
                                 <Row >
                                     <Col xs={24} lg={9} xl={5}>
-                                        <Avatar src={booking.service.serviceProfilePic} shape='square' size={200} />
+                                        <Avatar src={`${Axios.defaults.baseURL}/${booking.service.serviceProfilePic}`} shape='square' size={200} />
                                     </Col>
                                     <Col xs={24} lg={14} xl={19}>
                                         <Row type='flex' justify='space-between'>
@@ -173,8 +174,8 @@ class Payment extends Component {
                             <h4>Payment Method</h4>
                         </Col>
                         <Col xs={24} md={4} lg={4}>
-                            <Radio.Group defaultValue='pay30%' onChange={e => this.handleSelectPaymentMethod(e)}>
-                                <Radio value='pay30%'>Advanced(30%)</Radio>
+                            <Radio.Group defaultValue='pay30' onChange={e => this.handleSelectPaymentMethod(e)}>
+                                <Radio value='pay30'>Advanced(30%)</Radio>
                                 <Radio value='payFullPrice'>Full payment(100%)</Radio>
                             </Radio.Group>
                         </Col>

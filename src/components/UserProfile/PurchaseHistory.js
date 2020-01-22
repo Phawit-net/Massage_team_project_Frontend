@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Row, Table, Col } from 'antd'
+import { Row, Table, Col, Tag } from 'antd'
 import Axios from '../../config/axios.setup';
 import moment from 'moment';
 
@@ -18,6 +18,7 @@ export default class PurchaseHistory extends Component {
 
   render() {
     const history = this.state.purchaseHistory
+    let color
     const columns = [
       {
         title: 'Shop',
@@ -45,7 +46,20 @@ export default class PurchaseHistory extends Component {
       { title: 'Person', dataIndex: 'numberOfUser', key: 'numberOfUser' },
       { title: 'Amount (Bath)', dataIndex: 'price', key: 'price' },
       { title: 'Payment Method', dataIndex: 'paymentMethod', key: 'paymentMethod' },
-      { title: 'Status', dataIndex: 'status', key: 'status' },
+      {
+        title: 'Status', dataIndex: 'status', key: 'status',
+        render: (text, history) => (
+          <span>
+            {(history.status === 'Approve' ? color = 'green' : (history.status === 'Approve30' ? color = 'geekblue' : (history.status === 'waitingApprove' ? color = 'gold' : color = 'volcano')))}
+
+            < Tag color={color} key={history.status}>
+              {history.status.toUpperCase()}
+            </Tag>
+
+
+          </span >
+        ),
+      },
     ];
 
     return (
@@ -57,7 +71,7 @@ export default class PurchaseHistory extends Component {
           </Row>
         </Col>
 
-      </Row>
+      </Row >
     )
   }
 }

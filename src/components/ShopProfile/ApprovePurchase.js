@@ -132,7 +132,7 @@ export class ApprovePurchase extends Component {
               columns={columns}
               dataSource={data}
               pagination={{ pageSize: 3 }}
-              
+              scroll={{ x: 800 }}
             />
           </Row>
         </Col>
