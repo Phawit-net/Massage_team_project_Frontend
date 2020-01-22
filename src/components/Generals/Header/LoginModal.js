@@ -124,6 +124,47 @@ class LoginModal extends Component {
                                 <Row type='flex' justify='center' >
                                     <Col><img src='/NuadThaiLogo.png' alt='Logo' style={{ width: '150px', height: '150px' }} /></Col>
                                 </Row>
+                                <Row>
+                                    <h5 style={{color:'red'}}>{this.state.notification}</h5>
+                                    <Form onSubmit={(e) => this.handleSignin(e)} className="login-form">
+                                        <Form.Item>
+                                            {getFieldDecorator('username', {
+                                                rules: [{ required: true, message: 'Please input your username!' }],
+                                            })(
+                                                <Input
+                                                    prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                                    placeholder="Username"
+                                                    onChange={e => this.setState({ username: e.target.value })}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item>
+                                            {getFieldDecorator('password', {
+                                                rules: [{ required: true, message: 'Please input your Password!' }],
+                                            })(
+                                                <Input
+                                                    prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+                                                    type="password"
+                                                    placeholder="Password"
+                                                    onChange={e => this.setState({ password: e.target.value })}
+                                                />,
+                                            )}
+                                        </Form.Item>
+                                        <Form.Item>
+                                            <Row><a href='#'>Forget your password?</a></Row>
+                                            <Row> <a href='/signup'>Signup for new account</a></Row>
+                                        </Form.Item>
+                                        <Form.Item>
+                                            <Row type='flex' justify='center'>
+                                                <Col>
+                                                    <Button htmlType="submit" style={{ backgroundColor: '#9E4624' }} >
+                                                        <span style={{ color: 'white' }}>Log in</span>
+                                                    </Button>
+                                                </Col>
+                                            </Row>
+                                        </Form.Item>
+                                    </Form>
+                                </Row>
                               {this.renderFormComponent(getFieldDecorator)}
                             </Card>
                         </Col>
