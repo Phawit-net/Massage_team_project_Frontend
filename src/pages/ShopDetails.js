@@ -59,14 +59,13 @@ class ShopDetails extends Component {
             <div style={{ borderTop: '5px solid #855f3e' }}></div>
           </Col>
         </Row>
-        <Row style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-          <Col>
+        <Row style={{display:'flex',justifyContent:'center',alignItems:'center', backgroundColor: '#f1e6b2'}}>
+          <Col style={{margin:'20px'}}>
           <img style={{width: "150px",height: "auto"}} src={`${Axios.defaults.baseURL}/${this.state.shopProfilePic}`}/>
           </Col>
-          <Col>
-            <h1>{this.state.shopName}</h1>
+          <Col style={{margin:'20px'}}>
+            <div className={styles.font} style={{fontSize:'50px'}}>{this.state.shopName}</div>
           </Col>
-
         </Row>
 
         <Row>
