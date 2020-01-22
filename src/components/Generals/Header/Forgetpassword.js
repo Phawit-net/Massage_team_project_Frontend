@@ -1,14 +1,33 @@
 import React, { Component } from 'react'
-import { Row, Col, Form, Button,Input } from 'antd'
+import { Row, Col, Form, Button,Input,message } from 'antd'
+import Axios from '../../../config/axios.setup'
 class Forgetpassword extends Component {
     handleSubmitForgetpassword=(e)=>{
         e.preventDefault()
+        this.props.form.validateFields((err,values)=>{
+           if(!err){
+               Axios.post('/forgetpassword',{
+                   email:values.email
+               })
+               .then(response=>{
+                   if(response.data==='email has been sent, please check your email'){
+                       message.success(response.data)
+                   }
+                   else{
+                       message.error('something wrong')
+                   }
+               })
+               .catch(err=>{
+                   console.log(err)
+               })
+           } 
+        })
     }
     render() {
         const { getFieldDecorator } = this.props.form;
         return (
             <Row style={{height:'100%'}}>
-                <Form onSubmit={(e)=>this.handleSubmitForgetpassword}>
+                <Form onSubmit={(e)=>this.handleSubmitForgetpassword(e)}>
                     <h4>Please input your registered email</h4>
                     <Form.Item>
                         {getFieldDecorator('email', {

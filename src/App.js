@@ -31,7 +31,7 @@ class App extends React.Component {
             <Route path='/shopprofile' component={ShopProfile}/>
             <Route path='/signup' component={Signup}/>
             <Route path='/userprofile' component={UserProfile}/>
-            <Route path ='/resetpassword' component={ResetPassword}/>
+            <Route path ='/resetpassword/:token' component={ResetPassword}/>
             <Redirect to='/home'/>
           </Switch>
         </Row>
