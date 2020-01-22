@@ -187,19 +187,19 @@ class BookingModal extends Component {
 
                     <Row>
                       <Form.Item label="Total price:">
-                        <Col>{service.price * this.state.personValue} Bath</Col>
+                        <Col>{service.price * this.state.personValue} Baht</Col>
                       </Form.Item>
                     </Row>
 
                     <Row type='flex' justify='center'>
                       <Form.Item style={{ margin: 0 }} {...tailFormItemLayout}>
                         <Col span={12} width="100%">
-                          <Button style={{ float: 'right', margin: '3px' }} onClick={this.hideBookingModal}>cancle</Button>
+                          <Button style={{ float: 'right', margin: '3px' }} onClick={this.hideBookingModal}>cancel</Button>
                         </Col>
                         <Col span={12} width="100%">
                           <Button htmlType="submit" style={{ float: 'left', margin: '3px' }}
                             className={styles.button} onClick={() => this.handleSubmit(service)}
-                          >comfirm</Button>
+                          >confirm</Button>
                         </Col>
                       </Form.Item>
                     </Row>
