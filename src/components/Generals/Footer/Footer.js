@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import {Row,Col,Card,Icon} from 'antd'
-import Logo from '../../../picture/NuadThaiLogo.png'
 
 export default class Footer extends Component {
     render() {
@@ -9,7 +8,7 @@ export default class Footer extends Component {
                <Row type='flex' justify='space-around' >
                    <Col>
                    <Row>
-                 <img src={Logo} alt='Logo' style={{ width: '150px', height: '150px' }} />
+                 <img src='NuadThaiLogo.png' alt='Logo' style={{ width: '150px', height: '150px' }} />
                    </Row>
                    <Row tpe='flex' align='top'>
                       <b style={{fontSize:'15px'}} >Heaven For Thai Massage Lover</b>
