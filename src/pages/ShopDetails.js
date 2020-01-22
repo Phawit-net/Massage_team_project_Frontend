@@ -52,46 +52,21 @@ class ShopDetails extends Component {
             <div className ={styles.shopName} style={{position:'absolute' ,right:'16.7%',top:'25.9%',backgroundColor:'#f1e0b9',opacity:'0.4',width:'275px',height:'90px'}}></div>
             <div className ={styles.shopName} style={{position:'absolute' ,right:'17.5%',top:'27%',backgroundColor:'#FFF',opacity:'0.2',width:'275px',height:'90px'}}></div>
             <div className ={styles.shopName} style={{position:'absolute' ,right:'17%',top:'26.3%',width:'275px',height:'90px' , display:'flex' , justifyContent:'center',alignItems:'center'}}>
-              <Text className={styles.font} style={{fontSize:'50px'}}>{this.state.shopName.charAt(0).toUpperCase() + this.state.shopName.slice(1)}</Text>
+              <Text className={styles.fontHead} style={{fontSize:'50px'}}>{this.state.shopName.charAt(0).toUpperCase() + this.state.shopName.slice(1)}</Text>
             </div>
-            <img src="nuadthaiRoom.jpg" style={{width:'100%'}}/>
+            <img className={styles.shopRoom} src="nuadthaiRoom.png" style={{width:'100%'}}/>
           </Col>
           <Col span={24}>
             <div style={{ borderTop: '5px solid #855f3e' }}></div>
           </Col>
         </Row>
-        <Row style={{display:'flex',justifyContent:'center',alignItems:'center'}}>
-          <Col>
-            <Row
-              style=
-              {{
-                backgroundImage: `url(${Axios.defaults.baseURL}/${this.state.shopProfilePic})`,
-                backgroundRepeat: "no-repeat",
-                backgroundAttachment: "fixed",
-                backgroundSize: "cover",
-              }}
-            >
-              <Col span={12} >
-                <img
-                  style={{
-                    borderRadius: "50%",
-                    border: "1px solid #000",
-                    width: "150px",
-                    height: "auto",
-                    float: "right"
-                  }}
-                  alt="shopProfilePic"
-                  src={`${Axios.defaults.baseURL}/${this.state.shopProfilePic}`} />
-              </Col>
-              <Col span={12}>
-                <h1>{this.state.shopName}</h1>
-              </Col>
-            </Row>
+        <Row style={{display:'flex',justifyContent:'center',alignItems:'center', backgroundColor: '#f1e6b2'}}>
+          <Col style={{margin:'20px'}}>
+          <img style={{width: "150px",height: "auto"}} src={`${Axios.defaults.baseURL}/${this.state.shopProfilePic}`}/>
           </Col>
-          <Col>
-            <h1>{this.state.shopName}</h1>
+          <Col style={{margin:'20px'}}>
+            <div className={styles.font} style={{fontSize:'50px'}}>{this.state.shopName}</div>
           </Col>
-
         </Row>
 
         <Row>

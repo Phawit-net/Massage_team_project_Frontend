@@ -15,10 +15,10 @@ export default class ShopCard extends Component {
           <Row style={{ border: "2px solid #D8AE47", margin: "10px" }}>
             <Row type='flex' justify ='center'>
             <Col style={{position: 'absolute',width:'100%',height:'100%'}}>
-              <img src='/pattern4.png' alt="pattern4" style={{position: 'absolute'}}/>           
-              <img src='/pattern5.png' alt="pattern5" style={{position: 'absolute',right:'0%'}}/>
-              <img src='/pattern4.png' alt="pattern6" style={{position: 'absolute', transform: 'scaleY(-1)',bottom:'0%'}}/>           
-              <img src='/pattern5.png' alt="pattern7" style={{position: 'absolute', transform: 'scaleY(-1)',right:'0%',bottom:'0%'}}/>
+              <img src='patternLeft.png'  style={{position: 'absolute'}}/>           
+              <img src='patternRight.png'  style={{position: 'absolute',right:'0%'}}/>
+              <img src='patternLeft.png' style={{position: 'absolute', transform: 'scaleY(-1)',bottom:'0%'}}/>           
+              <img src='patternRight.png' style={{position: 'absolute', transform: 'scaleY(-1)',right:'0%',bottom:'0%'}}/>
             </Col>
             <Col md={4} sm={16} xs={24} style={{padding:'30px 10px 30px 30px'}} className={styles.imgContent}>
               <img
