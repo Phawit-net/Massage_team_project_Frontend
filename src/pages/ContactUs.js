@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import { Row, Col, Form, Input, Select, Button, Divider, Card,message } from 'antd'
-import testmodel from '../picture/test model.png'
 import styles from './ContactUs.module.css'
-import aboutus from '../picture/about us.jpg'
 import Axios from '../config/axios.setup'
 const { Option } = Select;
 
@@ -31,9 +29,9 @@ handleSubmit(e){
         const { getFieldDecorator } = this.props.form;
         return (
             <>
-                <Row style={{ marginTop: '150px' }} id='About this project'>
-                    <Row type='flex' style={{ height: '700px' }} >
-                        <img src={aboutus} style={{ height: '100%', width: '100%' }} alt='aboutus top pic' />
+                <Row style={{ marginTop: '140px' }} id='About this project'>
+                    <Row type='flex' >
+                        <img src='about.jpg' style={{ height: '100%', width: '100%' }} alt='aboutus top pic' />
                     </Row>
                     <Row style={{ marginLeft: '10%', marginRight: '10%', marginTop: '20px' }} type='flex' align='middle' gutter={[32, 0]} >
                         <Col span={12}>
@@ -54,19 +52,19 @@ handleSubmit(e){
                         <a href='https://github.com/panuwat33586' target='_blank'>
                             <Col className={styles.person}>
                                 <h1>A</h1>
-                                <img src={testmodel} alt='test model' />
+                                <img src='test model.png' alt='test model' />
                             </Col>
                         </a>
                         <Col className={styles.person}>
                             <h1>A</h1>
-                            <img src={testmodel} alt='test model' />
+                            <img src='test model.png' alt='test model' />
                         </Col>
                         <Col className={styles.person}>
                             <h1>A</h1>
-                            <img src={testmodel} alt='test model' />
+                            <img src='test model.png' alt='test model' />
                         </Col>
                     </Row>
-                    <Row type='flex' justify='center' gutter={[16, 0]} style={{ marginTop: '50px' }}>
+                    <Row type='flex' justify='center' style={{ marginTop: '50px' }}>
                         <Col>
                             <Row type='flex' justify='start'>
                                 <h1>Contact us via email</h1>
