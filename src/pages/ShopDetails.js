@@ -16,7 +16,8 @@ class ShopDetails extends Component {
         address: "",
         latitude: "",
         longitude: "",
-      }
+      },
+      haveLocation: false,
     }
   }
 
@@ -24,21 +25,24 @@ class ShopDetails extends Component {
     let targetShopId = this.props.history.location.search.slice(4)
     const result = await Axios.get(`http://localhost:8080/shop?id=${targetShopId}`)
     const address = await Axios.get(`http://localhost:8080/address?id=${targetShopId}`)
-    // console.log(result, address)
+    if (address.data !== null) {
+      this.setState({
+        location: {
+          address: address.data.address,
+          latitude: address.data.latitude,
+          longitude: address.data.longitude,
+        },
+        haveLocation: true,
+      })
+    }
     this.setState({
       shopName: result.data.shopName,
       shopProfilePic: result.data.shopProfilePic,
       servicesList: result.data.services,
-      location: {
-        address: address.data.address,
-        latitude: address.data.latitude,
-        longitude: address.data.longitude,
-      }
     })
   }
 
   render() {
-    console.log(this.state)
     return (
       <div>
         <Row style={{ marginTop: "200px" }}>
@@ -54,16 +58,14 @@ class ShopDetails extends Component {
             >
               <Col span={12} >
                 <img
-                  style=
-                  {{
+                  style={{
                     borderRadius: "50%",
-                    // borderRadius: "8px",
                     border: "1px solid #000",
                     width: "150px",
                     height: "auto",
                     float: "right"
                   }}
-
+                  alt="shopProfilePic"
                   src={`${Axios.defaults.baseURL}/${this.state.shopProfilePic}`} />
               </Col>
               <Col span={12}>
@@ -75,13 +77,15 @@ class ShopDetails extends Component {
 
         <Row>
           <Col sm={{ span: 24, offset: 0 }} md={{ span: 22, offset: 1 }} >
-            <ServiceList key={this.state.page} servicesList={this.state.servicesList} />
+            <ServiceList servicesList={this.state.servicesList} />
           </Col>
         </Row>
 
         <Row type="flex" justify="center">
           <Col  >
-            <ShowLocation location={this.state.location} />
+            {this.state.haveLocation ?
+              <ShowLocation location={this.state.location} /> : ""
+            }
           </Col>
         </Row>
       </div>

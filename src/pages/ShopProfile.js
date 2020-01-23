@@ -75,6 +75,8 @@ export default class ShopProfile extends Component {
             case 4: return <ApprovePurchase />;
 
             case 5: return <CustomerUsage />;
+
+            default: return <ShopInformation />;
         }
     };
 
@@ -84,7 +86,7 @@ export default class ShopProfile extends Component {
                 <Col style={{ width: "100%", height: "50%", position: "sticky", top: "250px" }}>
                     <Row className="pic" type="grid">
                         <Col span={6}></Col>
-                        <Col className="img" span={6}> <img className="img" src={`${Axios.defaults.baseURL}/${this.state.pic}`} alt="picture" /> </Col>
+                        <Col className="img" span={6}> <img className="img" src={`${Axios.defaults.baseURL}/${this.state.pic}`} alt="shop profile" /> </Col>
                         <Col className="name" span={12}> {this.state.shopName}</Col>
                     </Row>
                     <Row className="listUserProfile" style={{ marginLeft: "16%", width: "100%" }} type="grid">

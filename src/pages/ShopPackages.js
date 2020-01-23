@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Input,Col, Icon, Button } from "antd";
+import { Row, Input, Col } from "antd";
 import ShopList from "../components/Generals/Shop/ShopList";
 import Axios from "axios";
 import styles from "./ShopPackages.module.css";
@@ -48,8 +48,8 @@ export default class ShopPackages extends Component {
     return (
       <div>
         <Row style={{ marginTop: '150px' }}>
-          <Col style={{ padding: "20px 0px 20px 40px" }}className={styles.font}>
-            Shop & Packages 
+          <Col style={{ padding: "20px 0px 20px 40px" }} className={styles.font}>
+            Shop & Packages
           </Col>
           <div style={{ width: "90vw", margin: "auto", border: "1px solid #9E4624" }}>
             <Search

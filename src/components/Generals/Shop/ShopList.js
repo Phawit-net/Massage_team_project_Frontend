@@ -1,11 +1,7 @@
 import React, { Component } from "react";
-import { Row, Typography, Col, Button, List, Pagination } from "antd";
-import styles from "./ShopCard.module.css";
-
+import { List } from "antd";
 import ShopCard from "./ShopCard";
 import Axios from 'axios';
-const { Text } = Typography;
-
 
 export default class ShopList extends Component {
   constructor(props) {

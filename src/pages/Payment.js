@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { Row, Col, Card, Avatar, Radio, Steps, Button, Upload, Icon,message } from 'antd'
+import { Row, Col, Card, Avatar, Radio, Steps, Button, Upload, Icon, message } from 'antd'
 import { withRouter } from 'react-router-dom'
 import Axios from '../config/axios.setup'
 import { connect } from 'react-redux'
-import {clearBooking} from '../redux/actions/actions'
+import { clearBooking } from '../redux/actions/actions'
 const { Dragger } = Upload;
 const { Step } = Steps;
 
@@ -16,7 +16,7 @@ class Payment extends Component {
             file: '',
             previewImage: '',
             totalprice: '',
-            paymentMethod:'pay30'
+            paymentMethod: 'pay30'
         };
     }
     componentDidMount() {
@@ -29,9 +29,9 @@ class Payment extends Component {
     confirm() {
         const booking = this.props.booking[0]
         let payload = new FormData()
-        payload.append('paymentphoto',this.state.file)
+        payload.append('paymentphoto', this.state.file)
         payload.append('numberofuser', booking.person)
-        payload.append('price',this.state.totalprice)
+        payload.append('price', this.state.totalprice)
         payload.append('starttime', booking.startTime)
         payload.append('endtime', booking.endTime)
         payload.append('date', booking.date)
@@ -45,12 +45,14 @@ class Payment extends Component {
                 const current = this.state.current + 1;
                 this.setState({ current });
                 setTimeout(
-                 ()=>{this.props.history.replace('/home')
-                this.props.clearBooking()},4000)
+                    () => {
+                        this.props.history.replace('/home')
+                        this.props.clearBooking()
+                    }, 4000)
             })
-            .catch(err=>{
+            .catch(err => {
                 console.log(err.response.data)
-               message.error('Something wrong!!!')
+                message.error('Something wrong!!!')
             })
     }
 
@@ -82,16 +84,16 @@ class Payment extends Component {
                 paymentMethod: e.target.value
             }, () => this.calculateTotalprice())
     }
-    handlecustomRequest=({file,onSuccess})=>{
-         setTimeout(()=>{
-               onSuccess('ok')
-         },0)
+    handlecustomRequest = ({ file, onSuccess }) => {
+        setTimeout(() => {
+            onSuccess('ok')
+        }, 0)
     }
-    handleRemove=()=>{
+    handleRemove = () => {
         this.setState({
-            previewImage:'',
-            file:''
-        },()=>console.log(this.state.previewImage,this.state.file))
+            previewImage: '',
+            file: ''
+        }, () => console.log(this.state.previewImage, this.state.file))
     }
     render() {
         const booking = this.props.booking[0]
@@ -102,8 +104,8 @@ class Payment extends Component {
                 content:
                     <Card>
                         <h2>Please upload your transaction slip </h2>
-                        <Dragger accept='.jpg' onChange={this.handleChange} customRequest={({file,onSuccess})=>this.handlecustomRequest({file,onSuccess})}
-                        onRemove={()=>this.handleRemove} showUploadList={false}
+                        <Dragger accept='.jpg' onChange={this.handleChange} customRequest={({ file, onSuccess }) => this.handlecustomRequest({ file, onSuccess })}
+                            onRemove={() => this.handleRemove} showUploadList={false}
                         >
                             <p className="ant-upload-drag-icon">
                                 <Icon type="inbox" />
@@ -117,7 +119,7 @@ class Payment extends Component {
             },
             {
                 title: 'Confirm payment',
-                content: <Card cover={<img src={this.state.previewImage} alt='slip image' />}>
+                content: <Card cover={<img src={this.state.previewImage} alt='slip_image' />}>
                 </Card>,
             },
             {
@@ -188,7 +190,7 @@ class Payment extends Component {
                             <h3>{`${this.state.totalprice} Baht`}</h3>
                         </Col>
                     </Row>
-                    <Row style={{ marginTop: '20px'}}>
+                    <Row style={{ marginTop: '20px' }}>
                         <div>
                             <Steps current={current}>
                                 {steps.map(item => (
@@ -198,7 +200,7 @@ class Payment extends Component {
                             <div className="steps-content" style={{ marginTop: '20px' }}>{steps[current].content}</div>
                             <div className="steps-action" style={{ marginTop: '20px' }}>
                                 {current === 0 && (
-                                    <Button type="primary" disabled={this.state.file===''?true:false} onClick={() => this.next()}>
+                                    <Button type="primary" disabled={this.state.file === '' ? true : false} onClick={() => this.next()}>
                                         Next
             </Button>
                                 )}
@@ -228,5 +230,5 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = {
     clearBooking: clearBooking,
-  }
+}
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Payment))

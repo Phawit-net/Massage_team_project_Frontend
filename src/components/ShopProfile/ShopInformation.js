@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Row, Col, Form, Input, Upload, Icon, Modal, Button } from "antd";
+import { Row, Col, Form, Input, Upload, Icon, Button } from "antd";
 import Axios from "../../config/axios.setup";
-import { compose } from "redux";
 import { failLoginNotification, successLoginNotification } from '../Notification/notification'
 import FindLocation from '../ShopDetails/FindLocation'
 
@@ -53,7 +51,7 @@ export class ShopInformation extends Component {
       payload.append("longitude", value.longitude);
       payload.append("address", value.address);
 
-      if (this.state.fileList[0] == undefined) {
+      if (this.state.fileList[0] === undefined) {
         failLoginNotification("Please select file image")
       }
       if (!err) {
@@ -130,18 +128,7 @@ export class ShopInformation extends Component {
     this.setState({
       location: location,
     });
-    // this.props.setFieldsValue({
-    //   longitude: this.state.location.longitude
-    // });
-    console.log(location)
   };
-
-  // handleLocationChange = () => {
-  //   this.props.form.setFieldsValue({
-  //     latitude: this.state.location.lat,
-  //     longitude: this.state.location.lng,
-  //   });
-  // }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.location.lat !== this.state.location.lat || prevState.location.lng !== this.state.location.lng) {
@@ -153,7 +140,6 @@ export class ShopInformation extends Component {
   }
 
   validateLatitude = (rule, value, callback) => {
-    const { form } = this.props;
     if (!(value <= 90 && value >= -90)) {
       callback("latitude values range between -90 and +90 degrees");
     } else {
@@ -162,7 +148,6 @@ export class ShopInformation extends Component {
   };
 
   validateLongitude = (rule, value, callback) => {
-    const { form } = this.props;
     if (!(value <= 180 && value >= -180)) {
       callback("longitude values range between -180 and +180 degrees");
     } else {
@@ -171,14 +156,6 @@ export class ShopInformation extends Component {
   };
 
   render() {
-
-    const { previewVisible, previewImage } = this.state;
-    const uploadButton = (
-      <div>
-        <Icon type="plus" />
-        <div className="ant-upload-text">Upload</div>
-      </div>
-    );
 
     const formItemLayout = {
       labelCol: {

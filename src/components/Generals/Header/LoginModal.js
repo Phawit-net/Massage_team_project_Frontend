@@ -5,7 +5,7 @@ import Logo from '../../../picture/NuadThaiLogo.png'
 import LoginModalBackground from '../../../picture/LoginModalBackground.jpg'
 import Axios from '../../../config/axios.setup'
 import jwtDecode from 'jwt-decode'
-import {login} from '../../../redux/actions/actions'
+import { login } from '../../../redux/actions/actions'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 class LoginModal extends Component {
@@ -24,25 +24,25 @@ class LoginModal extends Component {
         Axios.post('/loginUser', { username, password })
             .then(response => {
                 console.log(response.data)
-                const user=jwtDecode(response.data.token)
-                this.props.login(user,response.data.token);
+                const user = jwtDecode(response.data.token)
+                this.props.login(user, response.data.token);
                 this.props.handleCancel();
                 this.props.form.resetFields();
                 this.setState({
-                    notification:''
+                    notification: ''
                 })
             })
             .catch(err => {
                 this.props.form.resetFields()
                 this.setState({
-                    notification:err.response.data
+                    notification: err.response.data
                 })
             })
     };
-    handleClosesignin=()=>{
+    handleClosesignin = () => {
         this.props.handleCancel()
         this.setState({
-            notification:''
+            notification: ''
         })
     }
     render() {
@@ -66,7 +66,7 @@ class LoginModal extends Component {
                                     <Col><img src={Logo} alt='Logo' style={{ width: '150px', height: '150px' }} /></Col>
                                 </Row>
                                 <Row>
-                                    <h5 style={{color:'red'}}>{this.state.notification}</h5>
+                                    <h5 style={{ color: 'red' }}>{this.state.notification}</h5>
                                     <Form onSubmit={(e) => this.handleSignin(e)} className="login-form">
                                         <Form.Item>
                                             {getFieldDecorator('username', {
@@ -93,7 +93,7 @@ class LoginModal extends Component {
                                         </Form.Item>
                                         <Form.Item>
                                             <Row><a href='#'>Forget your password?</a></Row>
-                                            <Row> <Link to='/signup' onClick={()=>this.handleClosesignin()}>Signup for new account</Link></Row>
+                                            <Row> <Link to='/signup' onClick={() => this.handleClosesignin()}>Signup for new account</Link></Row>
                                         </Form.Item>
                                         <Form.Item>
                                             <Row type='flex' justify='center'>
@@ -116,6 +116,6 @@ class LoginModal extends Component {
 }
 const mapDispatchToProps = {
     login: login
-  }
+}
 
 export default connect(null, mapDispatchToProps)(Form.create()(LoginModal))

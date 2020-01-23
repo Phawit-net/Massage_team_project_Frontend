@@ -35,6 +35,7 @@ export default class ServiceUsage extends Component {
       shopnames.push(x.shopName)
       showShopname.labels.push("Shop - " + x.shopName)
       shopcount.push(x.count)
+      return result;
     });
     console.log(shopnames)
     console.log(shopcount)

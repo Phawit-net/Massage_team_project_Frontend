@@ -35,6 +35,7 @@ export default class CustomerUsage extends Component {
       servicesNames.push(x.serviceName)
       showServicesName.labels.push("Services - " + x.servicesNames)
       serviceCount.push(x.count)
+      return result
     });
     console.log(servicesNames)
     console.log(serviceCount)

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ServiceCard from './ServiceCard'
-import { Row, Col, Pagination, List } from 'antd'
+import { Row, Col, Pagination } from 'antd'
 
 const numEachPage = 4
 export default class ServiceList extends Component {
@@ -36,9 +36,8 @@ export default class ServiceList extends Component {
         < Row type="flex" gutter={[8, 32]} >
           {servicesList.slice(this.state.minValue, this.state.maxValue).map(service =>
             <Col xs={{ span: 24 }} sm={{ span: 24 }} md={{ span: 12 }}>
-              <ServiceCard key={service.id} service={{ service }}  />
+              <ServiceCard key={service.id} service={{ service }} />
             </Col>
-            // <p>{service.id }</p>
           )}
         </Row >
         <br />

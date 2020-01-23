@@ -63,6 +63,7 @@ export default class UserProfile extends Component {
 
             case 3: return <ServiceUsage />;
 
+            default: return <UserInformation />;
         }
     }
 
@@ -72,7 +73,7 @@ export default class UserProfile extends Component {
                 <Col style={{ width: "100%", height: "50%", position: "sticky", top: "250px" }}>
                     <Row className="pic" type="grid">
                         <Col span={6}></Col>
-                        <Col className="img" span={6}> <img className="img" src={`${Axios.defaults.baseURL}/${this.state.pic}`} alt="picture" /> </Col>
+                        <Col className="img" span={6}> <img className="img" src={`${Axios.defaults.baseURL}/${this.state.pic}`} alt="user profile" /> </Col>
                         <Col className="name" span={12}> {this.state.shopName}</Col>
                     </Row>
                     <Row className="listUserProfile" style={{ marginLeft: "16%", width: "100%" }} type="grid">
