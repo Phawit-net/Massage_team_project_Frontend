@@ -80,7 +80,7 @@ export default class ShopProfile extends Component {
 
     render() {
         return (
-            <div style={{ display: "grid", gridTemplateColumns: "25% 70%", gridGap: "5%", justifyContent: "space-around", margin: "200px 20px 20px 20px", height: "100vh" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "25% 70%", gridGap: "5%", justifyContent: "space-around", margin: "200px 20px 20px 20px"}}>
                 <Col style={{ width: "100%", height: "50%", position: "sticky", top: "250px" }}>
                     <Row className="pic" type="grid">
                         <Col span={6}></Col>

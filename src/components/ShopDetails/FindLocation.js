@@ -69,7 +69,7 @@ export default class FindLocation extends Component {
 
     return (
       <>
-        <Map center={[this.state.defaultLocation.lat, this.state.defaultLocation.lng]} zoom={this.state.zoom}>
+        <Map center={[this.state.defaultLocation.lat, this.state.defaultLocation.lng]} zoom={this.state.zoom} style={{zIndex:'-1'}}>
           <TileLayer
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

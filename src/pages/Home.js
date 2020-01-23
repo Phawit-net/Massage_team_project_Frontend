@@ -5,6 +5,7 @@ import ShopList from '../components/Generals/Shop/ShopList'
 import { Link } from 'react-router-dom'
 import { Carousel, Row, Typography, Col } from 'antd';
 import Pagination from '../components/Generals/Shop/Pagination'
+var exampleItems = [...Array(15).keys()].map(i => ({ id: (i+1), name: 'Item ' + (i+1) }));
 
 export default class Home extends Component {
   constructor(props) {
@@ -12,7 +13,9 @@ export default class Home extends Component {
     this.state = {
       shopList: [],
       page: 1,
-      keyword: ''
+      keyword: '',
+      exampleItems: exampleItems,
+      pageOfItems: []
     };
   }
 
@@ -28,7 +31,14 @@ export default class Home extends Component {
     this.setState({ shopList: result.data })
   }
 
+
+  onChangePage = (pageOfItems) =>{
+    this.setState({ pageOfItems: pageOfItems });
+  }
+
+
   render() {
+    
     return (
       <div>
         <Carousel autoplay className={styles.slide}>
@@ -77,7 +87,12 @@ export default class Home extends Component {
             keyword={this.state.keyword} />
         </Row>
 
-        <Pagination/>
+        <Row className="container">
+          {this.state.pageOfItems.map(item =>
+              <div key={item.id}>{item.name}</div>
+          )}
+          <Pagination items={this.state.exampleItems} onChangePage={this.onChangePage} />
+        </Row>
       </div >
     )
   }
