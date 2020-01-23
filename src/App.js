@@ -13,6 +13,7 @@ import ShopProfile from './pages/ShopProfile'
 import Signup from './pages/Signup'
 import UserProfile from './pages/UserProfile'
 import ContactUs from './pages/ContactUs'
+import Admin from './pages/Admin'
 class App extends React.Component {
   render() {
     return (
@@ -30,6 +31,7 @@ class App extends React.Component {
             <Route path='/shopprofile' component={ShopProfile}/>
             <Route path='/signup' component={Signup}/>
             <Route path='/userprofile' component={UserProfile}/>
+            <Route path='/admin' component={Admin}/>
             <Redirect to='/home'/>
           </Switch>
         </Row>
