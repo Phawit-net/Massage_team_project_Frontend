@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css'
-import { Row } from 'antd'
+import { Row,BackTop } from 'antd'
 import Header from './components/Generals/Header/Header'
 import Footer from './components/Generals/Footer/Footer'
 import { Switch, Route, Redirect } from 'react-router-dom'
@@ -18,6 +18,7 @@ class App extends React.Component {
       <>
         <Row style={{ position: 'fixed', width: '100%', zIndex: '200' }}>
           <Header />
+          <BackTop/>
         </Row>
         <Row>
           <Switch>
