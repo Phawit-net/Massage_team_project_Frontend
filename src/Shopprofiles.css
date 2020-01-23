@@ -1,0 +1,40 @@
+.list:Hover {
+    cursor: pointer;
+    background-color: burlywood;
+}
+
+.list {
+    border : 1px solid burlywood;
+    text-align: center;
+}
+
+
+.containerList{
+    border: 1px solid burlywood;
+}
+
+.img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+  
+  }
+
+  .show{
+    float: right;
+    border-radius: 50%;
+    display: block;
+    width: 60%;
+    height: 100%;
+  
+  }
+  
+ .pic{
+     margin-bottom: 5%;
+ }
+
+ .name{
+     padding-top: 8%;
+     text-indent: 3ch;
+ }

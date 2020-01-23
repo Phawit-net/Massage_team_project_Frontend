@@ -1,10 +1,9 @@
 import React from 'react';
 import './App.css'
-import { Row } from 'antd'
+import { Row,BackTop } from 'antd'
 import Header from './components/Generals/Header/Header'
 import Footer from './components/Generals/Footer/Footer'
-import{Switch,Route,Redirect} from 'react-router-dom'
-import FindLocation from "../src/components/ShopDetails/FindLocation";
+import { Switch, Route, Redirect } from 'react-router-dom'
 import Home from './pages/Home'
 import Payment from './pages/Payment'
 import ShopDetails from './pages/ShopDetails'
@@ -19,23 +18,24 @@ class App extends React.Component {
       <>
         <Row style={{ position: 'fixed', width: '100%', zIndex: '200' }}>
           <Header />
+          <BackTop/>
         </Row>
         <Row>
           <Switch>
-            <Route path='/home' component={Home}/>
-            <Route path='/payment' component={Payment}/>
-            <Route path='/shopdetails' component={ShopDetails}/>
-            <Route path='/shoppackages' component={ShopPackages}/>
-            <Route path='/contactus' component={ContactUs}/>
-            <Route path='/shopprofile' component={ShopProfile}/>
-            <Route path='/signup' component={Signup}/>
-            <Route path='/userprofile' component={UserProfile}/>
-            <Redirect to='/home'/>
+            <Route path='/home' component={Home} />
+            <Route path='/payment' component={Payment} />
+            <Route path='/shopdetails' component={ShopDetails} />
+            <Route path='/shoppackages' component={ShopPackages} />
+            <Route path='/contactus' component={ContactUs} />
+            <Route path='/shopprofile' component={ShopProfile} />
+            <Route path='/signup' component={Signup} />
+            <Route path='/userprofile' component={UserProfile} />
+            <Redirect to='/' />
           </Switch>
         </Row>
-          <Row style={{marginTop:'50px'}}>
-          <Footer/>
-        </Row>          
+        <Row style={{ marginTop: '50px' }}>
+          <Footer />
+        </Row>
       </>
     )
   }

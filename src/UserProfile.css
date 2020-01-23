@@ -1,12 +1,36 @@
-.listUserProfile > li {
-    border: 2px solid #9E4624;
-    width: 200px;
-    font-size: 21px;
-    margin-bottom: 1px;
-  }
-  
-  .listUserProfile li:hover{
-    background-color: #F5EDC9;
-    cursor: pointer;
-    border-style: inset;
-  }
+.list:Hover {
+  cursor: pointer;
+  background-color: burlywood;
+}
+
+.list {
+  border : 1px solid burlywood;
+  text-align: center;
+}
+
+.containerList{
+  border: 1px solid burlywood;
+  width:60%;
+  margin: auto;
+}
+
+.img {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: inline-block;
+
+}
+
+.show{
+  float: right;
+  border-radius: 50%;
+  display: block;
+  width: 60%;
+  height: 100%;
+
+}
+
+.pic{
+   margin-bottom: 5%;
+}
