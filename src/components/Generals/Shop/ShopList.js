@@ -1,14 +1,24 @@
 import React, { Component } from "react";
-import { List } from "antd";
+import { Row, Typography, Col, Button, List } from "antd";
+import Paginations from './Paginations';
 import ShopCard from "./ShopCard";
 import Axios from 'axios';
+const { Text } = Typography;
+
+var exampleItems = [...Array(15).keys()].map(i => ({ id: (i+1), name: 'Item ' + (i+1) }));
 
 export default class ShopList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: 1
+      page: 1,
+      exampleItems: exampleItems,
+      pageOfItems: []
     };
+  }
+
+  onChangePage = (pageOfItems) =>{
+    this.setState({ pageOfItems: pageOfItems });
   }
 
   render() {
@@ -45,6 +55,10 @@ export default class ShopList extends Component {
             <ShopCard item={item} />
           )}
         />
+          {this.state.pageOfItems.map(item =>
+              <div key={item.id}>{item.name}</div>
+          )}
+        <Paginations items={this.state.exampleItems} onChangePage={this.onChangePage} />
       </div>
     );
   }
