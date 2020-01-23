@@ -2,14 +2,19 @@ import React, { Component } from 'react'
 import ServiceCard from './ServiceCard'
 import styles from "./ServiceList.module.css";
 import { Row, Col, Pagination, List } from 'antd'
+import Paginations from '../Generals/Shop/Paginations'
 
 const numEachPage = 4
+var exampleItems = [...Array(15).keys()].map(i => ({ id: (i+1), name: 'Item ' + (i+1) }));
+
 export default class ServiceList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       minValue: 0 * numEachPage,
       maxValue: 1 * numEachPage,
+      exampleItems: exampleItems,
+      pageOfItems: []
     };
   }
 
@@ -17,9 +22,16 @@ export default class ServiceList extends Component {
     this.setState({
       minValue: (value - 1) * numEachPage,
       maxValue: value * numEachPage,
+      
     })
     console.log(this.state.minValue, this.state.maxValue)
   }
+
+  
+  onChangePage = (pageOfItems) =>{
+    this.setState({ pageOfItems: pageOfItems });
+  }
+
 
   render() {
     let servicesList = this.props.servicesList
@@ -42,14 +54,18 @@ export default class ServiceList extends Component {
           )}
         </Row >
         <br />
-        <Pagination
 
+        <Pagination
           total={servicesList.length}
           showTotal={(total, range) => `${range[0]}-${range[1]} of ${total} items`}
           pageSize={numEachPage}
           onChange={this.handleChange}
           style={{ align: "center" }}
         />
+        {this.state.pageOfItems.map(item =>
+              <div key={item.id}>{item.name}</div>
+          )}
+        <Paginations items={servicesList} onChangePage={this.onChangePage} />
       </div >
     )
   }

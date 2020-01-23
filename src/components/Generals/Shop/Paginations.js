@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {  Row, Col} from 'antd';
-import styles from "./Pagination.module.css";
+import styles from "./Paginations.module.css";
 
 // const propTypes = {
 //     items: PropTypes.array.isRequired,
@@ -15,7 +15,7 @@ import styles from "./Pagination.module.css";
 //     pageSize: 10
 // }
 
-class Pagination extends React.Component {
+class Paginations extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
@@ -47,23 +47,30 @@ class Pagination extends React.Component {
 
     // get new pager object for specified page
     pager = this.getPager(items.length, page, pageSize);
-    console.log('pager',pager)
+    console.log(pager)
     // get new page of items from items array
     var pageOfItems = items.slice(pager.startIndex, pager.endIndex + 1);
-
+    console.log(pageOfItems)
     // update state
-    this.setState({ pager: pager });
+    this.setState({ 
+      pager: pager 
+    },()=>{
+      console.log(this.state.pager)
+    });
 
     // call change page function in parent component
     this.props.onChangePage(pageOfItems);
   }
 
   getPager(totalItems, currentPage, pageSize) {
+    console.log(totalItems)
+    console.log(currentPage)
+    console.log(pageSize)
     // default to first page
     currentPage = currentPage || 1;
 
     // default page size is 10
-    pageSize = pageSize || 3;
+    pageSize = pageSize || 4;
 
     // calculate total pages
     var totalPages = Math.ceil(totalItems / pageSize);
@@ -86,14 +93,15 @@ class Pagination extends React.Component {
         endPage = currentPage + 4;
       }
     }
-
+    console.log(currentPage)
     // calculate start and end item indexes
     var startIndex = (currentPage - 1) * pageSize;
+    console.log(startIndex)
     var endIndex = Math.min(startIndex + pageSize - 1, totalItems - 1);
-
+    console.log(endIndex)
     // create an array of pages to ng-repeat in the pager control
     var pages = [...Array((endPage + 1) - startPage).keys()].map(i => startPage + i);
-
+    console.log(pages)
     // return object with all pager properties required by the view
     return {
       totalItems: totalItems,
@@ -156,4 +164,4 @@ class Pagination extends React.Component {
 
 // Pagination.propTypes = propTypes;
 // Pagination.defaultProps = defaultProps;
-export default Pagination;
+export default Paginations;
