@@ -1,8 +1,32 @@
 @import "https://fonts.googleapis.com/css?family=Great+Vibes&display=swap";
+@import "https://fonts.googleapis.com/css?family=Tangerine&display=swap";
 
-.font {
+.numFont {
     font-family: 'Great Vibes', cursive;
     font-weight: bold;
     font-size: 20px;
-    color:#855f3e;
+    color:#492D1A;
   }
+
+.font {
+    font-family: 'Tangerine', cursive;
+    font-weight: bold;
+    font-size: 40px;
+    color:#492D1A;
+}
+.font:hover {
+  color:#916040 !important;
+}
+
+.numFont:hover {
+  color:#916040 !important;
+}
+
+
+.page:hover{
+  filter: invert(39%) sepia(65%) saturate(339%) hue-rotate(341deg) brightness(89%) contrast(93%);
+}
+
+.numPage{
+  color:#fff;
+}

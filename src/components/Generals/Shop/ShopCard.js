@@ -9,9 +9,11 @@ const { Paragraph,Text } = Typography;
 export default class ShopCard extends Component {
   render() {
     const { item } = this.props
+    let shop = this.props.shop.shop
+    console.log(shop.shopName)
     return (
       <div>
-        <List.Item key={item.id}>
+        {/* <List.Item key={item.id}> */}
           <Row style={{ border: "2px solid #D8AE47", margin: "10px" }}>
             <Row type='flex' justify ='center'>
             <Col style={{position: 'absolute',width:'100%',height:'100%'}}>
@@ -30,21 +32,21 @@ export default class ShopCard extends Component {
             <Col md={20} sm={24} xs={24} style={{padding:'30px 30px 30px 10px'}}className={styles.content} >
               <Row>
                 <Text strong style={{ fontSize: "1.6em" }}>
-                  {item.shopName}
+                  {shop.shopName}
                 </Text>
               </Row>
               <Row>
                 <Paragraph ellipsis={{ rows: 3, expandable: true }} >
-                  {item.shopDescription}
+                  {shop.shopDescription}
                 </Paragraph>
               </Row>
               <Row style={{display: 'flex', justifyContent: 'flex-end' ,alignItems:'flex-end'}} className={styles.ButtonRow}>
-                <Button type='primary' className={styles.Button}><Link to={`/shopdetails?id=${item.id}`}>View Shop</Link></Button>
+                <Button type='primary' className={styles.Button}><Link to={`/shopdetails?id=${shop.id}`}>View Shop</Link></Button>
               </Row>
             </Col>
             </Row>
           </Row>
-        </List.Item>
+        {/* </List.Item> */}
       </div>
     );
   }

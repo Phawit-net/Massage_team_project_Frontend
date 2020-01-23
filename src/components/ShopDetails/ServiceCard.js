@@ -8,6 +8,7 @@ const { Paragraph } = Typography;
 export default class ServiceList extends Component {
   render() {
     let service = this.props.service.service
+    console.log(service)
     return (
       <>
         <Row style= {{ width: "100%", height: "100%",border: "2px solid #D8AE47"}}>
