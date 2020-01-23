@@ -27,7 +27,7 @@ import { Link } from 'react-router-dom'
             <>
                 <Dropdown overlay={menu}>
                     <span className={styles.menuoption} >
-                        User <Icon type="down" />
+                        {this.props.user.name} <Icon type="down" />
                     </span>
                 </Dropdown>
 

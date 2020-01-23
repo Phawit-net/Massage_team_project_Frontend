@@ -22,6 +22,7 @@ handleSubmit(e){
                 this.props.form.resetFields()
             })
             .catch(err=>{
+                console.log(err.response.data)
                 message.error('something wrong')
             })
         }
