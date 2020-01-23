@@ -4,7 +4,7 @@ import Axios from '../config/axios.setup'
 import ShopList from '../components/Generals/Shop/ShopList'
 import { Link } from 'react-router-dom'
 import { Carousel, Row, Typography, Col } from 'antd';
-import Pagination from '../components/Generals/Shop/Pagination'
+import Paginations from '../components/Generals/Shop/Paginations'
 var exampleItems = [...Array(15).keys()].map(i => ({ id: (i+1), name: 'Item ' + (i+1) }));
 
 export default class Home extends Component {
@@ -91,7 +91,7 @@ export default class Home extends Component {
           {this.state.pageOfItems.map(item =>
               <div key={item.id}>{item.name}</div>
           )}
-          <Pagination items={this.state.exampleItems} onChangePage={this.onChangePage} />
+          <Paginations items={this.state.exampleItems} onChangePage={this.onChangePage} />
         </Row>
       </div >
     )
