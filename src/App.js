@@ -12,7 +12,11 @@ import ShopProfile from './pages/ShopProfile'
 import Signup from './pages/Signup'
 import UserProfile from './pages/UserProfile'
 import ContactUs from './pages/ContactUs'
+<<<<<<< HEAD
 import ResetPassword from './pages/ResetPassword'
+=======
+import Admin from './pages/Admin'
+>>>>>>> feature-Tuck
 class App extends React.Component {
   render() {
     return (
@@ -30,7 +34,11 @@ class App extends React.Component {
             <Route path='/shopprofile' component={ShopProfile}/>
             <Route path='/signup' component={Signup}/>
             <Route path='/userprofile' component={UserProfile}/>
+<<<<<<< HEAD
             <Route path ='/resetpassword/:token' component={ResetPassword}/>
+=======
+            <Route path='/admin' component={Admin}/>
+>>>>>>> feature-Tuck
             <Redirect to='/home'/>
           </Switch>
         </Row>
