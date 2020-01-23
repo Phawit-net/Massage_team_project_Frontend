@@ -12,6 +12,7 @@ import ShopProfile from './pages/ShopProfile'
 import Signup from './pages/Signup'
 import UserProfile from './pages/UserProfile'
 import ContactUs from './pages/ContactUs'
+import ResetPassword from './pages/ResetPassword'
 class App extends React.Component {
   render() {
     return (
@@ -21,15 +22,16 @@ class App extends React.Component {
         </Row>
         <Row>
           <Switch>
-            <Route path='/home' component={Home} />
-            <Route path='/payment' component={Payment} />
-            <Route path='/shopdetails' component={ShopDetails} />
-            <Route path='/shoppackages' component={ShopPackages} />
-            <Route path='/contactus' component={ContactUs} />
-            <Route path='/shopprofile' component={ShopProfile} />
-            <Route path='/signup' component={Signup} />
-            <Route path='/userprofile' component={UserProfile} />
-            <Redirect to='/' />
+            <Route path='/home' component={Home}/>
+            <Route path='/payment' component={Payment}/>
+            <Route path='/shopdetails' component={ShopDetails}/>
+            <Route path='/shoppackages' component={ShopPackages}/>
+            <Route path='/contactus' component={ContactUs}/>
+            <Route path='/shopprofile' component={ShopProfile}/>
+            <Route path='/signup' component={Signup}/>
+            <Route path='/userprofile' component={UserProfile}/>
+            <Route path ='/resetpassword/:token' component={ResetPassword}/>
+            <Redirect to='/home'/>
           </Switch>
         </Row>
         <Row style={{ marginTop: '50px' }}>
