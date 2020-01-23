@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Row, Col, Form, Input, Button,message } from 'antd'
+import { withRouter } from 'react-router-dom'
 import Axios from '../config/axios.setup'
 
 class ResetPassword extends Component {
@@ -9,7 +10,7 @@ class ResetPassword extends Component {
         this.state = {
             username:'',
             confirmDirty: false,
-            status: 'success'
+            status: 'timeout'
         }
     }
  componentWillMount(){
@@ -45,6 +46,9 @@ class ResetPassword extends Component {
                     newpassword:values.password
                 }).then(response=>{
                     message.success(`${response.data.message}`)
+                    setTimeout(()=>{
+                    this.props.history.replace('/home')
+                    },2000)
                 })
             }
             else{
@@ -136,4 +140,4 @@ class ResetPassword extends Component {
         )
     }
 }
-export default Form.create()(ResetPassword)
+export default withRouter( Form.create()(ResetPassword))

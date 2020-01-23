@@ -14,7 +14,7 @@ class Forgetpassword extends Component {
                        message.success(response.data)
                    }
                    else{
-                       message.error('something wrong')
+                       message.error(response.data)
                    }
                })
                .catch(err=>{
