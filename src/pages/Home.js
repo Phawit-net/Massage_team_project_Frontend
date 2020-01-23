@@ -3,9 +3,7 @@ import styles from "./Home.module.css";
 import Axios from '../config/axios.setup'
 import ShopList from '../components/Generals/Shop/ShopList'
 import { Link } from 'react-router-dom'
-import { Carousel, Row, Typography, Col } from 'antd';
-import Paginations from '../components/Generals/Shop/Paginations'
-var exampleItems = [...Array(15).keys()].map(i => ({ id: (i+1), name: 'Item ' + (i+1) }));
+import { Carousel, Row, Col } from 'antd';
 
 export default class Home extends Component {
   constructor(props) {
@@ -14,8 +12,6 @@ export default class Home extends Component {
       shopList: [],
       page: 1,
       keyword: '',
-      exampleItems: exampleItems,
-      pageOfItems: []
     };
   }
 
@@ -30,12 +26,6 @@ export default class Home extends Component {
     const result = await Axios.get(`http://localhost:8080/shops/${this.state.page}`)
     this.setState({ shopList: result.data })
   }
-
-
-  onChangePage = (pageOfItems) =>{
-    this.setState({ pageOfItems: pageOfItems });
-  }
-
 
   render() {
     
@@ -85,13 +75,6 @@ export default class Home extends Component {
             shopList={this.state.shopList}
             callbackFromParent={this.myCallback}
             keyword={this.state.keyword} />
-        </Row>
-
-        <Row>
-          {this.state.pageOfItems.map(item =>
-              <div key={item.id}>{item.name}</div>
-          )}
-          <Paginations items={this.state.exampleItems} onChangePage={this.onChangePage} />
         </Row>
       </div >
     )

@@ -1,18 +1,18 @@
 import React, { Component } from "react";
-import { Row, Typography, Col, Button, List } from "antd";
+import { Row, Typography, Col,Pagination, Button, List } from "antd";
 import Paginations from './Paginations';
 import ShopCard from "./ShopCard";
 import Axios from 'axios';
 const { Text } = Typography;
-
-var exampleItems = [...Array(15).keys()].map(i => ({ id: (i+1), name: 'Item ' + (i+1) }));
+const numEachPage = 3
 
 export default class ShopList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       page: 1,
-      exampleItems: exampleItems,
+      minValue: 0 * numEachPage,
+      maxValue: 1 * numEachPage,
       pageOfItems: []
     };
   }
@@ -21,12 +21,28 @@ export default class ShopList extends Component {
     this.setState({ pageOfItems: pageOfItems });
   }
 
+  handleChange = value => {
+    this.setState({
+      minValue: (value - 1) * numEachPage,
+      maxValue: value * numEachPage,
+      
+    })
+    console.log(this.state.minValue, this.state.maxValue)
+  }
+
   render() {
     const shopListItem = this.props.shopList
-    const keyword = this.props.keyword
+    // const keyword = this.props.keyword
     return (
-      <div>
-        <List
+        <div>
+        < Row type="flex" >
+          {this.state.pageOfItems.slice(this.state.minValue, this.state.maxValue).map(shop =>
+            <ShopCard key={shop.id} shop={{ shop }}/>
+          )}
+        </Row >
+        <br />
+        
+        {/* <List
           itemLayout="vertical"
           size="large"
           pagination={{
@@ -54,11 +70,8 @@ export default class ShopList extends Component {
           renderItem={item => (
             <ShopCard item={item} />
           )}
-        />
-          {this.state.pageOfItems.map(item =>
-              <div key={item.id}>{item.name}</div>
-          )}
-        <Paginations items={this.state.exampleItems} onChangePage={this.onChangePage} />
+        /> */}
+        <Paginations items={shopListItem} onChangePage={this.onChangePage} pageSize = {numEachPage}/>
       </div>
     );
   }
