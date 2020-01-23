@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {  Row, Col} from 'antd';
+import styles from "./Pagination.module.css";
 
 // const propTypes = {
 //     items: PropTypes.array.isRequired,
@@ -17,7 +18,9 @@ import {  Row, Col} from 'antd';
 class Pagination extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { pager: {} };
+    this.state = { 
+      pager: {} 
+    };
   }
 
   componentWillMount() {
@@ -44,7 +47,7 @@ class Pagination extends React.Component {
 
     // get new pager object for specified page
     pager = this.getPager(items.length, page, pageSize);
-
+    console.log('pager',pager)
     // get new page of items from items array
     var pageOfItems = items.slice(pager.startIndex, pager.endIndex + 1);
 
@@ -114,27 +117,35 @@ class Pagination extends React.Component {
     }
 
     return (
-      <Row className="pagination">
+      <Row type='flex' justify="center" align='middle'>
         <li className={pager.currentPage === 1 ? 'disabled' : ''}>
           <a onClick={() => this.setPage(1)}>First</a>
         </li>
-        <li className={pager.currentPage === 1 ? 'disabled' : ''}>
-          <a onClick={() => this.setPage(pager.currentPage - 1)}>Previous</a>
-        </li>
+        {/* <li className={pager.currentPage === 1 ? 'disabled' : ''}> */}
+        <div style={{ width: '60px', height: '60px',position:'relative',display:'flex',justifyContent:'center',alignItems:'center' }}>
+          <a onClick={() => this.setPage(pager.currentPage - 1)}>
+            <img src='previous.png' style={{ width: '30px', height: '40px' }} />
+          </a>
+        </div>
+        {/* </li> */}
         {pager.pages.map((page, index) =>
-          <div style={{ width: '60px', height: '60px',position:'relative' }}>
+          <div style={{ width: '60px', height: '60px',position:'relative' ,margin:'0px 5px'}}>
             <a onClick={() => this.setPage(page)}>
               <img src='page.png' style={{ width: '60px', height: '60px' }} />
               {/* <li key={index} className={pager.currentPage === page ? 'active' : ''}>                      */}
-              <div style={{ width: '60px', height: '60px',position:'absolute',top:'0px',display:'flex',alignItems:'center',justifyContent:'center'}}>{page}</div>
+              <div style={{ width: '60px', height: '60px',position:'absolute',top:'0px',display:'flex',alignItems:'center',justifyContent:'center'}} className ={styles.font}>{page}</div>
               {/* </li> */}
             </a>
           </div>
 
         )}
-        <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
-          <a onClick={() => this.setPage(pager.currentPage + 1)}>Next</a>
-        </li>
+        {/* <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}> */}
+        <div style={{ width: '60px', height: '60px',position:'relative',display:'flex',justifyContent:'center',alignItems:'center' }}>
+          <a onClick={() => this.setPage(pager.currentPage + 1)}>
+            <img src='next.png' style={{ width: '30px', height: '40px' }} />
+          </a>
+        </div>
+        {/* </li> */}
         <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
           <a onClick={() => this.setPage(pager.totalPages)}>Last</a>
         </li>

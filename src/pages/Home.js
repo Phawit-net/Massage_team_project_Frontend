@@ -87,7 +87,7 @@ export default class Home extends Component {
             keyword={this.state.keyword} />
         </Row>
 
-        <Row className="container">
+        <Row>
           {this.state.pageOfItems.map(item =>
               <div key={item.id}>{item.name}</div>
           )}
