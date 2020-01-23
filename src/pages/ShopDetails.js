@@ -3,7 +3,7 @@ import { Row, Col } from 'antd'
 import Axios from '../config/axios.setup'
 import { withRouter } from 'react-router-dom'
 import ServiceList from '../components/ShopDetails/ServiceList'
-
+import ShowLocation from '../components/ShopDetails/ShowLocation'
 class ShopDetails extends Component {
   constructor(props) {
     super(props)
@@ -12,20 +12,33 @@ class ShopDetails extends Component {
       shopName: "",
       shopProfilePic: "",
       servicesList: [],
+      location: {
+        address: "",
+        latitude: "",
+        longitude: "",
+      }
     }
   }
 
   async componentDidMount() {
     let targetShopId = this.props.history.location.search.slice(4)
     const result = await Axios.get(`http://localhost:8080/shop?id=${targetShopId}`)
+    const address = await Axios.get(`http://localhost:8080/address?id=${targetShopId}`)
+    // console.log(result, address)
     this.setState({
       shopName: result.data.shopName,
       shopProfilePic: result.data.shopProfilePic,
       servicesList: result.data.services,
+      location: {
+        address: address.data.address,
+        latitude: address.data.latitude,
+        longitude: address.data.longitude,
+      }
     })
   }
 
   render() {
+    console.log(this.state)
     return (
       <div>
         <Row style={{ marginTop: "200px" }}>
@@ -60,9 +73,15 @@ class ShopDetails extends Component {
           </Col>
         </Row>
 
-        <Row  >
+        <Row>
           <Col sm={{ span: 24, offset: 0 }} md={{ span: 22, offset: 1 }} >
-            <ServiceList servicesList={this.state.servicesList} />
+            <ServiceList key={this.state.page} servicesList={this.state.servicesList} />
+          </Col>
+        </Row>
+
+        <Row type="flex" justify="center">
+          <Col  >
+            <ShowLocation location={this.state.location} />
           </Col>
         </Row>
       </div>

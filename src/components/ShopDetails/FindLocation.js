@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 
-
 export default class FindLocation extends Component {
   constructor(props) {
     super(props)
