@@ -5,9 +5,6 @@ import ServiceHistory from '../components/ShopProfile/ServiceHistory'
 import ApprovePurchase from '../components/ShopProfile/ApprovePurchase'
 import CustomerUsage from '../components/ShopProfile/CustomerUsage'
 
-
-
-import ShopInformation from "../components/ShopProfile/ShopInformation";
 export default class ShopProfile extends Component {
     state = {
         case : 1
@@ -51,7 +48,7 @@ export default class ShopProfile extends Component {
 
     render() {
         return (
-            <div style={{display:"grid", gridTemplateColumns:"25% 70%", gridGap:"5%",justifyContent:"space-around", margin:"200px 20px 20px 20px", height:"100vh"}}>
+            <div style={{display:"grid", gridTemplateColumns:"25% 70%", gridGap:"5%",justifyContent:"space-around", margin:"200px 20px 20px 20px"}}>
             <div style={{ width:"100%", height:"50%", position:"sticky",top:"250px"}}>
                 <div style={{display:"flex", flexFlow:"row wrap", justifyContent:"center", marginBottom:"10px"}} >
                     <div> <img src="http://www.thaiticketmajor.com/variety/img_content/imgeditor/sky-mirror-beach.jpg" alt="picture" style={{borderRadius:"50%", width: "80px", height:"80px", marginLeft:"-50%"}}/> </div>

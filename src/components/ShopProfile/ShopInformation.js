@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Row, Col, Form, Input, Upload, Icon, Modal, Button} from "antd";
+import { Row, Col, Form, Input, Upload, Icon, Modal, Button } from "antd";
 import Axios from "../../config/axios.setup";
 import { compose } from "redux";
+import FindLocation from '../ShopDetails/FindLocation'
+
+
 const { TextArea } = Input;
 
 
@@ -26,9 +29,12 @@ export class ShopInformation extends Component {
       previewVisible: false,
       previewImage: "",
       fileList: [],
-      productcategories:[],
-      productcategoriesID:0
-    
+      productcategories: [],
+      productcategoriesID: 0,
+      location: {
+        lat: 0,
+        lng: 0,
+      },
     };
   }
 
@@ -37,29 +43,32 @@ export class ShopInformation extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, value) => {
-        console.log(value.shopdescription)
-        console.log(value.accountno)
-        console.log(value.accountname)
-        let payload = new FormData();
-        payload.append("shopDescription", value.shopdescription);
-        payload.append("photoPost", this.state.fileList[0]);
-        payload.append("shopAccountNo", value.accountno);
-        payload.append("shopAccountName", value.accountname);
-        console.log(payload);
-        if (!err) {
-            Axios.put("/updateShop", payload)
-              .then(result => {
-                console.log(result);
-              })
-              .catch(err => {
-                console.error(err);
-              });
-            //this.props.form.resetFields();
-          }
+      // console.log(value.latitude)
+      // console.log(value.longitude)
+      // console.log(value.address)
+      // console.log(value.accountno)
+      let payload = new FormData();
+      payload.append("shopDescription", value.shopdescription);
+      payload.append("photoPost", this.state.fileList[0]);
+      payload.append("shopAccountNo", value.accountno);
+      payload.append("shopAccountName", value.accountname);
 
-          
-        
-      });
+      payload.append("latitude", value.latitude);
+      payload.append("longitude", value.longitude);
+      payload.append("address", value.address);
+
+      // console.log(value.latitude.toString(), value.longitude.toString(), value.address);
+      if (!err) {
+        Axios.put("/updateShop", payload)
+          .then(result => {
+            console.log(result);
+          })
+          .catch(err => {
+            console.error(err);
+          });
+        //this.props.form.resetFields();
+      }
+    });
 
   };
 
@@ -75,7 +84,7 @@ export class ShopInformation extends Component {
   };
 
   handleSelectChange = value => {
-    this.setState({productcategoriesID:value})
+    this.setState({ productcategoriesID: value })
   };
 
   normFile = e => {
@@ -86,43 +95,86 @@ export class ShopInformation extends Component {
     return e && e.fileList;
   };
 
-  componentDidMount(){
-     Axios.get('/getShop')
-    .then(result => {
-     //console.log(result.data)
+  componentDidMount() {
+    Axios.get('/getShop')
+      .then(result => {
+        //console.log(result.data)
+        this.setState({
+          shopName: result.data.shopName,
+          shopAccountNo: result.data.shopAccountNo,
+          shopAccountName: result.data.shopAccountName,
+          shopDescription: result.data.shopDescription,
+        })
+
+      })
+      .catch(err => {
+        console.error(err);
+      })
+
+  }
+
+  handleChangeAccountNo = e => {
+    console.log(e.target.value)
+    // this.setState({
+    //     shopAccountNo: e.target.value
+    // })
+  }
+
+  handleChangeshopAccountName = e => {
+    console.log(e.target.value)
+  }
+
+  handleChangeshopShopDescription = e => {
+    console.log(e.target.value)
+  }
+
+  getLocation = location => {
     this.setState({
-        shopName: result.data.shopName,
-        shopAccountNo: result.data.shopAccountNo,
-        shopAccountName: result.data.shopAccountName,
-        shopDescription: result.data.shopDescription,
-   })
-     
-   })
-   .catch(err => {
-     console.error(err);
-   })
+      location: location,
+    });
+    // this.props.setFieldsValue({
+    //   longitude: this.state.location.longitude
+    // });
+    console.log(location)
+  };
 
-}
+  // handleLocationChange = () => {
+  //   this.props.form.setFieldsValue({
+  //     latitude: this.state.location.lat,
+  //     longitude: this.state.location.lng,
+  //   });
+  // }
 
-handleChangeAccountNo = e => {
-console.log(e.target.value)
-// this.setState({
-//     shopAccountNo: e.target.value
-// })
-}
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.location.lat !== this.state.location.lat || prevState.location.lng !== this.state.location.lng) {
+      this.props.form.setFieldsValue({
+        latitude: this.state.location.lat,
+        longitude: this.state.location.lng,
+      });
+    }
+  }
 
-handleChangeshopAccountName = e => {
-console.log(e.target.value)
-}
+  validateLatitude = (rule, value, callback) => {
+    const { form } = this.props;
+    if (!(value <= 90 && value >= -90)) {
+      callback("latitude values range between -90 and +90 degrees");
+    } else {
+      callback();
+    }
+  };
 
-handleChangeshopShopDescription = e => {
-console.log(e.target.value)
-}
-
+  validateLongitude = (rule, value, callback) => {
+    const { form } = this.props;
+    if (!(value <= 180 && value >= -180)) {
+      callback("longitude values range between -180 and +180 degrees");
+    } else {
+      callback();
+    }
+  };
 
   render() {
-   
-    const { previewVisible, previewImage} = this.state;
+
+    const { previewVisible, previewImage } = this.state;
     const uploadButton = (
       <div>
         <Icon type="plus" />
@@ -141,7 +193,7 @@ console.log(e.target.value)
       }
     };
     const { getFieldDecorator } = this.props.form;
-   
+
     const { fileList } = this.state;
     const props = {
       onRemove: file => {
@@ -175,7 +227,7 @@ console.log(e.target.value)
           <Row>
             <Form {...formItemLayout} onSubmit={this.handleSubmit}>
               <Form.Item label="Shop name" style={{ marginTop: "0", marginBottom: "0" }}>
-              <h3>{this.state.shopName}</h3>
+                <h3>{this.state.shopName}</h3>
               </Form.Item>
 
               <Form.Item label="Account No" style={{ marginTop: "0", marginBottom: "0" }}>
@@ -186,8 +238,8 @@ console.log(e.target.value)
                       message: "Show Shop Account No"
                     }
                   ],
-                  initialValue:this.state.shopAccountNo
-                })(<Input/>)}
+                  initialValue: this.state.shopAccountNo
+                })(<Input />)}
               </Form.Item>
 
               <Form.Item label="Account Name" style={{ marginTop: "0", marginBottom: "0" }}>
@@ -198,8 +250,8 @@ console.log(e.target.value)
                       message: "Show Shop Account Name"
                     }
                   ],
-                  initialValue:this.state.shopAccountName
-                })(<Input/>)}
+                  initialValue: this.state.shopAccountName
+                })(<Input />)}
               </Form.Item>
 
               <Form.Item label="Shop Description" style={{ marginTop: "0", marginBottom: "0" }}>
@@ -210,46 +262,73 @@ console.log(e.target.value)
                       message: "Show Shop Description"
                     }
                   ],
-                  initialValue:this.state.shopDescription
-                })(<TextArea/>)}
+                  initialValue: this.state.shopDescription
+                })(<TextArea />)}
               </Form.Item>
-              
+
               <Form.Item label="Upload" extra="Select file image">
-            {getFieldDecorator("upload", {
-              valuePropName: "fileList",
-              getValueFromEvent: this.normFile
-            })(
-              <Upload {...props}>
-                <Button>
-                  <Icon type="upload" /> Select File
+                {getFieldDecorator("upload", {
+                  // valuePropName: "fileList",
+                  getValueFromEvent: this.normFile
+                })(
+                  <Upload {...props}>
+                    <Button>
+                      <Icon type="upload" /> Select File
                 </Button>
-              </Upload>
-            )}
-          </Form.Item>
+                  </Upload>
+                )}
+              </Form.Item>
 
+              <FindLocation
+                style={{ zIndex: '-1' }}
+                callbackFromParent={this.getLocation}
+              />
 
-         <Row
-            type="flex"
-            justify="end"
-            gutter={[16, 16]}
-            style={{ marginBottom: "1vh" }}
-          >
-            <Col>
-              <Button type="primary" htmlType="submit" style={{ backgroundColor: "#9e4624" }}>
-                Save
+              <Form.Item label="Latitude" >
+                {getFieldDecorator('latitude', {
+                  initialValue: parseFloat(this.state.location.lat.toFixed(6)),
+                  rules: [{
+                    validator: this.validateLatitude,
+                  }]
+                })
+                  (<Input placeholder="00.000000" />)}
+              </Form.Item>
+
+              <Form.Item label="Longitude" >
+                {getFieldDecorator('longitude', {
+                  initialValue: parseFloat(this.state.location.lng.toFixed(6)),
+                  rules: [{
+                    validator: this.validateLongitude,
+                  }]
+                })
+                  (<Input placeholder="00.000000" />)}
+              </Form.Item>
+
+              <Form.Item label="Address" >
+                {getFieldDecorator('address', {})
+                  (<Input placeholder="address" />)}
+              </Form.Item>
+
+              <Row
+                type="flex"
+                justify="end"
+                gutter={[16, 16]}
+                style={{ marginBottom: "10vh" }}
+              >
+                <Col>
+                  <Button type="primary" htmlType="submit" style={{ backgroundColor: "#9e4624" }}>
+                    Save
               </Button>
-            </Col>
-            <Col>
-              <Button type="primary" style={{ backgroundColor: "#c4c4c4" }}>
-                Cancel
+                </Col>
+                <Col>
+                  <Button type="primary" style={{ backgroundColor: "#c4c4c4" }}>
+                    Cancel
               </Button>
-            </Col>
-          </Row>
-
-          
+                </Col>
+              </Row>
             </Form>
           </Row>
-         
+
         </Col>
       </Row>
     );
