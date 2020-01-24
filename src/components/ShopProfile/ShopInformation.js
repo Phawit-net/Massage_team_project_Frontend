@@ -44,6 +44,7 @@ export class ShopInformation extends Component {
         let payload = new FormData();
         payload.append("shopDescription", value.shopdescription);
         payload.append("photoPost", this.state.fileList[0]);
+        //this.state.fileList.forEach(x => payload.append("photoPost", x));
         payload.append("shopAccountNo", value.accountno);
         payload.append("shopAccountName", value.accountname);
         console.log(payload);
