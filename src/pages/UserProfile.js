@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import '../UserProfile.css'
-// import PurChaseHist from '../component/UserProfile/PurchaseHistory'
 import ServiceUsage from '../components/UserProfile/ServiceUsage'
 import UserInformation from '../components/UserProfile/UserInformation'
 import PurchaseHistory from '../components/UserProfile/PurchaseHistory';
 import { Row, Col } from 'antd';
-import Axios from "axios"
+import Axios from "../config/axios.setup"
 
 export default class UserProfile extends Component {
 
@@ -19,8 +18,6 @@ export default class UserProfile extends Component {
     componentDidMount() {
         Axios.get('/getShop')
             .then(result => {
-                console.log(Axios.defaults.baseURL)
-                console.log(result.data)
                 this.setState({
                     id: result.data.id,
                     shopName: result.data.shopName,

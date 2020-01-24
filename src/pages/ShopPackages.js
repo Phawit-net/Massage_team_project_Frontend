@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Row, Input, Col } from "antd";
 import ShopList from "../components/Generals/Shop/ShopList";
-import Axios from "axios";
+import Axios from "../config/axios.setup";
 import styles from "./ShopPackages.module.css";
 
 const { Search } = Input;
@@ -17,7 +17,7 @@ export default class ShopPackages extends Component {
 
   async componentDidMount() {
     const result = await Axios.get(
-      `http://localhost:8080/shops`
+      `/shops`
     );
     this.setState({ shopList: result.data });
   }

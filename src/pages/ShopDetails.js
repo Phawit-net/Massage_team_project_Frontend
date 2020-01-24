@@ -27,8 +27,8 @@ class ShopDetails extends Component {
 
   async componentDidMount() {
     let targetShopId = this.props.history.location.search.slice(4)
-    const result = await Axios.get(`http://localhost:8080/shop?id=${targetShopId}`)
-    const address = await Axios.get(`http://localhost:8080/address?id=${targetShopId}`)
+    const result = await Axios.get(`/shop?id=${targetShopId}`)
+    const address = await Axios.get(`/address?id=${targetShopId}`)
     if (address.data !== null) {
       this.setState({
         location: {
