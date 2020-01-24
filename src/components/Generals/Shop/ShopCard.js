@@ -25,8 +25,7 @@ export default class ShopCard extends Component {
             <Col md={4} sm={16} xs={24} style={{padding:'30px 10px 30px 30px'}} className={styles.imgContent}>
               <img
                 style={{ width: "100%" }}
-                src= {`${Axios.defaults.baseURL}/${item.shopProfilePic}`}
-                alt= "shopProfilePic"
+                src= {`${Axios.defaults.baseURL}/${shop.shopProfilePic}`}
               />
             </Col>
             <Col md={20} sm={24} xs={24} style={{padding:'30px 30px 30px 10px'}}className={styles.content} >

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Row, Col,Typography } from "antd";
 import Axios from "../config/axios.setup";
 import { withRouter } from "react-router-dom";
+import ShowLocation from '../components/ShopDetails/ShowLocation'
 import ServiceList from "../components/ShopDetails/ServiceList";
 import styles from "./ShopDetails.module.css";
 import '../App.css'
@@ -30,9 +31,6 @@ class ShopDetails extends Component {
     const address = await Axios.get(`http://localhost:8080/address?id=${targetShopId}`)
     if (address.data !== null) {
       this.setState({
-        shopNsame: result.data.shopName,
-      shopProfilePic: result.data.shopProfilePic,
-      servicesList: result.data.services,
         location: {
           address: address.data.address,
           latitude: address.data.latitude,
@@ -41,6 +39,14 @@ class ShopDetails extends Component {
         haveLocation: true,
       })
     }
+    this.setState({
+        shopName: result.data.shopName,
+        shopProfilePic: result.data.shopProfilePic,
+        servicesList: result.data.services,
+    },()=>{
+      console.log(address)
+      console.log(result)
+    })
   }
      
 
