@@ -29,11 +29,11 @@ class ShopDetails extends Component {
       shopName: result.data.shopName,
       shopProfilePic: result.data.shopProfilePic,
       servicesList: result.data.services,
-      location: {
-        address: address.data.address,
-        latitude: address.data.latitude,
-        longitude: address.data.longitude,
-      }
+      // location: {
+      //   address: address.data.address,
+      //   latitude: address.data.latitude,
+      //   longitude: address.data.longitude,
+      // }
     })
   }
 
