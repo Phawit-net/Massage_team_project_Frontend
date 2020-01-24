@@ -98,7 +98,7 @@ export default class Admin extends Component {
     
 
         return (
-            <div>
+            <div style={{marginBottom:'300px'}}>
                 <Table className="admin" columns={columns} dataSource={this.state.show} />
             </div>
         )
