@@ -50,11 +50,11 @@ class BookingModal extends Component {
   handleSetEndTime(start, startString, time) {
     this.setState({ startValue: startString })
     this.props.form.setFieldsValue({
-      endTime: moment(this.addTimeHour(start,time), 'HH:mm'),
+      endTime: moment(this.addTimeHour(start, time), 'HH:mm'),
     });
   }
 
-  addTimeHour(x,time) {
+  addTimeHour(x, time) {
     let startDate = moment(x)
     let newTime = startDate.startOf('hour').add(time, 'hours').format('HH:mm')
     this.setState({ endValue: newTime })
@@ -107,7 +107,10 @@ class BookingModal extends Component {
     let service = this.state.serviceList
     return (
       <>
-        <Button type='link' className={styles.button} onClick={() => this.showBookingModal()}>Booking</Button>
+        {(this.props.user.role === 'buyer' || this.props.user.role === 'seller') ?
+          <Button type='link' className={styles.button} onClick={() => this.showBookingModal()}>Booking</Button>
+          : undefined
+        }
         <Modal
           width={800}
           visible={this.state.bookingvisible}
@@ -217,9 +220,13 @@ class BookingModal extends Component {
 }
 
 const FormBookingModal = Form.create({ name: 'bookingService' })(BookingModal);
-
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
 const mapDispatchToProps = {
   addBooking: addBooking,
 };
 
-export default connect(null, mapDispatchToProps)(withRouter(FormBookingModal));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(FormBookingModal));
