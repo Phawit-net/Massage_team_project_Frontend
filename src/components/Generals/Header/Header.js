@@ -46,6 +46,8 @@ class Header extends Component {
                 return <UserDropdown />
             case 'seller':
                 return <UserDropdown />
+            case 'admin':
+                return <UserDropdown/>
             default:
                 return (<LoginModal loginvisible={this.state.loginvisible} showLoginModal={this.showLoginModal} handleCancel={this.handleCancel} />)
         }
@@ -55,7 +57,8 @@ class Header extends Component {
         const userOption = (
             <Menu>
                 <Menu.Item ><Link to='/userprofile'onClick={()=>this.onCloseDrawer()}>Profile</Link></Menu.Item>
-                {this.props.user.role==='seller'?<Menu.Item><Link to='/shopprofile' onClick={()=>this.onCloseDrawer()}>Shop profile</Link></Menu.Item>:''}
+                {this.props.user.role==='seller'?<Menu.Item><Link to='/shopprofile' onClick={()=>this.onCloseDrawer()}>Shop profile</Link></Menu.Item>:
+                this.props.user.role==='admin'?<Menu.Item><Link to='/admin' onClick={()=>this.onCloseDrawer()}>Admin</Link></Menu.Item>:''}
                 <Menu.Item onClick={()=>{this.props.logout();this.onCloseDrawer()}} >Logout</Menu.Item>
             </Menu>
         )
@@ -63,6 +66,8 @@ class Header extends Component {
             case 'buyer':
                 return userOption
             case 'seller':
+                return userOption
+            case 'admin':
                 return userOption
             default:
                 return (<Menu.Item onClick={() => this.showLoginModalDrawer()}>Login</Menu.Item>)

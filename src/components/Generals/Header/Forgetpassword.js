@@ -12,9 +12,12 @@ class Forgetpassword extends Component {
                .then(response=>{
                    if(response.data==='email has been sent, please check your email'){
                        message.success(response.data)
+                       this.props.form.resetFields(); 
                    }
                    else{
                        message.error(response.data)
+                       this.props.form.resetFields();
+                      
                    }
                })
                .catch(err=>{
