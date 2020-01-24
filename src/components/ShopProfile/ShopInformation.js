@@ -255,7 +255,6 @@ export class ShopInformation extends Component {
               </Form.Item>
 
               <FindLocation
-                style={{ zIndex: '-1' }}
                 callbackFromParent={this.getLocation}
               />
 
