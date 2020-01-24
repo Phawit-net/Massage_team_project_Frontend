@@ -17,25 +17,25 @@ export default class ShopPackages extends Component {
 
   async componentDidMount() {
     const result = await Axios.get(
-      `http://localhost:8080/shops/${this.state.page}`
+      `http://localhost:8080/shops`
     );
     this.setState({ shopList: result.data });
   }
 
-  handleSearch(value) {
-    console.log(value);
-    console.log(this.state);
-    let keyword = value;
-    let page = this.state.page;
-    Axios.get(
-      `http://localhost:8080/searchShops?keyword=${keyword}&page=${page}`
-    ).then(result => {
-      this.setState({
-        shopList: result.data,
-        keyword: keyword
-      });
-    });
-  }
+  // handleSearch(value) {
+  //   console.log(value);
+  //   console.log(this.state);
+  //   let keyword = value;
+  //   let page = this.state.page;
+  //   Axios.get(
+  //     `http://localhost:8080/searchShops?keyword=${keyword}&page=${page}`
+  //   ).then(result => {
+  //     this.setState({
+  //       shopList: result.data,
+  //       keyword: keyword
+  //     });
+  //   });
+  // }
 
   myCallback = dataFromChild => {
     this.setState({
@@ -51,10 +51,10 @@ export default class ShopPackages extends Component {
           <Col style={{ padding: "20px 0px 20px 40px" }} className={styles.font}>
             Shop & Packages
           </Col>
-          <div style={{ width: "90vw", margin: "auto", border: "1px solid #9E4624" }}>
+          <div style={{ width: "90vw", margin: "auto", border: "2px solid #9E4624" }}>
             <Search
               placeholder="input search text"
-              onSearch={value => this.handleSearch(value)}
+              // onSearch={value => this.handleSearch(value)}
               enterButton
               style={{ margin: "2% 0% 2% 2%", width: "97%" }}
             />

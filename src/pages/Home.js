@@ -5,14 +5,13 @@ import ShopList from '../components/Generals/Shop/ShopList'
 import { Link } from 'react-router-dom'
 import { Carousel, Row, Col } from 'antd';
 
-
 export default class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
       shopList: [],
       page: 1,
-      keyword: ''
+      keyword: '',
     };
   }
 
@@ -29,24 +28,25 @@ export default class Home extends Component {
   }
 
   render() {
+    
     return (
       <div>
         <Carousel autoplay className={styles.slide}>
-          <img style={{ width: '100%', height: '100%' }} src="/cover1.png" alt="img1" />
+          <img style={{ width: '100%', height: '100%' }} src="HomeCover1.png" alt="img1" />
 
-          <img style={{ width: '100%', height: '100%' }} src="/cover2.png" alt="img2" />
+          <img style={{ width: '100%', height: '100%' }} src="HomeCover2.png" alt="img2" />
 
-          <img style={{ width: '100%', height: '100%' }} src="/cover3.png" alt="img3" />
+          <img style={{ width: '100%', height: '100%' }} src="HomeCover3.png" alt="img3" />
         </Carousel>
         <Row style={{ backgroundColor: '#f1e6b2', fontSize: '20px' }} >
           <Col>
             <div style={{ borderTop: '5px solid #855f3e' }}></div>
           </Col>
           <Col xs={0} md={24}>
-            <img src='/pattern3.png' alt="pattern3" style={{ position: 'absolute', opacity: '0.4' }} className={styles.pattern} />
+            <img src='pattern3.png' style={{ position: 'absolute', opacity: '0.4' }} className={styles.pattern} />
           </Col>
           <Col xs={0} md={24}>
-            <img src='/pattern3.png' alt="pattern3" style={{ position: 'absolute', opacity: '0.4', right: '0%', transform: 'scaleX(-1)' }} className={styles.pattern} />
+            <img src='pattern3.png' style={{ position: 'absolute', opacity: '0.4', right: '0%', transform: 'scaleX(-1)' }} className={styles.pattern} />
           </Col>
           <Col style={{ display: 'flex', justifyContent: 'center', padding: '10px' }} className={styles.font} span={24}>
             Heaven For Thai Massage Lover
