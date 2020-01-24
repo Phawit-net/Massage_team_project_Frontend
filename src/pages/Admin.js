@@ -98,8 +98,8 @@ export default class Admin extends Component {
     
 
         return (
-            <div style={{marginBottom:'300px'}}>
-                <Table className="admin" columns={columns} dataSource={this.state.show} />
+            <div style={{marginBottom:'300px', marginLeft:'10%',marginRight:'10%'}}>
+                <Table className="admin" columns={columns} dataSource={this.state.show} scroll={{x:800}} />
             </div>
         )
     }
