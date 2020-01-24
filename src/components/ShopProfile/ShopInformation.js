@@ -41,15 +41,34 @@ export class ShopInformation extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, value) => {
-      let payload = new FormData();
-      payload.append("shopDescription", value.shopdescription);
-      payload.append("photoPost", this.state.fileList[0]);
-      payload.append("shopAccountNo", value.accountno);
-      payload.append("shopAccountName", value.accountname);
+        console.log(value.shopdescription)
+        console.log(value.accountno)
+        console.log(value.accountname)
+        let payload = new FormData();
+        payload.append("shopDescription", value.shopdescription);
+        payload.append("photoPost", this.state.fileList[0]);
+        //this.state.fileList.forEach(x => payload.append("photoPost", x));
+        payload.append("shopAccountNo", value.accountno);
+        payload.append("shopAccountName", value.accountname);
+        console.log(payload);
+        if(this.state.fileList[0]==undefined){
+          failLoginNotification("Please select file image")
+        }
+        if (!err) {
+            Axios.put("/updateShop", payload)
+              .then(result => {
+                successLoginNotification()
+                console.log(result);
+              })
+              .catch(err => {
+                console.error(err);
+              });
+            //this.props.form.resetFields();
+          }
 
-      payload.append("latitude", value.latitude);
-      payload.append("longitude", value.longitude);
-      payload.append("address", value.address);
+          
+        
+      });
 
       if (this.state.fileList[0] === undefined) {
         failLoginNotification("Please select file image")
@@ -65,8 +84,8 @@ export class ShopInformation extends Component {
           });
         //this.props.form.resetFields();
       }
-    });
-  };
+    };
+  
 
   handlePreview = async file => {
     if (!file.url && !file.preview) {
