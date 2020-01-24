@@ -193,10 +193,10 @@ export class ShopInformation extends Component {
 
     return (
       <Row type="flex" justify="center" align="top">
-        <Col span={9}>
+        <Col span={20}>
           <Row type="flex" justify='start'>
-            <Col style={{ fontSize: "25px" }}>
-              Shop information
+            <Col>
+              <h1>Shop information</h1>
             </Col>
           </Row>
           <Row>

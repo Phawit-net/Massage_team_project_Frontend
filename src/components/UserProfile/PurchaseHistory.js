@@ -22,10 +22,10 @@ export default class PurchaseHistory extends Component {
     const columns = [
       {
         title: 'SHOP',
-        width: 100,
         dataIndex: 'shopName',
         key: 'name',
-        fixed: 'left',
+        // fixed: 'left',
+        render: (text, history) => <h4>{history.shopName.toUpperCase()}</h4>
       },
       {
         title: 'SERVICE',
@@ -69,7 +69,7 @@ export default class PurchaseHistory extends Component {
     ];
 
     return (
-      <Row type='flex' justify='space-around' style={{ padding: '10px' }}>
+      <Row type='flex' justify='space-around' style={{ padding: '15px' }}>
         <Col span={22}>
           <Row><h1>Purchase History</h1></Row>
           <Row>
