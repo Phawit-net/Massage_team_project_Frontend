@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Row, Col, Form, Input, Upload, Icon, Modal, Button } from "antd";
+import { Row, Col, Form, Input, Upload, Icon, Button } from "antd";
 import Axios from "../../config/axios.setup";
 import style from './CreateService.module.css'
 const { TextArea } = Input;

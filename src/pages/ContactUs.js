@@ -20,6 +20,7 @@ handleSubmit(e){
                 this.props.form.resetFields()
             })
             .catch(err=>{
+                console.log(err.response.data)
                 message.error('something wrong')
             })
         }
@@ -35,7 +36,7 @@ handleSubmit(e){
                     </Row>
                     <Row style={{ marginLeft: '10%', marginRight: '10%', marginTop: '20px' }} type='flex' align='middle' gutter={[32, 0]} >
                         <Col span={12}>
-                            <Card bodyStyle={{ padding: '0' }} cover={<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQTMBYQmEreTAtSIicmy2DTOnefXW9WZvBmFiMh_upLaq6XG2az' alt='project description image' />} />
+                            <Card bodyStyle={{ padding: '0' }} cover={<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQTMBYQmEreTAtSIicmy2DTOnefXW9WZvBmFiMh_upLaq6XG2az' alt='project_description_image' />} />
                         </Col>
                         <Col span={12}>
                             <h2 style={{ textIndent: '50px', color: '#926f3b' }}>This purpose of creating this project is to support foreign who love Thai massage to easily find a thai massage shop,On the other hand a SME thai massage shops can easily find their customer through our website by posting their services. </h2>
@@ -49,7 +50,7 @@ handleSubmit(e){
                         </Row>
                     </Row>
                     <Row type='flex' justify='center' align='middle' className={styles.cover}>
-                        <a href='https://github.com/panuwat33586' target='_blank'>
+                        <a href='https://github.com/panuwat33586' target='_blank' rel="noopener noreferrer">
                             <Col className={styles.person}>
                                 <h1>A</h1>
                                 <img src='test model.png' alt='test model' />

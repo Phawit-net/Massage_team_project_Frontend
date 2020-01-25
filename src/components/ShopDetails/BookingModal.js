@@ -21,7 +21,7 @@ class BookingModal extends Component {
 
   componentDidMount() {
     let targetServiceID = this.props.id;
-    Axios.get(`http://localhost:8080/servicesDetail?id=${targetServiceID}`).then(
+    Axios.get(`/servicesDetail?id=${targetServiceID}`).then(
       result => {
         this.setState({
           serviceList: result.data,
@@ -47,18 +47,18 @@ class BookingModal extends Component {
     return current && current < moment().endOf('day');
   }
 
-  handleAdd1hr(start, startString) {
+  handleSetEndTime(start, startString, time) {
     this.setState({ startValue: startString })
     this.props.form.setFieldsValue({
-      endTime: moment(this.add1Hour(start), 'HH:mm'),
+      endTime: moment(this.addTimeHour(start,time), 'HH:mm'),
     });
   }
 
-  add1Hour(x) {
+  addTimeHour(x,time) {
     let startDate = moment(x)
-    let onehour = startDate.startOf('hour').add(1, 'hours').format('HH:mm')
-    this.setState({ endValue: onehour })
-    return onehour
+    let newTime = startDate.startOf('hour').add(time, 'hours').format('HH:mm')
+    this.setState({ endValue: newTime })
+    return newTime
   }
 
   handleSubmit(service) {
@@ -172,7 +172,7 @@ class BookingModal extends Component {
                         {getFieldDecorator('startTime', {
                           rules: [{ type: 'object', required: true, message: 'Please select time of booking' }]
                         })(<TimePicker format="HH:00"
-                          onChange={(start, startString) => this.handleAdd1hr(start, startString)} />)}
+                          onChange={(start, startString) => this.handleSetEndTime(start, startString, service.time)} />)}
                       </Form.Item>
                     </Row>
 

@@ -1,0 +1,23 @@
+.siderList{
+  background: #FFFFFF !important;
+}
+
+.siderList > span{
+  background: #9E4624 !important;
+}
+
+.menulist{
+  color: #926F3B !important;
+}
+
+.menulist>li:hover {
+  background-color: #F1E6B2 !important;
+  opacity: '0.8';
+  color: #926F3B !important;
+}
+
+.menulist>li:visited {
+  background-color: #F1E6B2 !important;
+  opacity: '0.8';
+  color: #926F3B !important;
+}

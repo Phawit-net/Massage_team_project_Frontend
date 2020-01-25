@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 import { Row, Col, Table, Button } from "antd";
 import Axios from "../../config/axios.setup";
 import style from './ServiceHistory.module.css'
-
 
 export class ServiceHistory extends Component {
   constructor(props) {
@@ -13,8 +11,8 @@ export class ServiceHistory extends Component {
     };
   }
 
-  async getServices() {
-    const result = await Axios.get("/getServices")
+  getServices() {
+    Axios.get("/getServices")
       .then(result => {
         this.setState({ servicesList: result.data });
         console.log(result.data);
@@ -26,7 +24,7 @@ export class ServiceHistory extends Component {
     this.getServices();
   }
 
-   handleDeleteService = async(key,e) => {
+  handleDeleteService = async (key, e) => {
     console.log(key)
     await Axios.delete(`/deleteService/${key}`)
       .then(result => {
@@ -60,7 +58,7 @@ export class ServiceHistory extends Component {
         render: (text, record) => (
           <Button
             type="primary"
-            onClick={(e)=>this.handleDeleteService(record.key,e)}
+            onClick={(e) => this.handleDeleteService(record.key, e)}
             className={style.ButtonDelete}
           >
             Delete
@@ -73,20 +71,20 @@ export class ServiceHistory extends Component {
     this.state.servicesList.map(result =>
       data.push({
         key: result.id,
-        image: (<img src={`${Axios.defaults.baseURL}/${result.serviceProfilePic}`} style={{ width: "100px", height: "100px",borderRadius:"50%" }}/>),
+        image: (<img src={`${Axios.defaults.baseURL}/${result.serviceProfilePic}`} alt="serviceProfilePic" style={{ width: "100px", height: "100px", borderRadius: "50%" }} />),
         serviceName: result.serviceName,
         time: result.time
       })
     );
 
-  
+
     return (
-      <Row type="flex" justify="center" style={{marginTop:'1vh'}}>
+      <Row type="flex" justify="center" style={{ marginTop: '1vh' }}>
         <Col span={20}>
           <Row type="flex">
             <Col style={{ fontSize: "20px" }}>Service History</Col>
           </Row>
-          <Row style={{marginTop:'1vh'}}>
+          <Row style={{ marginTop: '1vh' }}>
             <Table
               columns={columns}
               dataSource={data}

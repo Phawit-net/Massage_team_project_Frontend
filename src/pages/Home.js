@@ -55,20 +55,20 @@ export default class Home extends Component {
             A place where Thai massage from all over Thailand meet Thai massge lover
           </Col>
           <Col style={{ display: 'flex', justifyContent: 'center' }} span={24}>
-            <img src='Separator.png' style={{ width: '10%', height: '10%' }} />
+            <img src='Separator.png' alt="Separator" style={{ width: '10%', height: '10%' }} />
           </Col>
           <Col style={{ display: 'flex', justifyContent: 'center', margin: '40px 0px' }} span={24}>
-            <img src='slogan1.png' style={{ width: '150px', height: '150px',margin:'0px 30px' }} />
-            <img src='slogan2.png' style={{ width: '150px', height: '150px' ,margin:'0px 30px'}} />
+            <img src='slogan1.png' alt="slogan1" style={{ width: '150px', height: '150px', margin: '0px 30px' }} />
+            <img src='slogan2.png' alt="slogan2" style={{ width: '150px', height: '150px', margin: '0px 30px' }} />
           </Col>
         </Row>
         {/* <Row style={{ backgroundColor: '#f1e6b2'}} type='flex' justify='center'>
           
         </Row> */}
         <Row type='flex' justify='center' align='middle' style={{ paddingTop: '20px' }}>
-          <img src='/explore.png' style={{ width: '30px', height: '30px', marginRight: '10px' }} />
+          <img src='/explore.png' alt="explore" style={{ width: '30px', height: '30px', marginRight: '10px' }} />
           <Link to='/shoppackages' className={styles.explorefont}>Explore All Shop</Link>
-          <img src='/explore.png' style={{ width: '30px', height: '30px', marginLeft: '10px' }} />
+          <img src='/explore.png' alt="explore" style={{ width: '30px', height: '30px', marginLeft: '10px' }} />
         </Row>
         <Row style={{ margin: '0px 150px' }} className={styles.shoplist}>
           <ShopList

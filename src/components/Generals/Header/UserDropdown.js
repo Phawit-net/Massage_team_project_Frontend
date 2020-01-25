@@ -9,11 +9,9 @@ import { Link } from 'react-router-dom'
         const menu = (
             <Menu>
               <Menu.Item>
-                <Link to='/userprofile'>
-                <span>
-                  Profile
-                </span>
-                </Link>
+                {this.props.user.role==='buyer'||this.props.user.role==='seller'?
+                <Link to='/userprofile'><span>Profile</span></Link>:this.props.user.role==='admin'?
+                <Link to='/admin'><span>Admin</span></Link>:''}
               </Menu.Item>
               {this.props.user.role==='seller'?<Menu.Item><Link to='/shopprofile'><span>Shop profile</span></Link></Menu.Item>:''}
               <Menu.Item>
@@ -27,7 +25,7 @@ import { Link } from 'react-router-dom'
             <>
                 <Dropdown overlay={menu}>
                     <span className={styles.menuoption} >
-                        User <Icon type="down" />
+                        {this.props.user.name} <Icon type="down" />
                     </span>
                 </Dropdown>
 

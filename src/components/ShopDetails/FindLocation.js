@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 
-
 export default class FindLocation extends Component {
   constructor(props) {
     super(props)
@@ -69,7 +68,7 @@ export default class FindLocation extends Component {
 
     return (
       <>
-        <Map center={[this.state.defaultLocation.lat, this.state.defaultLocation.lng]} zoom={this.state.zoom} style={{zIndex:'-1'}}>
+        <Map center={[this.state.defaultLocation.lat, this.state.defaultLocation.lng]} zoom={this.state.zoom} style={{ zIndex: '100' }}>
           <TileLayer
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
