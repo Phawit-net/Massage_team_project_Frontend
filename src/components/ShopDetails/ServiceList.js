@@ -52,13 +52,6 @@ export default class ServiceList extends Component {
           )}
         </Row >
         <br />
-        {/* <Pagination
-          total={servicesList.length}
-          showTotal={(total, range) => `${range[0]}-${range[1]} of ${total} items`}
-          pageSize={numEachPage}
-          onChange={this.handleChange}
-          style={{ align: "center" }}
-        /> */}
         <Paginations items={servicesList} onChangePage={this.onChangePage} pageSize = {numEachPage}/>
         <br />
       </div >
