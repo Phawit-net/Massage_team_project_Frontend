@@ -31,6 +31,10 @@ const components = {
       component: 'ResetPassword',
       url: '/resetpassword/:token',
     },
+    contactus: {
+      component: 'ContactUs',
+      url: '/contactus',
+    },
     admin: {
       component: 'Admin',
       url: '/admin',
@@ -43,7 +47,8 @@ const components = {
         components.home,
         components.admin,
         components.shopdetails,
-        components.shoppackages
+        components.shoppackages,
+        components.contactus
       ],
       redirect:'/home'
     },
@@ -55,6 +60,7 @@ const components = {
             components.shopdetails,
             components.userprofile,
             components.resetpassword,
+            components.contactus
         ],
         redirect:'/home'
     },
@@ -67,6 +73,7 @@ const components = {
             components.shopprofile,
             components.userprofile,
             components.resetpassword,
+            components.contactus
       ],
       redirect:'/home'
     },
@@ -77,6 +84,7 @@ const components = {
             components.payment,
             components.shoppackages,
             components.shopdetails,
+            components.contactus
       ],
       redirect:'/home'
     }
