@@ -67,12 +67,18 @@ class ShopDetails extends Component {
             <div style={{ borderTop: '5px solid #855f3e' }}></div>
           </Col>
         </Row>
+
         <Row style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#f1e6b2' }}>
-          <Col style={{ margin: '20px' }}>
+          <Col style={{margin:'15px' ,textAlign:'center'}}>
+            <div className={styles.font} style={{ fontSize: '50px' }}>{this.state.shopName}</div>
             <img style={{ width: "150px", height: "auto" }} src={`${Axios.defaults.baseURL}/${this.state.shopProfilePic}`} />
           </Col>
-          <Col style={{ margin: '20px' }}>
-            <div className={styles.font} style={{ fontSize: '50px' }}>{this.state.shopName}</div>
+          <Col style={{margin:'15px'}}>
+            {this.state.haveLocation ?
+              <ShowLocation location={this.state.location}/> : <div style={{width:'300px' ,height:'300px'}}>
+                <img src = 'default_map.png'/>
+              </div>
+            }
           </Col>
         </Row>
 
@@ -82,13 +88,6 @@ class ShopDetails extends Component {
           </Col>
         </Row>
 
-        <Row type="flex" justify="center" style={{ marginTop: '50px' }}>
-          <Col  >
-            {this.state.haveLocation ?
-              <ShowLocation location={this.state.location} /> : ""
-            }
-          </Col>
-        </Row>
       </div>
     );
   }
