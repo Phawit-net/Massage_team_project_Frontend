@@ -1,0 +1,83 @@
+const components = {
+    home: {
+      component: 'Home',
+      url: '/home',
+    },
+    payment: {
+      component: 'Payment',
+      url: '/payment',
+    },
+    shopdetails: {
+      component: 'ShopDetails',
+      url: '/shopdetails',
+    },
+    shoppackages: {
+      component: 'ShopPackages',
+      url: '/shoppackages',
+    },
+    shopprofile: {
+      component: 'ShopProfile',
+      url: '/shopprofile',
+    },
+    signup: {
+      component: 'Signup',
+      url: '/signup',
+    },
+    userprofile: {
+      component: 'UserProfile',
+      url: '/userprofile',
+    },
+    resetpassword: {
+      component: 'ResetPassword',
+      url: '/resetpassword/:token',
+    },
+    admin: {
+      component: 'Admin',
+      url: '/admin',
+    },
+  };
+  
+  export default {
+    admin: {
+      routes: [
+        components.home,
+        components.admin,
+        components.shopdetails,
+        components.shoppackages
+      ],
+      redirect:'/home'
+    },
+    buyer: {
+        routes: [
+            components.home,
+            components.payment,
+            components.shoppackages,
+            components.shopdetails,
+            components.userprofile,
+            components.resetpassword,
+        ],
+        redirect:'/home'
+    },
+    seller: {
+      routes: [
+            components.home,
+            components.payment,
+            components.shoppackages,
+            components.shopdetails,
+            components.shopprofile,
+            components.userprofile,
+            components.resetpassword,
+      ],
+      redirect:'/home'
+    },
+    guest: {
+      routes: [
+            components.home,
+            components.signup,
+            components.payment,
+            components.shoppackages,
+            components.shopdetails,
+      ],
+      redirect:'/home'
+    }
+  }
