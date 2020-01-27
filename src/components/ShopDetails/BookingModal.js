@@ -120,19 +120,25 @@ class BookingModal extends Component {
           <Row className={styles.borderBox}>
             <Col span={24} style={{ width: '100%', height: '100%' }}>
 
-              <Row className={styles.borderBoxSmall} type='flex' justify='space-around'>
-                <Col xs={24} lg={9} xl={8} style={{ textAlign: 'center' }}>
+              <Row className={styles.borderBoxSmall} >
+                <div style={{ position: 'absolute', width: '100%', height: '100%' }}>
+                  <img src='patternLeft.png' style={{ position: 'absolute' }} />
+                  <img src='patternRight.png' style={{ position: 'absolute', right: '0%' }} />
+                  <img src='patternLeft.png' style={{ position: 'absolute', transform: 'scaleY(-1)', bottom: '0%' }} />
+                  <img src='patternRight.png' style={{ position: 'absolute', transform: 'scaleY(-1)', right: '0%', bottom: '0%' }} />
+                </div>
+                <Col xs={24} lg={9} xl={8} style={{ textAlign: 'center', padding: '20px' }}>
                   <Avatar src={`${Axios.defaults.baseURL}/${service.serviceProfilePic}`} alt="" shape='square' size={200} style={{ margin: '5px' }} />
                 </Col>
 
                 <Col xs={24} lg={14} xl={16}>
-                  <Row>
+                  <Row style={{ padding: '10px' }}>
                     <Col span={16} style={{ color: '#926F3B' }}>
                       <h3>{service.serviceName}</h3>
                       <h5>({this.state.personValue} person)</h5>
                     </Col>
                     <Col span={8}>
-                      <Row><h4>{this.state.shopList.shopName}</h4></Row>
+                      <Row><h3>{this.state.shopList.shopName}</h3></Row>
                       <Row><h5>Time: </h5><h6>{this.state.startValue ? `${this.state.startValue}-${this.state.endValue}` : undefined}</h6></Row>
                       <Row><h5>Date: </h5><h6>{(this.state.dateValue) ? moment(this.state.dateValue).format('DD MMM YYYY') : undefined}</h6></Row>
                     </Col>
@@ -142,9 +148,12 @@ class BookingModal extends Component {
 
               </Row>
 
-              <Row style={{ padding: '5px' }}>
-                <Col>
-
+              <Row style={{ padding: '5px' }} >
+                <div style={{ position: 'absolute', width: '100%', height: '100%' }}>
+                  <img src='coner.png' style={{ position: 'absolute', width: '135px', height: '150px', right: '1%', bottom: '1%', opacity: '0.8' }} />
+                  <img src='coner.png' style={{ position: 'absolute', transform: 'scaleX(-1)', width: '135px', height: '150px', bottom: '1%', opacity: '0.8' }} />
+                </div>
+                <Col className={styles.layout}>
                   <Row><h1>Booking Information</h1></Row>
                   <Form {...formItemLayout} labelAlign='left'>
                     <Row>
