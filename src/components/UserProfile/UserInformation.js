@@ -47,32 +47,30 @@ export default class UserInformation extends Component {
     return (
 
       <Row type="flex" justify="center" align="top">
-        <Col span={9}>
+        <Col span={22}>
           <Row type="flex" justify='start'>
-            <Col style={{ fontSize: "25px" }}>
-              Personal information
-    </Col>
+            <Col><h1>Personal information</h1></Col>
           </Row>
           <Row>
             <Form {...formItemLayout}>
               <Form.Item label="Username " style={{ marginTop: "0", marginBottom: "0" }}>
-                <h3>{this.state.Username}</h3>
+                <h4>{this.state.Username}</h4>
               </Form.Item>
 
               <Form.Item label="Firstname " style={{ marginTop: "0", marginBottom: "0" }}>
-                <h3>{this.state.Firstname}</h3>
+                <h4>{this.state.Firstname}</h4>
               </Form.Item>
 
               <Form.Item label="Lastname " style={{ marginTop: "0", marginBottom: "0" }}>
-                <h3>{this.state.Lastname}</h3>
+                <h4>{this.state.Lastname}</h4>
               </Form.Item>
 
               <Form.Item label="Email " style={{ marginTop: "0", marginBottom: "0" }}>
-                <h3>{this.state.Email}</h3>
+                <h4>{this.state.Email}</h4>
               </Form.Item>
 
               <Form.Item label="Tel " style={{ marginTop: "0", marginBottom: "0" }}>
-                <h3>{this.state.Tel}</h3>
+                <h4>{this.state.Tel}</h4>
               </Form.Item>
 
             </Form>

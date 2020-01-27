@@ -3,13 +3,15 @@ import '../UserProfile.css'
 import ServiceUsage from '../components/UserProfile/ServiceUsage'
 import UserInformation from '../components/UserProfile/UserInformation'
 import PurchaseHistory from '../components/UserProfile/PurchaseHistory';
-import { Row, Col } from 'antd';
+import { Row, Col, Avatar, Menu, Card, Icon, Layout } from 'antd';
 import Axios from "../config/axios.setup"
+import styles from './UserProfile.module.css'
+const { Content, Sider } = Layout;
 
 export default class UserProfile extends Component {
 
     state = {
-        case: 1,
+        selectCategory: '1',
         id: "",
         shopName: "",
         pic: "",
@@ -36,58 +38,58 @@ export default class UserProfile extends Component {
 
     }
 
-    HandleUserInformation = () => {
-        this.setState({ case: 1 })
-    };
-
-    HandlePurchaseHistory = () => {
-        this.setState({ case: 2 })
-    };
-
-    HandleServicesUsage = () => {
-        this.setState({ case: 3 })
-    };
-
-    HandleShopLink = () => {
-        this.setState({ case: 4 })
-    };
-
-    Display = () => {
-        switch (this.state.case) {
-            case 1: return <UserInformation />;
-
-            case 2: return <PurchaseHistory />;
-
-            case 3: return <ServiceUsage />;
-
-            default: return <UserInformation />;
+    handleRenderCategory() {
+        switch (this.state.selectCategory) {
+            case '1':
+                return <UserInformation />
+            case '2':
+                return <PurchaseHistory />
+            case '3':
+                return <ServiceUsage />
+            default:
+                return
         }
+    }
+    handleSelectCategory(e) {
+        this.setState({
+            selectCategory: e.key
+        })
     }
 
     render() {
         return (
-            <div style={{ display: "grid", gridTemplateColumns: "25% 70%", gridGap: "5%", justifyContent: "space-around", margin: "200px 20px 20px 20px", height: "100vh" }}>
-                <Col style={{ width: "100%", height: "50%", position: "sticky", top: "250px" }}>
-                    <Row className="pic" type="grid">
-                        <Col span={6}></Col>
-                        <Col className="img" span={6}> <img className="img" src={`${Axios.defaults.baseURL}/${this.state.pic}`} alt="user profile" /> </Col>
-                        <Col className="name" span={12}> {this.state.shopName}</Col>
-                    </Row>
-                    <Row className="listUserProfile" style={{ marginLeft: "16%", width: "100%" }} type="grid">
-                        <Col span={8}></Col>
-                        <Col className="containerList" span={16}>
-                            <Row className="list" onClick={this.HandleUserInformation}> User information </Row>
-                            <Row className="list" onClick={this.HandlePurchaseHistory}> Purchase history</Row>
-                            <Row className="list" onClick={this.HandleServicesUsage}> Services usage</Row>
-                        </Col>
-                    </Row>
-                </Col>
+            <Layout style={{ marginTop: '200px', marginLeft: '5%', marginRight: '5%' }} gutter={[48]}>
 
-                <div style={{ border: "1px solid black", width: "100%", height: "100%" }}>
-                    {this.Display()}
-                </div>
-            </div>
+                <Sider breakpoint="lg" collapsedWidth="0" className={styles.siderList}>
+                    <Menu defaultSelectedKeys={this.state.selectCategory} onSelect={(e) => this.handleSelectCategory(e)} className={styles.menulist} >
+                        <Menu.Item key='0' style={{ height: '120px', paddingTop: '20px', cursor: 'default' }} disabled>
+                            <Row type='flex' justify='space-around'>
+                                <Col xs={24} md={10}> <Avatar src={`${Axios.defaults.baseURL}/${this.state.pic}`} size={64} icon="user" /></Col>
+                                <Col xs={24} md={12}><h3>{this.state.shopName.toUpperCase()}</h3></Col>
+                            </Row>
+                        </Menu.Item>
+                        <Menu.Item key='1' className={styles.menulist}>
+                            <Icon type="info-circle" />
+                            <span>User information</span>
+                        </Menu.Item>
+                        <Menu.Item key='2'>
+                            <Icon type="history" />
+                            <span>Purchase history</span>
+                        </Menu.Item>
+                        <Menu.Item key='3'>
+                            <Icon type="pie-chart" />
+                            <span>Services usage</span>
+                        </Menu.Item>
+                    </Menu>
+                </Sider>
 
+                <Content>
+                    <Card bodyStyle={{ padding: '30px' }}>
+                        {this.handleRenderCategory()}
+                    </Card>
+                </Content>
+
+            </Layout>
         )
     }
 }

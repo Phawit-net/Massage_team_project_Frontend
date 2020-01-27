@@ -103,13 +103,21 @@ class Payment extends Component {
         const { current } = this.state;
         const steps = [
             {
-                title: 'Upload Transaction slip',
+                title: 'Upload transaction slip',
                 content:
                     <Card>
                         <h2>Please upload your transaction slip </h2>
                         <h4><Icon type="bank" />  Bank transfer payment</h4>
-                        <pre>   <Icon type="right-circle" />{` Account number : ${booking.service.shop.shopAccountNo}`}
-                            <br />   <Icon type="right-circle" />{` Account name   : ${booking.service.shop.shopAccountName}`}</pre>
+                        <Row style={{paddingLeft: '20px'}}>
+                            <Col sm={24} lg={24} xl={2}>
+                                <img src="kbank.png" width="70"/>
+                            </Col>
+                            <Col sm={24} lg={24} xl={12}>
+                                <pre><Icon type="right-circle" />{` Account number : ${booking.service.shop.shopAccountNo}`}
+                                    <br /><Icon type="right-circle" />{` Account name   : ${booking.service.shop.shopAccountName}`}</pre>
+                            </Col>
+                        </Row>
+
                         <Dragger accept='.jpg' onChange={this.handleChange} customRequest={({ file, onSuccess }) => this.handlecustomRequest({ file, onSuccess })}
                             onRemove={() => this.handleRemove} showUploadList={false}
                         >
@@ -125,14 +133,14 @@ class Payment extends Component {
             },
             {
                 title: 'Confirm payment',
-                content: <Card 
-                cover={<img src={this.state.previewImage} alt='slip_image' style={{ width: 300 }} />} 
-                style={{ display: 'flex', justifyContent: 'center' }}
-                bodyStyle={{ padding: 0}}>
+                content: <Card
+                    cover={<img src={this.state.previewImage} alt='slip_image' style={{ width: 300 }} />}
+                    style={{ display: 'flex', justifyContent: 'center' }}
+                    bodyStyle={{ padding: 0 }}>
                 </Card>,
             },
             {
-                title: 'finished',
+                title: 'Finished',
                 content:
                     <Card>
                         <Row type='flex' justify='center'>  <h1>Thank you for Booking</h1></Row>
