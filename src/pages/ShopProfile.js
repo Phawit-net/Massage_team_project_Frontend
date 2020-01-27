@@ -5,7 +5,7 @@ import ServiceHistory from '../components/ShopProfile/ServiceHistory'
 import ApprovePurchase from '../components/ShopProfile/ApprovePurchase'
 import CustomerUsage from '../components/ShopProfile/CustomerUsage'
 import { Row, Col, Avatar, Menu, Card, Icon, Layout } from 'antd';
-import Axios from 'axios'
+import Axios from "../config/axios.setup"
 import styles from './ShopProfile.module.css'
 const { Content, Sider } = Layout;
 export default class ShopProfile extends Component {

@@ -69,7 +69,7 @@ export default class PurchaseHistory extends Component {
     ];
 
     return (
-      <Row type='flex' justify='space-around' style={{ padding: '15px' }}>
+      <Row type='flex' justify='space-around' >
         <Col span={22}>
           <Row><h1>Purchase History</h1></Row>
           <Row>
