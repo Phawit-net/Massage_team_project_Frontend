@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom'
 import Axios from '../config/axios.setup'
 import { connect } from 'react-redux'
 import { clearBooking } from '../redux/actions/actions'
+import styles from "./Payment.module.css";
+import '../App.css'
 const { Dragger } = Upload;
 const { Step } = Steps;
 
@@ -200,18 +202,18 @@ class Payment extends Component {
                             <div className="steps-content" style={{ marginTop: '20px' }}>{steps[current].content}</div>
                             <div className="steps-action" style={{ marginTop: '20px' }}>
                                 {current === 0 && (
-                                    <Button type="primary" disabled={this.state.file === '' ? true : false} onClick={() => this.next()}>
+                                    <Button type="primary" className={styles.Button} disabled={this.state.file === '' ? true : false} onClick={() => this.next()}>
                                         Next
             </Button>
                                 )}
                                 {current === 1 && (
-                                    <Button type="primary" onClick={() => this.confirm()}>
+                                    <Button type="primary"className={styles.Button} onClick={() => this.confirm()}>
                                         Confirm
             </Button>
                                 )}
 
                                 {current === 1 && (
-                                    <Button style={{ marginLeft: 8 }} onClick={() => this.prev()}>
+                                    <Button className={styles.previousButton} style={{ marginLeft: 8 }} onClick={() => this.prev()}>
                                         Previous
             </Button>
                                 )}

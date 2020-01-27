@@ -60,6 +60,8 @@ export default class Home extends Component {
           <Col style={{ display: 'flex', justifyContent: 'center', margin: '40px 0px' }} span={24}>
             <img src='slogan1.png' alt="slogan1" style={{ width: '150px', height: '150px', margin: '0px 30px' }} />
             <img src='slogan2.png' alt="slogan2" style={{ width: '150px', height: '150px', margin: '0px 30px' }} />
+            <img src='slogan3.png' alt="slogan3" style={{ width: '150px', height: '150px', margin: '0px 30px' }} />
+
           </Col>
         </Row>
         {/* <Row style={{ backgroundColor: '#f1e6b2'}} type='flex' justify='center'>

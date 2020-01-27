@@ -18,7 +18,7 @@ export default class FindLocation extends Component {
     const position = [this.props.location.latitude, this.props.location.longitude]
     return (
       <>
-        <Map center={[this.props.location.latitude, this.props.location.longitude]} zoom={this.state.zoom}>
+        <Map center={[this.props.location.latitude, this.props.location.longitude]} zoom={this.state.zoom} style={{ zIndex: '100' }}>
           <TileLayer
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
