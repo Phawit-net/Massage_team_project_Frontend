@@ -33,7 +33,27 @@ export class ShopInformation extends Component {
         lat: 0,
         lng: 0,
       },
+      address: '',
     };
+  }
+
+  handleChangeByInputLat = e => {
+    this.setState({
+      location: {
+        lat: e.target.value,
+        lng: this.state.location.lng,
+      }
+    })
+    console.log(e.target.value)
+  }
+  handleChangeByInputLng = e => {
+    this.setState({
+      location: {
+        lat: this.state.location.lat,
+        lng: e.target.value,
+      }
+    })
+    console.log(e.target.value)
   }
 
   handleCancel = () => this.setState({ previewVisible: false });
@@ -106,6 +126,28 @@ export class ShopInformation extends Component {
       .catch(err => {
         console.error(err);
       })
+    Axios.get('/getAddress')
+      .then(result => {
+        if (result.data) {
+          this.setState({
+            location: {
+              lat: result.data.latitude,
+              lng: result.data.longitude,
+            },
+            address: result.data.address,
+          })
+        } else {
+          navigator.geolocation.getCurrentPosition((position) => {
+            this.setState({
+              location: {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+              },
+            })
+            // console.log(this.state.location)
+          })
+        }
+      })
 
   }
 
@@ -132,6 +174,7 @@ export class ShopInformation extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.location.lat !== this.state.location.lat || prevState.location.lng !== this.state.location.lng) {
+      // console.log(true)
       this.props.form.setFieldsValue({
         latitude: this.state.location.lat,
         longitude: this.state.location.lng,
@@ -156,7 +199,6 @@ export class ShopInformation extends Component {
   };
 
   render() {
-
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
@@ -253,33 +295,42 @@ export class ShopInformation extends Component {
                   </Upload>
                 )}
               </Form.Item>
-
-              <FindLocation
-                callbackFromParent={this.getLocation}
-              />
-
+              <Row type="flex" justify='center'>
+                <FindLocation
+                  inputLocation={this.state.location}
+                  callbackFromParent={this.getLocation}
+                />
+              </Row>
               <Form.Item label="Latitude" >
                 {getFieldDecorator('latitude', {
-                  initialValue: parseFloat(this.state.location.lat.toFixed(6)),
+                  // initialValue: parseFloat(this.state.location.lat.toFixed(6)),
                   rules: [{
                     validator: this.validateLatitude,
                   }]
                 })
-                  (<Input placeholder="00.000000" />)}
+                  (<Input placeholder="00.000000" onChange={this.handleChangeByInputLat} />)}
               </Form.Item>
 
               <Form.Item label="Longitude" >
                 {getFieldDecorator('longitude', {
-                  initialValue: parseFloat(this.state.location.lng.toFixed(6)),
+                  // initialValue: parseFloat(this.state.location.lng.toFixed(6)),
                   rules: [{
                     validator: this.validateLongitude,
                   }]
                 })
-                  (<Input placeholder="00.000000" />)}
+                  (<Input placeholder="00.000000" onChange={this.handleChangeByInputLng} />)}
               </Form.Item>
 
               <Form.Item label="Address" >
-                {getFieldDecorator('address', {})
+                {getFieldDecorator('address', {
+                  rules: [
+                    {
+                      required: false,
+                      message: "address"
+                    }
+                  ],
+                  initialValue: this.state.address
+                })
                   (<Input placeholder="address" />)}
               </Form.Item>
 

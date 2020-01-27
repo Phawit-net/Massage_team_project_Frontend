@@ -22,7 +22,6 @@ export default class ShopProfile extends Component {
     componentDidMount() {
         Axios.get('/getShop')
             .then(result => {
-                console.log(result.data.id)
                 this.setState({
                     id: result.data.id,
                     shopName: result.data.shopName
