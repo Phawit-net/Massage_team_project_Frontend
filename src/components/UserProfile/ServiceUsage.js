@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Chart from "react-apexcharts";
-import { Row, Col, Form } from "antd";
+import { Row, Col, Form, Icon } from "antd";
 import Axios from "../../config/axios.setup";
 export default class ServiceUsage extends Component {
   constructor(props) {
@@ -71,7 +71,7 @@ export default class ServiceUsage extends Component {
       <Row type="flex" justify="center" align="top">
         <Col span={22}>
           <Row type="flex" justify="start">
-            <Col><h1>Service Usage</h1></Col>
+            <Col><h1><Icon type="pie-chart" /> Service Usage</h1></Col>
           </Row>
           <Row type="flex" justify="center" align="top">
             <Col span={10}>
