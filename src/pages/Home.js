@@ -43,10 +43,10 @@ export default class Home extends Component {
             <div style={{ borderTop: '5px solid #855f3e' }}></div>
           </Col>
           <Col xs={0} md={24}>
-            <img src='pattern3.png' style={{ position: 'absolute', opacity: '0.4' }} className={styles.pattern} />
+            <img src='pattern3.png' alt="pattern3" style={{ position: 'absolute', opacity: '0.4' }} className={styles.pattern} />
           </Col>
           <Col xs={0} md={24}>
-            <img src='pattern3.png' style={{ position: 'absolute', opacity: '0.4', right: '0%', transform: 'scaleX(-1)' }} className={styles.pattern} />
+            <img src='pattern3.png' alt="pattern3"  style={{ position: 'absolute', opacity: '0.4', right: '0%', transform: 'scaleX(-1)' }} className={styles.pattern} />
           </Col>
           <Col style={{ display: 'flex', justifyContent: 'center', padding: '10px' }} className={styles.font} span={24}>
             Heaven For Thai Massage Lover

@@ -3,7 +3,6 @@ import './App.css'
 import { Row,BackTop } from 'antd'
 import Header from './components/Generals/Header/Header'
 import Footer from './components/Generals/Footer/Footer'
-import { Switch} from 'react-router-dom'
 import { connect } from 'react-redux'
 import PrivateRoutes from './components/Routes/PrivateRoutes'
 class App extends React.Component {

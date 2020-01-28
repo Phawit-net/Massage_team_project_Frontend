@@ -38,15 +38,11 @@ class ShopDetails extends Component {
         },
         haveLocation: true,
       })
-      console.log(this.state.location)
     }
     this.setState({
       shopName: result.data.shopName,
       shopProfilePic: result.data.shopProfilePic,
       servicesList: result.data.services,
-    }, () => {
-      console.log(address)
-      console.log(result)
     })
   }
 
@@ -61,7 +57,7 @@ class ShopDetails extends Component {
             <div className={styles.shopName} style={{ position: 'absolute', right: '17%', top: '26.3%', width: '275px', height: '90px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <Text className={styles.fontHead} style={{ fontSize: '50px' }}>{this.state.shopName.charAt(0).toUpperCase() + this.state.shopName.slice(1)}</Text>
             </div>
-            <img className={styles.shopRoom} src="nuadthaiRoom.png" style={{ width: '100%' }} />
+            <img className={styles.shopRoom} src="nuadthaiRoom.png" style={{ width: '100%' }} alt="nuadthaiRoom" />
           </Col>
           <Col span={24}>
             <div style={{ borderTop: '5px solid #855f3e' }}></div>
@@ -69,14 +65,14 @@ class ShopDetails extends Component {
         </Row>
 
         <Row style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', backgroundColor: '#f1e6b2' }}>
-          <Col style={{margin:'15px' ,textAlign:'center'}}>
+          <Col style={{ margin: '15px', textAlign: 'center' }}>
             <div className={styles.font} style={{ fontSize: '50px' }}>{this.state.shopName}</div>
-            <img style={{ width: "150px", height: "auto" }} src={`${Axios.defaults.baseURL}/${this.state.shopProfilePic}`} />
+            <img style={{ width: "150px", height: "auto" }} src={`${Axios.defaults.baseURL}/${this.state.shopProfilePic}`} alt="shopProfilePic" />
           </Col>
-          <Col style={{margin:'15px'}}>
+          <Col style={{ margin: '15px' }}>
             {this.state.haveLocation ?
-              <ShowLocation location={this.state.location}/> : <div style={{width:'300px' ,height:'300px'}}>
-                <img src = 'default_map.png'/>
+              <ShowLocation location={this.state.location} /> : <div style={{ width: '300px', height: '300px' }}>
+                <img src='default_map.png'  alt="default_map" />
               </div>
             }
           </Col>
@@ -84,7 +80,7 @@ class ShopDetails extends Component {
 
         <Row>
           <Col sm={{ span: 24, offset: 0 }} md={{ span: 22, offset: 1 }} >
-            <ServiceList servicesList={this.state.servicesList} />
+            <ServiceList key={this.state.page} servicesList={this.state.servicesList} />
           </Col>
         </Row>
 

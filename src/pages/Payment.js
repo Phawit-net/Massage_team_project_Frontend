@@ -110,7 +110,7 @@ class Payment extends Component {
                         <h4><Icon type="bank" />  Bank transfer payment</h4>
                         <Row style={{paddingLeft: '20px'}}>
                             <Col sm={24} lg={24} xl={2}>
-                                <img src={`./bank/${booking.service.shop.shopBank}.png`} width="70"/>
+                                <img src={`./bank/${booking.service.shop.shopBank}.png`} alt="shopBank" width="70"/>
                             </Col>
                             <Col sm={24} lg={24} xl={12}>
                                 <pre><Icon type="right-circle" />{` Account number : ${booking.service.shop.shopAccountNo}`}

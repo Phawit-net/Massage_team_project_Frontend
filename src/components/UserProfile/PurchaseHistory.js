@@ -18,7 +18,7 @@ export default class PurchaseHistory extends Component {
 
   render() {
     const history = this.state.purchaseHistory
-    let color
+    let color;
     const columns = [
       {
         title: 'SHOP',

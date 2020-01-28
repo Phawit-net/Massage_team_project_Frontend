@@ -86,8 +86,8 @@ export default class UserProfile extends Component {
                 <Content>
                     <Card bodyStyle={{ padding: '30px', paddingBottom: '70px'}} className={styles.boxCard}>
                         <div style={{ width: '100%', height: '100%' }}>
-                            <img src='coner.png' style={{ position: 'absolute', width: '120px', height: '135px', right: '0.5%', bottom: '1%', opacity: '0.8' }} />
-                            <img src='coner.png' style={{ position: 'absolute', transform: 'scaleX(-1)', width: '120px', height: '135px',left: '0.5%', bottom: '1%', opacity: '0.8' }} />
+                            <img src='coner.png' alt="coner" style={{ position: 'absolute', width: '120px', height: '135px', right: '0.5%', bottom: '1%', opacity: '0.8' }} />
+                            <img src='coner.png' alt="coner" style={{ position: 'absolute', transform: 'scaleX(-1)', width: '120px', height: '135px',left: '0.5%', bottom: '1%', opacity: '0.8' }} />
                         </div>
                         {this.handleRenderCategory()}
                     </Card>

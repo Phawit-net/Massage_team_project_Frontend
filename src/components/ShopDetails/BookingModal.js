@@ -122,10 +122,10 @@ class BookingModal extends Component {
 
               <Row className={styles.borderBoxSmall} >
                 <div style={{ position: 'absolute', width: '100%', height: '100%' }}>
-                  <img src='patternLeft.png' style={{ position: 'absolute' }} />
-                  <img src='patternRight.png' style={{ position: 'absolute', right: '0%' }} />
-                  <img src='patternLeft.png' style={{ position: 'absolute', transform: 'scaleY(-1)', bottom: '0%' }} />
-                  <img src='patternRight.png' style={{ position: 'absolute', transform: 'scaleY(-1)', right: '0%', bottom: '0%' }} />
+                  <img src='patternLeft.png' alt='patternLeft' style={{ position: 'absolute' }} />
+                  <img src='patternRight.png' alt='patternRight'  style={{ position: 'absolute', right: '0%' }} />
+                  <img src='patternLeft.png' alt='patternLeft' style={{ position: 'absolute', transform: 'scaleY(-1)', bottom: '0%' }} />
+                  <img src='patternRight.png' alt='patternRight' style={{ position: 'absolute', transform: 'scaleY(-1)', right: '0%', bottom: '0%' }} />
                 </div>
                 <Col xs={24} lg={9} xl={8} style={{ textAlign: 'center', padding: '20px' }}>
                   <Avatar src={`${Axios.defaults.baseURL}/${service.serviceProfilePic}`} alt="" shape='square' size={200} style={{ margin: '5px' }} />
@@ -150,8 +150,8 @@ class BookingModal extends Component {
 
               <Row style={{ padding: '5px' }} >
                 <div style={{ position: 'absolute', width: '100%', height: '100%' }}>
-                  <img src='coner.png' style={{ position: 'absolute', width: '135px', height: '150px', right: '1%', bottom: '1%', opacity: '0.8' }} />
-                  <img src='coner.png' style={{ position: 'absolute', transform: 'scaleX(-1)', width: '135px', height: '150px', bottom: '1%', opacity: '0.8' }} />
+                  <img src='coner.png' alt="coner" style={{ position: 'absolute', width: '135px', height: '150px', right: '1%', bottom: '1%', opacity: '0.8' }} />
+                  <img src='coner.png' alt="coner" style={{ position: 'absolute', transform: 'scaleX(-1)', width: '135px', height: '150px', bottom: '1%', opacity: '0.8' }} />
                 </div>
                 <Col className={styles.layout}>
                   <Row><h1>Booking Information</h1></Row>

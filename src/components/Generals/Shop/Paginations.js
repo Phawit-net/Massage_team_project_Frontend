@@ -10,7 +10,7 @@ class Paginations extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     if (this.props.items && this.props.items.length) {
       this.setPage(this.props.initialPage);
     }
@@ -44,7 +44,7 @@ class Paginations extends React.Component {
   getPager(totalItems, currentPage, pageSize) {
     currentPage = currentPage || 1;
 
-    pageSize = pageSize;
+    pageSize = pageSize|| 3;
 
     var totalPages = Math.ceil(totalItems / pageSize);
 
@@ -93,31 +93,25 @@ class Paginations extends React.Component {
         <div >
           <a className={styles.font} onClick={() => this.setPage(1)}>First</a>
         </div>
-        {/* <li className={pager.currentPage === 1 ? 'disabled' : ''}> */}
         <div style={{ width: '60px', height: '60px', position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <a className ={styles.page} onClick={() => this.setPage(pager.currentPage - 1)}>
             <img src='previous.png' style={{ width: '30px', height: '40px' }} />
           </a>
         </div>
-        {/* </li> */}
         {pager.pages.map((page, index) =>
           <div style={{ width: '60px', height: '60px', position: 'relative', margin: '0px 5px' }}>
             <a onClick={() => this.setPage(page)}>
               <img src='page.png' style={{ width: '60px', height: '60px' }} />
-              {/* <li key={index} className={pager.currentPage === page ? 'active' : ''}>                      */}
               <div style={{ width: '60px', height: '60px', position: 'absolute', top: '0px', display: 'flex', alignItems: 'center', justifyContent: 'center' }} className={styles.numFont}>{page}</div>
-              {/* </li> */}
             </a>
           </div>
 
         )}
-        {/* <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}> */}
         <div style={{ width: '60px', height: '60px', position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <a className ={styles.page} onClick={() => this.setPage(pager.currentPage + 1)}>
             <img src='next.png' style={{ width: '30px', height: '40px' }} />
           </a>
         </div>
-        {/* </li> */}
         <div>
           <a className={styles.font} onClick={() => this.setPage(pager.totalPages)}>Last</a>
         </div>
@@ -126,6 +120,4 @@ class Paginations extends React.Component {
   }
 }
 
-// Pagination.propTypes = propTypes;
-// Pagination.defaultProps = defaultProps;
 export default Paginations;

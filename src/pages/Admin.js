@@ -11,10 +11,9 @@ export default class Admin extends Component {
     };
 
     refresh = () => {
-        Axios.get('/Alluser').
-            then(res => {
+        Axios.get('/Alluser')
+            .then(res => {
                 this.setState({ data: res.data })
-                console.log(res.data)
                 this.setState({
                     filter: this.state.data.map(data => ({
                         id: data.id,
@@ -44,9 +43,8 @@ export default class Admin extends Component {
     }
 
     HandleDelete = (id) => (e) => {
-        console.log(id)
-        Axios.delete(`deleteUser/${id}`).
-            then(result => {
+        Axios.delete(`deleteUser/${id}`)
+            .then(result => {
                 console.log(result)
                 this.refresh()
             }).catch(err => {
