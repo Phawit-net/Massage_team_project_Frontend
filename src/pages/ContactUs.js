@@ -92,7 +92,7 @@ class ContactUs extends Component {
                                 <img src='tuk.png' alt='tuk' style={{ width: '50%', height: '50%' }} />
                             </Col>
                         </a>
-                        <a href='https://github.com/panuwat33586' target='_blank' rel="noopener noreferrer" style={{ textAlign: 'center' }}>
+                        <a href='https://github.com/apiwutnat' target='_blank' rel="noopener noreferrer" style={{ textAlign: 'center' }}>
                             <Col className={styles.person}>
                                 <Typography strong style={{ fontSize: '30px', color: '#926F3B' }}>Nat</Typography>
                                 <img src='nat.png' alt='nat' style={{ width: '50%', height: '50%' }} />
