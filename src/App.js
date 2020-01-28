@@ -16,9 +16,7 @@ class App extends React.Component {
           <BackTop/>
         </Row>
         <Row>
-          <Switch>
-          <PrivateRoutes handleAppLogin={this.login} role={role} />
-          </Switch>
+          <PrivateRoutes handleAppLogin={this.login} role={role}/>
         </Row>
         <Row style={{ marginTop: '50px' }}>
           <Footer />

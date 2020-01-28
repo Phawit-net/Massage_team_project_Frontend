@@ -8,7 +8,7 @@ export default class Footer extends Component {
                <Row type='flex' justify='space-around' >
                    <Col>
                    <Row>
-                 <img src='NuadThaiLogo.png' alt='Logo' style={{ width: '150px', height: '150px' }} />
+                 <img src={process.env.PUBLIC_URL + '/NuadThaiLogo.png'} alt='Logo' style={{ width: '150px', height: '150px' }} />
                    </Row>
                    <Row tpe='flex' align='top'>
                       <b style={{fontSize:'15px'}} >Heaven For Thai Massage Lover</b>

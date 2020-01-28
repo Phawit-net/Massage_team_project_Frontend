@@ -78,7 +78,7 @@ class Header extends Component {
             <Card style={{ backgroundColor: '#f1e6b2', opacity: '0.8',height:'140px' }} bodyStyle={{ padding: '0' }}>
                 <Row type='flex' justify='center' align='middle'>
                     <Col xs={19} md={5} lg={10} xl={10}>
-                   <Link to ='/home'><img src='NuadThaiLogo.png' alt='Logo' style={{ width: '150px', height: '150px' }} /></Link>     
+                   <Link to ='/home'><img  src= {process.env.PUBLIC_URL + '/NuadThaiLogo.png'} alt='Logo' style={{ width: '150px', height: '150px' }} /></Link>     
                     </Col>
                     <Col xs={5} md={19} lg={12} xl={10}>
                         <Row>
