@@ -276,7 +276,7 @@ export class ShopInformation extends Component {
                 {getFieldDecorator("shopBank", {
                   rules: [
                     {
-                      required: true,
+                      required: false,
                       message: "Please select bank"
                     }
                   ],
