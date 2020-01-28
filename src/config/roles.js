@@ -81,7 +81,6 @@ const components = {
       routes: [
             components.home,
             components.signup,
-            components.payment,
             components.shoppackages,
             components.shopdetails,
             components.contactus
