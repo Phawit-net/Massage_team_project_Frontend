@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { Row, Col, Form, Input, Upload, Icon, Button } from "antd";
+import { Row, Col, Form, Input, Upload, Icon, Button, Select } from "antd";
 import Axios from "../../config/axios.setup";
 import { failLoginNotification, successLoginNotification } from '../Notification/notification'
 import FindLocation from '../ShopDetails/FindLocation'
 
 const { TextArea } = Input;
-
+const { Option } = Select;
 
 function getBase64(file) {
   return new Promise((resolve, reject) => {
@@ -23,6 +23,7 @@ export class ShopInformation extends Component {
       shopName: '',
       shopAccountNo: '',
       shopAccountName: '',
+      shopBank: '',
       shopDescription: '',
       previewVisible: false,
       previewImage: "",
@@ -66,6 +67,7 @@ export class ShopInformation extends Component {
       payload.append("photoPost", this.state.fileList[0]);
       payload.append("shopAccountNo", value.accountno);
       payload.append("shopAccountName", value.accountname);
+      payload.append("shopBank",value.shopBank);
 
       payload.append("latitude", value.latitude);
       payload.append("longitude", value.longitude);
@@ -270,7 +272,24 @@ export class ShopInformation extends Component {
                   initialValue: this.state.shopAccountName
                 })(<Input />)}
               </Form.Item>
-
+              <Form.Item label="Bank" style={{ marginTop: "0", marginBottom: "0" }}>
+                {getFieldDecorator("shopBank", {
+                  rules: [
+                    {
+                      required: true,
+                      message: "Please select bank"
+                    }
+                  ],
+                  initialValue: this.state.shopBank
+                })(<Select style={{ width: '220px' }}>
+                  <Option value="KBANK">Kasikorn Bank (KBANK)</Option>
+                  <Option value="BBL">Bangkok Bank (BBL)</Option>
+                  <Option value="SCB">Siam Commercial Bank (SCB)</Option>
+                  <Option value="KTB">Krung Thai Bank (KTB)</Option>
+                  <Option value="BAY">Ayutthaya Bank (BAY)</Option>
+                  <Option value="TMB">Thai Military Bank (TMB)</Option>
+                </Select>)}
+              </Form.Item>
               <Form.Item label="Shop Description" style={{ marginTop: "0", marginBottom: "0" }}>
                 {getFieldDecorator("shopdescription", {
                   rules: [
