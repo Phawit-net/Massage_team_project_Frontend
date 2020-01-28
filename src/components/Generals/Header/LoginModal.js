@@ -30,6 +30,7 @@ class LoginModal extends Component {
                 this.setState({
                     notification: ''
                 })
+                window.location.reload()
             })
             .catch(err => {
                 this.props.form.resetFields()

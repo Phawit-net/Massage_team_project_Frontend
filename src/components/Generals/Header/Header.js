@@ -59,7 +59,7 @@ class Header extends Component {
                 <Menu.Item ><Link to='/userprofile'onClick={()=>this.onCloseDrawer()}>Profile</Link></Menu.Item>
                 {this.props.user.role==='seller'?<Menu.Item><Link to='/shopprofile' onClick={()=>this.onCloseDrawer()}>Shop profile</Link></Menu.Item>:
                 this.props.user.role==='admin'?<Menu.Item><Link to='/admin' onClick={()=>this.onCloseDrawer()}>Admin</Link></Menu.Item>:''}
-                <Menu.Item onClick={()=>{this.props.logout();this.onCloseDrawer()}} >Logout</Menu.Item>
+                <Menu.Item onClick={()=>{this.props.logout();this.onCloseDrawer();window.location.reload()}} >Logout</Menu.Item>
             </Menu>
         )
         switch (this.props.user.role) {
