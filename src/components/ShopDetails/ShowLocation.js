@@ -13,6 +13,14 @@ export default class FindLocation extends Component {
       zoom: 13,
     }
   }
+  openPopup(marker) {
+    if (marker && marker.leafletElement) {
+      window.setTimeout(() => {
+        marker.leafletElement.openPopup()
+      })
+    }
+  }
+
 
   render() {
     const position = [this.props.location.latitude, this.props.location.longitude]
@@ -24,8 +32,9 @@ export default class FindLocation extends Component {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           <Marker
+            ref={this.openPopup}
             position={position}>
-            <Popup>
+            <Popup  >
               {this.props.location.address}
             </Popup>
           </Marker> : ''
