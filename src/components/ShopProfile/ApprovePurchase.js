@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Table, Button } from "antd";
+import { Row, Col, Table, Button, Icon } from "antd";
 import Axios from "../../config/axios.setup";
 import style from './ApprovePurchase.module.css'
 
@@ -122,9 +122,9 @@ export class ApprovePurchase extends Component {
 
     return (
       <Row type="flex" justify="center" style={{ marginTop: '1vh' }}>
-        <Col span={20}>
+        <Col span={22}>
           <Row type="flex">
-            <Col style={{ fontSize: "20px" }}>Approve purchase</Col>
+            <Col><h1><Icon type="audit" /> Approve purchase</h1></Col>
           </Row>
           <Row style={{ marginTop: '1vh' }}>
             <Table
