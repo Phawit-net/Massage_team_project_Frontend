@@ -13,7 +13,7 @@ class ResetPassword extends Component {
             status: 'timeout'
         }
     }
-    componentWillMount() {
+    componentDidMount() {
         Axios.get('/checkresetpasswordtimeout', {
             params: {
                 resetPasswordToken: this.props.match.params.token

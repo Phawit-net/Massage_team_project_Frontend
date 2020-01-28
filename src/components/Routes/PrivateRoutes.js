@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import * as allRoutes from './index'
 import rolesConfig from '../../config/roles'
-import { Route, withRouter } from 'react-router-dom';
+import { Route, withRouter, Switch } from 'react-router-dom';
 import { Redirect } from 'react-router-dom'
 import store from "../../redux/store/store";
 import { LOGOUT_USER } from '../../redux/actions/actions'
@@ -28,20 +28,21 @@ class PrivateRoutes extends Component {
     render() {
         return (
             <>
-                {this.state.allowedRoutes.map(route =>
-                    < Route
-                        path={route.url}
-                        component={allRoutes[route.component]}
-                        key={route.url}
-                    />
-                )}
-                {this.state.redirectRoute.map(url =>
-                    <Redirect to={url} />
-                )}
-
+                <Switch>
+                    {this.state.allowedRoutes.map(route =>
+                        < Route
+                            path={route.url}
+                            component={allRoutes[route.component]}
+                            key={route.url}
+                        />
+                    )}
+                    {this.state.redirectRoute.map(url =>
+                        <Redirect to={url} />
+                    )}
+                </Switch>
             </>
         )
     }
 }
 
-export default  withRouter(PrivateRoutes);
+export default withRouter(PrivateRoutes);
