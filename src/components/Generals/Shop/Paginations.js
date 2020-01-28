@@ -91,29 +91,29 @@ class Paginations extends React.Component {
     return (
       <Row type='flex' justify="center" align='middle'>
         <div >
-          <a className={styles.font} onClick={() => this.setPage(1)}>First</a>
+          <button className={styles.font} onClick={() => this.setPage(1)}>First</button>
         </div>
         <div style={{ width: '60px', height: '60px', position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <a className ={styles.page} onClick={() => this.setPage(pager.currentPage - 1)}>
-            <img src='previous.png' style={{ width: '30px', height: '40px' }} />
-          </a>
+          <button className={styles.a_decorate} onClick={() => this.setPage(pager.currentPage - 1)}>
+            <img src='previous.png' alt='' style={{ width: '30px', height: '40px' }} className ={styles.page}/>
+          </button>
         </div>
         {pager.pages.map((page, index) =>
           <div style={{ width: '60px', height: '60px', position: 'relative', margin: '0px 5px' }}>
-            <a onClick={() => this.setPage(page)}>
-              <img src='page.png' style={{ width: '60px', height: '60px' }} />
+            <button className={styles.a_decorate} onClick={() => this.setPage(page)}>
+              <img src='page.png' alt='' style={{ width: '60px', height: '60px' }} />
               <div style={{ width: '60px', height: '60px', position: 'absolute', top: '0px', display: 'flex', alignItems: 'center', justifyContent: 'center' }} className={styles.numFont}>{page}</div>
-            </a>
+            </button>
           </div>
 
         )}
         <div style={{ width: '60px', height: '60px', position: 'relative', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <a className ={styles.page} onClick={() => this.setPage(pager.currentPage + 1)}>
-            <img src='next.png' style={{ width: '30px', height: '40px' }} />
-          </a>
+          <button className={styles.a_decorate} onClick={() => this.setPage(pager.currentPage + 1)}>
+            <img  className ={styles.page} alt='' src='next.png' style={{ width: '30px', height: '40px' }} />
+          </button>
         </div>
         <div>
-          <a className={styles.font} onClick={() => this.setPage(pager.totalPages)}>Last</a>
+          <button className={styles.font} onClick={() => this.setPage(pager.totalPages)}>Last</button>
         </div>
       </Row>
     );

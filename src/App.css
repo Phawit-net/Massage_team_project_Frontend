@@ -114,3 +114,11 @@
     background-color: #a15a3f !important;
     border-color: #a15a3f !important;
   }
+
+  /* map shop detail override -----------------------------------------*/
+  @media only screen and (max-width: 500px) {
+    .leaflet-container{
+      width: 200px !important;
+        height: 200px !important;
+    }
+}

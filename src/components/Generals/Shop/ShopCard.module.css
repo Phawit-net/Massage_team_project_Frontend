@@ -16,6 +16,7 @@
     .imgContent{
       padding:20px 20px 0px  !important;
       align-items: center !important;
+      width: 70% !important; 
     }
     .ButtonRow{
       padding: 10px !important;

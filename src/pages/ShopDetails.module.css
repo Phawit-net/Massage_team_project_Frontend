@@ -36,4 +36,8 @@
     .shopRoom{
         margin-top:90px !important;
     }
+    .map{
+        width: 200px !important;
+        height: 200px !important;
+    }
 }

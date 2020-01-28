@@ -13,15 +13,26 @@
     font-weight: bold;
     font-size: 40px;
     color:#492D1A;
+    background-color: #fff;
+    border:none;
+    cursor: pointer;
+    outline: none;
 }
 .font:hover {
   color:#916040 !important;
 }
 
+
 .numFont:hover {
   color:#916040 !important;
 }
 
+.a_decorate{
+  background-color: #fff;
+  border:none;
+  cursor: pointer;
+  outline: none;
+}
 
 .page:hover{
   filter: invert(39%) sepia(65%) saturate(339%) hue-rotate(341deg) brightness(89%) contrast(93%);
