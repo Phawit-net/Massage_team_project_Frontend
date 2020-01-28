@@ -84,7 +84,7 @@ const components = {
             components.shoppackages,
             components.shopdetails,
             components.contactus,
-            component.resetpassword
+            components.resetpassword
       ],
       redirect:'/home'
     }
