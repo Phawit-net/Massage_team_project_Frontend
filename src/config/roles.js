@@ -83,7 +83,8 @@ const components = {
             components.signup,
             components.shoppackages,
             components.shopdetails,
-            components.contactus
+            components.contactus,
+            components.resetpassword
       ],
       redirect:'/home'
     }
