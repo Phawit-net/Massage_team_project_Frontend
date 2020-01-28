@@ -237,10 +237,10 @@ export class ShopInformation extends Component {
 
     return (
       <Row type="flex" justify="center" align="top">
-        <Col span={20}>
+        <Col span={22}>
           <Row type="flex" justify='start'>
             <Col>
-              <h1>Shop information</h1>
+              <h1><Icon type="info-circle" /> Shop Information</h1>
             </Col>
           </Row>
           <Row>

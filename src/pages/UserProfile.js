@@ -70,15 +70,15 @@ export default class UserProfile extends Component {
                         </Menu.Item>
                         <Menu.Item key='1' className={styles.menulist}>
                             <Icon type="info-circle" />
-                            <span>User information</span>
+                            <span>User Information</span>
                         </Menu.Item>
                         <Menu.Item key='2'>
                             <Icon type="history" />
-                            <span>Purchase history</span>
+                            <span>Purchase History</span>
                         </Menu.Item>
                         <Menu.Item key='3'>
                             <Icon type="pie-chart" />
-                            <span>Services usage</span>
+                            <span>Services Usage</span>
                         </Menu.Item>
                     </Menu>
                 </Sider>

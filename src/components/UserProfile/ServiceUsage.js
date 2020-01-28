@@ -39,8 +39,9 @@ export default class ServiceUsage extends Component {
           shopcount.push(x.count)
           return result;
         });
-        console.log(shopnames)
-        console.log(shopcount)
+        console.log({shopname : shopnames})
+        console.log({shopCount : shopcount})
+        console.log(showShopname)
         this.setState({
           labels: shopnames,
           series: shopcount,
@@ -81,6 +82,7 @@ export default class ServiceUsage extends Component {
                   series={this.state.series}
                   type="donut"
                   width="380"
+                  height="380"
                 />
               </Form>
             </Col>

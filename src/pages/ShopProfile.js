@@ -80,7 +80,7 @@ export default class ShopProfile extends Component {
                         </Menu.Item>
                         <Menu.Item key='2'>
                             <Icon type="plus-circle" />
-                            <span>Add Service</span>
+                            <span>Create Services</span>
                         </Menu.Item>
                         <Menu.Item key='3'>
                             <Icon type="history" />

@@ -79,9 +79,9 @@ export class CreateService extends Component {
 
     return (
       <Row type="flex" justify="center" align="top">
-        <Col span={9}>
+        <Col span={22}>
           <Row type="flex" justify="start">
-            <Col style={{ fontSize: "20px" }}>Create Services</Col>
+            <Col><h1><Icon type="plus-circle" /> Create Services</h1></Col>
           </Row>
           <Row>
             <Form {...formItemLayout} onSubmit={this.handleSubmit}>

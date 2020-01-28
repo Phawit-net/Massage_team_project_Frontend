@@ -49,7 +49,7 @@ export default class UserInformation extends Component {
       <Row type="flex" justify="center" align="top">
         <Col span={22}>
           <Row type="flex" justify='start'>
-            <Col><h1><Icon type="info-circle" /> Personal information</h1></Col>
+            <Col><h1><Icon type="info-circle" /> Personal Information</h1></Col>
           </Row>
           <Row>
             <Form {...formItemLayout}>

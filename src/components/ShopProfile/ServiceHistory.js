@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Table, Button } from "antd";
+import { Row, Col, Table, Button, Icon } from "antd";
 import Axios from "../../config/axios.setup";
 import style from './ServiceHistory.module.css'
 
@@ -80,9 +80,9 @@ export class ServiceHistory extends Component {
 
     return (
       <Row type="flex" justify="center" style={{ marginTop: '1vh' }}>
-        <Col span={20}>
+        <Col span={22}>
           <Row type="flex">
-            <Col style={{ fontSize: "20px" }}>Service History</Col>
+            <Col><h1><Icon type="history" /> Service History</h1></Col>
           </Row>
           <Row style={{ marginTop: '1vh' }}>
             <Table
