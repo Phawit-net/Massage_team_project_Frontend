@@ -14,8 +14,8 @@ import { Link } from 'react-router-dom'
                 <Link to='/admin'><span>Admin</span></Link>:''}
               </Menu.Item>
               {this.props.user.role==='seller'?<Menu.Item><Link to='/shopprofile'><span>Shop profile</span></Link></Menu.Item>:''}
-              <Menu.Item>
-                <span onClick={()=>this.props.logout()}>
+              <Menu.Item onClick={()=>this.props.logout()}>
+                <span >
                  Logout
                 </span>
               </Menu.Item>

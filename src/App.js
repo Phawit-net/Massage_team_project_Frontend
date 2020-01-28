@@ -3,19 +3,12 @@ import './App.css'
 import { Row,BackTop } from 'antd'
 import Header from './components/Generals/Header/Header'
 import Footer from './components/Generals/Footer/Footer'
-import { Switch, Route, Redirect } from 'react-router-dom'
-import Home from './pages/Home'
-import Payment from './pages/Payment'
-import ShopDetails from './pages/ShopDetails'
-import ShopPackages from './pages/ShopPackages'
-import ShopProfile from './pages/ShopProfile'
-import Signup from './pages/Signup'
-import UserProfile from './pages/UserProfile'
-import ContactUs from './pages/ContactUs'
-import ResetPassword from './pages/ResetPassword'
-import Admin from './pages/Admin'
+import { Switch} from 'react-router-dom'
+import { connect } from 'react-redux'
+import PrivateRoutes from './components/Routes/PrivateRoutes'
 class App extends React.Component {
   render() {
+    const role = this.props.user.role
     return (
       <>
         <Row style={{ position: 'fixed', width: '100%', zIndex: '200' }}>
@@ -24,17 +17,7 @@ class App extends React.Component {
         </Row>
         <Row>
           <Switch>
-            <Route path='/home' component={Home}/>
-            <Route path='/payment' component={Payment}/>
-            <Route path='/shopdetails' component={ShopDetails}/>
-            <Route path='/shoppackages' component={ShopPackages}/>
-            <Route path='/contactus' component={ContactUs}/>
-            <Route path='/shopprofile' component={ShopProfile}/>
-            <Route path='/signup' component={Signup}/>
-            <Route path='/userprofile' component={UserProfile}/>
-            <Route path ='/resetpassword/:token' component={ResetPassword}/>
-            <Route path='/admin' component={Admin}/>
-            <Redirect to='/home'/>
+          <PrivateRoutes handleAppLogin={this.login} role={role} />
           </Switch>
         </Row>
         <Row style={{ marginTop: '50px' }}>
@@ -46,4 +29,10 @@ class App extends React.Component {
 }
 
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps, null)(App)
