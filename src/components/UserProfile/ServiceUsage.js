@@ -22,6 +22,9 @@ export default class ServiceUsage extends Component {
             }
           }
           //-----------------
+        },
+        legend: {
+          position: "bottom"
         }
       },
       series: [],
@@ -39,9 +42,6 @@ export default class ServiceUsage extends Component {
           shopcount.push(x.count)
           return result;
         });
-        console.log({shopname : shopnames})
-        console.log({shopCount : shopcount})
-        console.log(showShopname)
         this.setState({
           labels: shopnames,
           series: shopcount,
@@ -75,14 +75,13 @@ export default class ServiceUsage extends Component {
             <Col><h1><Icon type="pie-chart" /> Service Usage</h1></Col>
           </Row>
           <Row type="flex" justify="center" align="top">
-            <Col span={10}>
+            <Col xs={24} md={24} lg={10}>
               <Form {...formItemLayout}>
                 <Chart
                   options={this.state.options}
                   series={this.state.series}
                   type="donut"
-                  width="380"
-                  height="380"
+                  style={{ minWidth: "250px", maxWidth: "450px", maxHeight: "450px" }}
                 />
               </Form>
             </Col>

@@ -3,6 +3,7 @@ import { Row, Col, Form, Input, Icon, Button, Radio } from 'antd'
 import { withRouter } from 'react-router-dom'
 import Axios from '../config/axios.setup'
 import styles from './Signup.module.css'
+import { failLoginNotification, successLoginNotification } from '../components/Notification/notification'
 
 class Signup extends Component {
   state = {
@@ -25,10 +26,11 @@ class Signup extends Component {
           shopName: values.shopName
         })
           .then(result => {
-            console.log(result)
+            successLoginNotification()
             this.props.history.push('/home')
           })
           .catch(err => {
+            failLoginNotification("Cannot connect to database")
             console.error(err)
           })
         this.props.form.resetFields()
