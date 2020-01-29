@@ -131,6 +131,7 @@ export class ShopInformation extends Component {
           shopAccountNo: result.data.shopAccountNo,
           shopAccountName: result.data.shopAccountName,
           shopDescription: result.data.shopDescription,
+          shopBank: result.data.shopBank
         })
 
       })
@@ -297,7 +298,7 @@ export class ShopInformation extends Component {
                     }
                   ],
                   initialValue: this.state.shopBank
-                })(<Select style={{ width: '220px' }}>
+                })(<Select>
                   <Option value="KBANK">Kasikorn Bank (KBANK)</Option>
                   <Option value="BBL">Bangkok Bank (BBL)</Option>
                   <Option value="SCB">Siam Commercial Bank (SCB)</Option>

@@ -23,8 +23,8 @@ export default class CustomerUsage extends Component {
           }
           //-----------------
         },
-        legend : {
-          position : "bottom"
+        legend: {
+          position: "bottom"
         }
       },
       series: [],
@@ -42,11 +42,6 @@ export default class CustomerUsage extends Component {
           serviceCount.push(x.count)
           return result
         });
-        console.log(servicesNames)
-        console.log(serviceCount)
-        console.log(showServicesName)
-
-        // console.log({showname : showServicesName }, {Count : serviceCount},{name : servicesNames})
         this.setState({
           labels: servicesNames,
           series: serviceCount
@@ -87,7 +82,7 @@ export default class CustomerUsage extends Component {
                   options={this.state.options}
                   series={this.state.series}
                   type="donut"
-                  style={{minWidth:"250px",maxWidth:"450px", maxHeight:"450px"}}
+                  style={{ minWidth: "250px", maxWidth: "450px", maxHeight: "450px" }}
                 />
               </Form>
             </Col>
