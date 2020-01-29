@@ -19,7 +19,8 @@ export default class ServiceUsage extends Component {
               }
             }
           }
-        }
+        },
+        
         //-----------------
       }},
       series: [],
@@ -37,8 +38,9 @@ export default class ServiceUsage extends Component {
       shopcount.push(x.count)
       return result;
     });
-    console.log(shopnames)
-    console.log(shopcount)
+    console.log("labels --> "+shopnames)
+    console.log("series --> "+shopcount)
+    console.log("options --> "+showShopname)
     this.setState({
       labels:shopnames,
       series:shopcount,

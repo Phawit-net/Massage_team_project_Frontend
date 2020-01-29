@@ -66,11 +66,7 @@ export class ShopInformation extends Component {
             //this.props.form.resetFields();
           }
 
-          
-        
-      });
-
-      if (this.state.fileList[0] === undefined) {
+          if (this.state.fileList[0] === undefined) {
         failLoginNotification("Please select file image")
       }
       if (!err) {
@@ -84,6 +80,10 @@ export class ShopInformation extends Component {
           });
         //this.props.form.resetFields();
       }
+        
+      });
+
+      
     };
   
 
