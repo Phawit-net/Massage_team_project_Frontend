@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { Row, Col, Form, Input, Upload, Icon, Button } from "antd";
+import { Row, Col, Form, Input, Upload, Icon, Button, Select } from "antd";
 import Axios from "../../config/axios.setup";
 import { failLoginNotification, successLoginNotification } from '../Notification/notification'
 import FindLocation from '../ShopDetails/FindLocation'
 
 const { TextArea } = Input;
-
+const { Option } = Select;
 
 function getBase64(file) {
   return new Promise((resolve, reject) => {
@@ -23,6 +23,7 @@ export class ShopInformation extends Component {
       shopName: '',
       shopAccountNo: '',
       shopAccountName: '',
+      shopBank: '',
       shopDescription: '',
       previewVisible: false,
       previewImage: "",
@@ -33,7 +34,29 @@ export class ShopInformation extends Component {
         lat: 0,
         lng: 0,
       },
+      address: '',
     };
+  }
+
+  handleChangeByInputLat = e => {
+    if (e.target.value <= 90 && e.target.value >= -90) {
+      this.setState({
+        location: {
+          lat: e.target.value,
+          lng: this.state.location.lng,
+        }
+      })
+    }
+  }
+  handleChangeByInputLng = e => {
+    if (e.target.value <= 180 && e.target.value >= -180) {
+      this.setState({
+        location: {
+          lat: this.state.location.lat,
+          lng: e.target.value,
+        }
+      })
+    }
   }
 
   handleCancel = () => this.setState({ previewVisible: false });
@@ -41,51 +64,40 @@ export class ShopInformation extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.form.validateFieldsAndScroll((err, value) => {
-        console.log(value.shopdescription)
-        console.log(value.accountno)
-        console.log(value.accountname)
-        let payload = new FormData();
+      let payload = new FormData();
+  
+      if (this.state.fileList[0] === undefined) {
         payload.append("shopDescription", value.shopdescription);
-        payload.append("photoPost", this.state.fileList[0]);
-        //this.state.fileList.forEach(x => payload.append("photoPost", x));
         payload.append("shopAccountNo", value.accountno);
         payload.append("shopAccountName", value.accountname);
-        console.log(payload);
-        if(this.state.fileList[0]==undefined){
-          failLoginNotification("Please select file image")
-        }
-        if (!err) {
-            Axios.put("/updateShop", payload)
-              .then(result => {
-                successLoginNotification()
-                console.log(result);
-              })
-              .catch(err => {
-                console.error(err);
-              });
-            //this.props.form.resetFields();
-          }
-
-          if (this.state.fileList[0] === undefined) {
-        failLoginNotification("Please select file image")
+        payload.append("shopBank",value.shopBank);
+        payload.append("latitude", value.latitude);
+        payload.append("longitude", value.longitude);
+        payload.append("address", value.address);
+      } else {
+        payload.append("shopDescription", value.shopdescription);
+        payload.append("photoPost", this.state.fileList[0]);
+        payload.append("shopAccountNo", value.accountno);
+        payload.append("shopAccountName", value.accountname);
+        payload.append("shopBank",value.shopBank);
+        payload.append("latitude", value.latitude);
+        payload.append("longitude", value.longitude);
+        payload.append("address", value.address);
       }
-      if (!err) {
-        Axios.put("/updateShop", payload)
-          .then(result => {
-            successLoginNotification()
-            console.log(result);
-          })
-          .catch(err => {
-            console.error(err);
-          });
-        //this.props.form.resetFields();
-      }
-        
-      });
+      Axios.put("/updateShop", payload)
+        .then(result => {
+          console.log('yes1')
+          successLoginNotification()
+          console.log('yes2')
+          console.log(result);
+        })
+        .catch(err => {
+          failLoginNotification("Cannot connect to database")
+          console.error(err);
+        });
 
-      
-    };
-  
+    });
+  };
 
   handlePreview = async file => {
     if (!file.url && !file.preview) {
@@ -119,11 +131,34 @@ export class ShopInformation extends Component {
           shopAccountNo: result.data.shopAccountNo,
           shopAccountName: result.data.shopAccountName,
           shopDescription: result.data.shopDescription,
+          shopBank: result.data.shopBank
         })
 
       })
       .catch(err => {
         console.error(err);
+      })
+    Axios.get('/getAddress')
+      .then(result => {
+        if (result.data) {
+          this.setState({
+            location: {
+              lat: result.data.latitude,
+              lng: result.data.longitude,
+            },
+            address: result.data.address,
+          })
+        } else {
+          navigator.geolocation.getCurrentPosition((position) => {
+            this.setState({
+              location: {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+              },
+            })
+            // console.log(this.state.location)
+          })
+        }
       })
 
   }
@@ -151,6 +186,7 @@ export class ShopInformation extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.location.lat !== this.state.location.lat || prevState.location.lng !== this.state.location.lng) {
+      // console.log(true)
       this.props.form.setFieldsValue({
         latitude: this.state.location.lat,
         longitude: this.state.location.lng,
@@ -173,6 +209,10 @@ export class ShopInformation extends Component {
       callback();
     }
   };
+
+  valueFormatter = e => {
+    return e.target.value.replace(/[^\d\.]/, '')
+  }
 
   render() {
 
@@ -210,12 +250,14 @@ export class ShopInformation extends Component {
       fileList
     };
 
+    // const valueFormatter = e => e.target.value.replace(/\D/, '')
+
     return (
       <Row type="flex" justify="center" align="top">
-        <Col span={20}>
+        <Col span={22}>
           <Row type="flex" justify='start'>
             <Col>
-              <h1>Shop information</h1>
+              <h1><Icon type="info-circle" /> Shop Information</h1>
             </Col>
           </Row>
           <Row>
@@ -247,7 +289,24 @@ export class ShopInformation extends Component {
                   initialValue: this.state.shopAccountName
                 })(<Input />)}
               </Form.Item>
-
+              <Form.Item label="Bank" style={{ marginTop: "0", marginBottom: "0" }}>
+                {getFieldDecorator("shopBank", {
+                  rules: [
+                    {
+                      required: false,
+                      message: "Please select bank"
+                    }
+                  ],
+                  initialValue: this.state.shopBank
+                })(<Select>
+                  <Option value="KBANK">Kasikorn Bank (KBANK)</Option>
+                  <Option value="BBL">Bangkok Bank (BBL)</Option>
+                  <Option value="SCB">Siam Commercial Bank (SCB)</Option>
+                  <Option value="KTB">Krung Thai Bank (KTB)</Option>
+                  <Option value="BAY">Ayutthaya Bank (BAY)</Option>
+                  <Option value="TMB">Thai Military Bank (TMB)</Option>
+                </Select>)}
+              </Form.Item>
               <Form.Item label="Shop Description" style={{ marginTop: "0", marginBottom: "0" }}>
                 {getFieldDecorator("shopdescription", {
                   rules: [
@@ -272,33 +331,43 @@ export class ShopInformation extends Component {
                   </Upload>
                 )}
               </Form.Item>
-
-              <FindLocation
-                callbackFromParent={this.getLocation}
-              />
-
+              <Row type="flex" justify='center'>
+                <FindLocation
+                  inputLocation={this.state.location}
+                  callbackFromParent={this.getLocation}
+                />
+              </Row>
               <Form.Item label="Latitude" >
                 {getFieldDecorator('latitude', {
-                  initialValue: parseFloat(this.state.location.lat.toFixed(6)),
+                  getValueFromEvent: this.valueFormatter,
                   rules: [{
                     validator: this.validateLatitude,
                   }]
                 })
-                  (<Input placeholder="00.000000" />)}
+                  (<Input placeholder="00.000000" onChange={this.handleChangeByInputLat} />)}
               </Form.Item>
 
               <Form.Item label="Longitude" >
                 {getFieldDecorator('longitude', {
-                  initialValue: parseFloat(this.state.location.lng.toFixed(6)),
+                  getValueFromEvent: this.valueFormatter,
+                  // initialValue: parseFloat(this.state.location.lng.toFixed(6)),
                   rules: [{
                     validator: this.validateLongitude,
                   }]
                 })
-                  (<Input placeholder="00.000000" />)}
+                  (<Input placeholder="00.000000" onChange={this.handleChangeByInputLng} />)}
               </Form.Item>
 
               <Form.Item label="Address" >
-                {getFieldDecorator('address', {})
+                {getFieldDecorator('address', {
+                  rules: [
+                    {
+                      required: false,
+                      message: "address"
+                    }
+                  ],
+                  initialValue: this.state.address
+                })
                   (<Input placeholder="address" />)}
               </Form.Item>
 

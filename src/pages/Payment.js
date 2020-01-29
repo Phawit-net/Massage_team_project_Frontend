@@ -1,9 +1,12 @@
 import React, { Component } from 'react'
 import { Row, Col, Card, Avatar, Radio, Steps, Button, Upload, Icon, message } from 'antd'
+import moment from 'moment';
 import { withRouter } from 'react-router-dom'
 import Axios from '../config/axios.setup'
 import { connect } from 'react-redux'
 import { clearBooking } from '../redux/actions/actions'
+import styles from "./Payment.module.css";
+import '../App.css'
 const { Dragger } = Upload;
 const { Step } = Steps;
 
@@ -100,10 +103,21 @@ class Payment extends Component {
         const { current } = this.state;
         const steps = [
             {
-                title: 'Upload Transaction slip',
+                title: 'Upload transaction slip',
                 content:
                     <Card>
                         <h2>Please upload your transaction slip </h2>
+                        <h4><Icon type="bank" />  Bank transfer payment</h4>
+                        <Row style={{paddingLeft: '20px'}}>
+                            <Col sm={24} lg={24} xl={2}>
+                                <img src={`./bank/${booking.service.shop.shopBank}.png`} alt="shopBank" width="70"/>
+                            </Col>
+                            <Col sm={24} lg={24} xl={12}>
+                                <pre><Icon type="right-circle" />{` Account number : ${booking.service.shop.shopAccountNo}`}
+                                    <br /><Icon type="right-circle" />{` Account name   : ${booking.service.shop.shopAccountName}`}</pre>
+                            </Col>
+                        </Row>
+
                         <Dragger accept='.jpg' onChange={this.handleChange} customRequest={({ file, onSuccess }) => this.handlecustomRequest({ file, onSuccess })}
                             onRemove={() => this.handleRemove} showUploadList={false}
                         >
@@ -119,11 +133,14 @@ class Payment extends Component {
             },
             {
                 title: 'Confirm payment',
-                content: <Card cover={<img src={this.state.previewImage} alt='slip_image' />}>
+                content: <Card
+                    cover={<img src={this.state.previewImage} alt='slip_image' style={{ width: 300 }} />}
+                    style={{ display: 'flex', justifyContent: 'center' }}
+                    bodyStyle={{ padding: 0 }}>
                 </Card>,
             },
             {
-                title: 'finished',
+                title: 'Finished',
                 content:
                     <Card>
                         <Row type='flex' justify='center'>  <h1>Thank you for Booking</h1></Row>
@@ -145,25 +162,25 @@ class Payment extends Component {
                         <Col>
                             <Card style={{ borderBlockColor: '#926F3B' }}>
                                 <Row >
-                                    <Col xs={24} lg={9} xl={5}>
+                                    <Col xs={24} lg={9} xl={6}>
                                         <Avatar src={`${Axios.defaults.baseURL}/${booking.service.serviceProfilePic}`} shape='square' size={200} />
                                     </Col>
-                                    <Col xs={24} lg={14} xl={19}>
+                                    <Col xs={24} lg={14} xl={18}>
                                         <Row type='flex' justify='space-between'>
-                                            <Col> <h2 style={{ color: '#926F3B' }}>{`${booking.service.serviceName} (${booking.person} person)`}</h2></Col>
+                                            <Col> <h2 style={{ color: '#926F3B' }}>{`${booking.service.serviceName}`}</h2> <h5>{`(${booking.person} person)`}</h5></Col>
                                             <Col>
                                                 <Row>
                                                     <h2 style={{ color: '#926F3B' }}>{booking.service.shop.shopName}</h2>
                                                 </Row>
                                                 <Row>
-                                                    <h3 style={{ color: '#926F3B' }}>{`${booking.date}`}</h3>
+                                                    <h5 style={{ color: '#926F3B' }}>{`Date: ${moment(booking.date).format('DD MMM YYYY')}`}</h5>
                                                 </Row>
                                                 <Row>
-                                                    <h3 style={{ color: '#926F3B' }}>{`${booking.startTime} - ${booking.endTime}`}</h3>
+                                                    <h5 style={{ color: '#926F3B' }}>{`Time: ${booking.startTime} - ${booking.endTime}`}</h5>
                                                 </Row>
                                             </Col>
                                         </Row>
-                                        <Row>
+                                        <Row style={{ paddingTop: '10px' }}>
                                             <h5>{booking.service.serviceDescription}</h5>
                                         </Row>
                                     </Col>
@@ -200,18 +217,18 @@ class Payment extends Component {
                             <div className="steps-content" style={{ marginTop: '20px' }}>{steps[current].content}</div>
                             <div className="steps-action" style={{ marginTop: '20px' }}>
                                 {current === 0 && (
-                                    <Button type="primary" disabled={this.state.file === '' ? true : false} onClick={() => this.next()}>
+                                    <Button type="primary" className={styles.Button} disabled={this.state.file === '' ? true : false} onClick={() => this.next()}>
                                         Next
             </Button>
                                 )}
                                 {current === 1 && (
-                                    <Button type="primary" onClick={() => this.confirm()}>
+                                    <Button type="primary"className={styles.Button} onClick={() => this.confirm()}>
                                         Confirm
             </Button>
                                 )}
 
                                 {current === 1 && (
-                                    <Button style={{ marginLeft: 8 }} onClick={() => this.prev()}>
+                                    <Button className={styles.previousButton} style={{ marginLeft: 8 }} onClick={() => this.prev()}>
                                         Previous
             </Button>
                                 )}

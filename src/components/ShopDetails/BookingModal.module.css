@@ -7,16 +7,14 @@ h1,h3,h4,Label{
 .borderBox {
     height: 100%;
     width: 100%;
-    border: 1px solid #000000;
+    border: 2px solid #9E4624;
     padding: 5px;
     margin: 20px;
 }
 
 
 .borderBoxSmall{
-    border: 1px solid #926F3B;
-    padding: 5px;
-    margin: 10px;
+    border: 2px solid #D8AE47;
 }
 
 .button {
@@ -28,4 +26,22 @@ h1,h3,h4,Label{
 .button:hover {
     background-color: #a15a3f !important;
     color: #FFFFFF !important;
+}
+
+@media only screen and (max-width: 3000px) {
+    .layout{
+        padding:0px 190px !important;
+    }
+}
+
+@media only screen and (max-width: 750px) {
+    .layout{
+        padding:0px 100px !important;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .layout{
+        padding:0px 50px !important;
+    }
 }

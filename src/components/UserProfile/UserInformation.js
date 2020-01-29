@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Form } from "antd";
+import { Row, Col, Form, Icon } from "antd";
 import Axios from "../../config/axios.setup";
 
 export default class UserInformation extends Component {
@@ -47,32 +47,30 @@ export default class UserInformation extends Component {
     return (
 
       <Row type="flex" justify="center" align="top">
-        <Col span={9}>
+        <Col span={22}>
           <Row type="flex" justify='start'>
-            <Col style={{ fontSize: "25px" }}>
-              Personal information
-    </Col>
+            <Col><h1><Icon type="info-circle" /> Personal Information</h1></Col>
           </Row>
           <Row>
             <Form {...formItemLayout}>
-              <Form.Item label="Username " style={{ marginTop: "0", marginBottom: "0" }}>
-                <h3>{this.state.Username}</h3>
+              <Form.Item label="Username " style={{ marginTop: "0", marginBottom: "0"}}>
+                <span style={{paddingLeft: '10px'}}>{this.state.Username}</span>
               </Form.Item>
 
               <Form.Item label="Firstname " style={{ marginTop: "0", marginBottom: "0" }}>
-                <h3>{this.state.Firstname}</h3>
+                <span style={{paddingLeft: '10px'}}>{this.state.Firstname}</span>
               </Form.Item>
 
               <Form.Item label="Lastname " style={{ marginTop: "0", marginBottom: "0" }}>
-                <h3>{this.state.Lastname}</h3>
+                <span style={{paddingLeft: '10px'}}>{this.state.Lastname}</span>
               </Form.Item>
 
               <Form.Item label="Email " style={{ marginTop: "0", marginBottom: "0" }}>
-                <h3>{this.state.Email}</h3>
+                <span style={{paddingLeft: '10px'}}>{this.state.Email}</span>
               </Form.Item>
 
               <Form.Item label="Tel " style={{ marginTop: "0", marginBottom: "0" }}>
-                <h3>{this.state.Tel}</h3>
+                <span style={{paddingLeft: '10px'}}>{this.state.Tel}</span>
               </Form.Item>
 
             </Form>

@@ -55,12 +55,73 @@
   border-style: inset;
 }
 
-.ant-btn-primary {
-  background-color :#9E4624 !important;
-  border-color: #9E4624 !important;
-}
+/* payment  antd  override -----------------------------------------*/
+.ant-steps-item-process .ant-steps-item-icon { 
+  background: #9E4624 !important;
+ border-color: #9E4624 !important;
+  }
 
-.ant-btn-primary:hover {
-  background-color:#a15a3f !important;
+  .ant-steps-item-finish .ant-steps-item-icon > .ant-steps-icon {
+    color: #9E4624 !important;
+  }
+
+  .ant-steps-item-finish .ant-steps-item-icon {
+    border-color :#9E4624 !important;
+  }
+
+  .ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-content > .ant-steps-item-title::after{
+    background-color :#9E4624 !important;
+  } 
+
+  .ant-radio-checked .ant-radio-inner{
+    border-color :#9E4624 !important;
+  }
+  .ant-radio-inner::after{
+    background-color:#9E4624 !important;
+  }
+  .ant-radio-inner::after :hover{
+    background-color:#9E4624 !important;
+  }
+  .ant-upload.ant-upload-drag p.ant-upload-drag-icon .anticon{
+    color:#9E4624 !important;
+  }
+
+
+  /* header bottom line select override -----------------------------------------*/
+  .ant-menu-horizontal > .ant-menu-item-selected{
+    border-bottom :2px solid #926f3b !important;
+  }
+
+
+  /* Shop & user Info  override -----------------------------------------*/
+  .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected{
+    background-color : #f1e6b2 !important;
+  }
+  .ant-menu-item-selected{
+    color:#926F3B !important;
+  }
+
+  .ant-dropdown-menu-item:hover{
+    background-color : #fff9d9 !important;
+  }
+
+  .ant-btn-primary{
+    background-color: #9E4624 !important;
+    border-color: #9E4624 !important;
+  }
+
+  .ant-btn-primary:hover{
+    background-color: #a15a3f !important;
     border-color: #a15a3f !important;
+  }
+
+  .ant-menu-submenu-title {
+    display: none !important;
+  }
+  /* map shop detail override -----------------------------------------*/
+  @media only screen and (max-width: 500px) {
+    .leaflet-container{
+      width: 200px !important;
+        height: 200px !important;
+    }
 }

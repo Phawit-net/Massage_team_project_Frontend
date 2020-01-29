@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Input } from 'antd'
-import Axios from 'axios';
+import Axios from '../../config/axios.setup';
 
 const { Search } = Input;
 
@@ -14,7 +14,7 @@ export default class SearchBar extends Component {
   }
 
   componentDidMount() {
-    Axios.get('http://localhost:8080/shops')
+    Axios.get('/shops')
       .then(result => {
         this.setState({
           shops: result.data
@@ -25,7 +25,7 @@ export default class SearchBar extends Component {
   handleSearch(value) {
     let keyword = value
     let page = this.state.page
-    Axios.get(`http://localhost:8080/searchShop?keyword=${keyword}&page=${page}`)
+    Axios.get(`/searchShop?keyword=${keyword}&page=${page}`)
       .then(result => {
         this.setState({
           shops: result.data

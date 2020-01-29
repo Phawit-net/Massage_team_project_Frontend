@@ -18,13 +18,11 @@ class LoginModal extends Component {
     handleSignin = (e) => {
         e.preventDefault()   
         this.props.form.validateFields((err,values)=>{ 
-            console.log(values)
             if(!err){  
             const username = values.username
             const password = values.password 
             Axios.post('/loginUser', { username, password })
             .then(response => {
-                console.log(response.data)
                 const user = jwtDecode(response.data.token)
                 this.props.login(user, response.data.token);
                 this.props.handleCancel();
@@ -32,6 +30,7 @@ class LoginModal extends Component {
                 this.setState({
                     notification: ''
                 })
+                window.location.reload()
             })
             .catch(err => {
                 this.props.form.resetFields()

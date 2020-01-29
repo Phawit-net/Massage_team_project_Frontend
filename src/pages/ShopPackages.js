@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Row, Input, Col } from "antd";
 import ShopList from "../components/Generals/Shop/ShopList";
-import Axios from "axios";
+import Axios from "../config/axios.setup";
 import styles from "./ShopPackages.module.css";
 
 const { Search } = Input;
@@ -10,37 +10,32 @@ export default class ShopPackages extends Component {
     super(props);
     this.state = {
       shopList: [],
-      page: 1,
       keyword: ""
     };
   }
 
   async componentDidMount() {
     const result = await Axios.get(
-      `http://localhost:8080/shops`
+      `/shops`
     );
     this.setState({ shopList: result.data });
   }
 
-  // handleSearch(value) {
-  //   console.log(value);
-  //   console.log(this.state);
-  //   let keyword = value;
-  //   let page = this.state.page;
-  //   Axios.get(
-  //     `http://localhost:8080/searchShops?keyword=${keyword}&page=${page}`
-  //   ).then(result => {
-  //     this.setState({
-  //       shopList: result.data,
-  //       keyword: keyword
-  //     });
-  //   });
-  // }
+  handleSearch(value) {
+    let keyword = value;
+    Axios.get(
+      `/searchShops?keyword=${keyword}`
+    ).then(result => {
+      this.setState({
+        shopList: result.data,
+        keyword: keyword
+      });
+    });
+  }
 
   myCallback = dataFromChild => {
     this.setState({
       shopList: dataFromChild.shopList,
-      page: dataFromChild.page
     });
   };
 
@@ -54,17 +49,10 @@ export default class ShopPackages extends Component {
           <div style={{ width: "90vw", margin: "auto", border: "2px solid #9E4624" }}>
             <Search
               placeholder="input search text"
-              // onSearch={value => this.handleSearch(value)}
+              onSearch={value => this.handleSearch(value)}
               enterButton
               style={{ margin: "2% 0% 2% 2%", width: "97%" }}
             />
-            {/* <div style={{ margin: "2% 0% 2% 2%", width: "97%" }}>
-              <from>
-                <input placeholder ="input search text" />
-                <button className={styles.searchButton} type="submit"><Icon type="search" style={{color:'#fff'}} /></button>
-              </from>
-            </div> */}
-
             <div style={{ marginBottom: "2%" }}>
               <ShopList
                 shopList={this.state.shopList}
