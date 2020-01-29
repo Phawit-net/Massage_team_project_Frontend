@@ -114,3 +114,7 @@
     background-color: #a15a3f !important;
     border-color: #a15a3f !important;
   }
+
+  .ant-menu-submenu-title {
+    display: none !important;
+  }
